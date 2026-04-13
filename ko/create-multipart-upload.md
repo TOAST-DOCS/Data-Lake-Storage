@@ -1,8 +1,8 @@
-# CreateMultipartUpload
+## CreateMultipartUpload
 
 **Data & Analytics > Data Lake Storage > API 가이드 > Multipart > CreateMultipartUpload**
 
-대용량 객체를 업로드할 수 있도록 멀티 파트 업로드를 시작하고 업로드 ID를 생성합니다. 업로드 ID는 최대 한 시간 동안 유효합니다.
+대용량 객체를 업로드할 수 있도록 멀티파트 업로드를 시작하고 업로드 ID를 생성합니다. 업로드 ID는 최대 한 시간 동안 유효합니다.
 
 ### 요청
 
@@ -12,7 +12,7 @@ POST /{bucket}/{objectKey}?uploads HTTP/1.1
 
 ### 요청 파라미터
 
-Data Lake Storage API에서 공통으로 사용하는 헤더에 대한 정보는 Data Lake Storage API 요청 헤더(API 가이드 > Data Lake Storage API 공통 정보 > 요청 > 요청 헤더 링크 필요)를 참조해 주세요.
+Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/ko/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
@@ -31,13 +31,13 @@ HTTP/1.1 200 OK
 <InitiateMultipartUploadResult>
   <Bucket>String</Bucket>
   <Key>String</Key>
-  <UploadId>String</ETag>
-</CompleteMultipartUploadResult>
+  <UploadId>String</UploadId>
+</InitiateMultipartUploadResult>
 ```
 
 | 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| InitiateMultipartUploadResult | Object | 멀티 파트 업로드 시작 결과 |
+| InitiateMultipartUploadResult | Object | 멀티파트 업로드 시작 결과 |
 | InitiateMultipartUploadResult.Bucket | String | 대상 버킷 이름 |
 | InitiateMultipartUploadResult.Key | String | 객체 키 |
-| InitiateMultipartUploadResult.UploadId | String | 멀티 파트 업로드 ID |
+| InitiateMultipartUploadResult.UploadId | String | 멀티파트 업로드 ID |

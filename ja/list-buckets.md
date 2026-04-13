@@ -1,4 +1,4 @@
-# ListBuckets
+## ListBuckets
 
 **Data & Analytics > Data Lake Storage > API 가이드 > Bucket > ListBuckets**
 
@@ -12,20 +12,13 @@ GET /?max-buckets=20 HTTP/1.1
 
 ### 요청 파라미터
 
-Data Lake Storage API에서 공통으로 사용하는 헤더에 대한 정보는 Data Lake Storage API 요청 헤더(API 가이드 > Data Lake Storage API 공통 정보 > 요청 > 요청 헤더 링크 필요)를 참조해 주세요.
+Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | continuation-token | Parameter | String | N | 다음 페이지 조회를 위한 연속 토큰 |
 | max-buckets | Parameter | Integer | N | 반환할 최대 버킷 수 |
 | prefix | Parameter | String | N | 버킷 이름 필터링 접두어 |
-
-### 요청 본문
-
-| 이름 | 타입 | 필수 | 설명 |
-| --- | --- | --- | --- |
-| CreateBucketConfiguration | Object | Y | 생성할 버킷 정보 |
-| CreateBucketConfiguration.LocationConstraint | String | Conditional | 리전 코드, 미 입력 시 엔드 포인트에 맞는 리전 정보 적용 |
 
 ### 응답
 

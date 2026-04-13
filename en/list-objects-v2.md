@@ -1,4 +1,4 @@
-# ListObjectsV2
+## ListObjectsV2
 
 **Data & Analytics > Data Lake Storage > API 가이드 > Object > ListObjectsV2**
 
@@ -12,15 +12,15 @@ GET /{bucket}?list-type=2&continuation-token={continuationToken}&delimiter={deli
 
 ### 요청 파라미터
 
-Data Lake Storage API에서 공통으로 사용하는 헤더에 대한 정보는 Data Lake Storage API 요청 헤더(API 가이드 > Data Lake Storage API 공통 정보 > 요청 > 요청 헤더 링크 필요)를 참조해 주세요.
+Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
 | x-amz-storage-class | Header | String | N | 스토리지 클래스 |
-| list-type | Parameter | String | Y | 2 고정 (V2 API 구분자) |
+| list-type | Parameter | String | Y | 2 고정(V2 API 구분자) |
 | continuation-token | Parameter | String | N | 다음 페이지 조회 식별자 |
-| delimiter | Parameter | String | N | 키 그룹 구분자 (기본 : `/`) |
+| delimiter | Parameter | String | N | 키 그룹 구분자(기본: /) |
 | encoding-type | Parameter | String | N | 키 인코딩 방식 |
 | fetch-owner | Parameter | Boolean | N | 소유자 정보 포함 여부 |
 | max-keys | Parameter | Integer | N | 반환할 최대 객체 수 |
@@ -76,7 +76,7 @@ HTTP/1.1 200 OK
 | ListBucketResult.Contents.Key | String | 객체 키 |
 | ListBucketResult.Contents.LastModified | Timestamp | 마지막 수정 일시 (ISO 8601 형식) |
 | ListBucketResult.Contents.ETag | String | 객체 고유 식별자 |
-| ListBucketResult.Contents.Size | Long | 객체 크기 (bytes) |
+| ListBucketResult.Contents.Size | Long | 객체 크기(bytes) |
 | ListBucketResult.Contents.StorageClass | String | 스토리지 클래스 |
 | ListBucketResult.Contents.Owner.ID | String | 소유자 ID (fetch-owner=true 시 포함) |
 | ListBucketResult.CommonPrefixes | Array | delimiter 기준으로 그룹화된 공통 prefix 목록 |
