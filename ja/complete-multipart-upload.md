@@ -1,10 +1,10 @@
 ## CompleteMultipartUpload
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Multipart > CompleteMultipartUpload**
+**Data & Analytics > Data Lake Storage > API ガイド > Multipart > CompleteMultipartUpload**
 
-업로드된 파트들을 조합하여 객체를 저장하고 멀티파트 업로드를 완료합니다.
+アップロードされたパートを組み合わせてオブジェクトを保存し、マルチパートアップロードを完了します。
 
-### 요청
+### リクエスト
 
 ```http
 POST /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
@@ -18,26 +18,26 @@ POST /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 </CompleteMultipartUpload>
 ```
 
-### 요청 파라미터
+### リクエストパラメータ
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)をご参照ください。
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| objectKey | Path | String | Y | 객체 이름 |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
-| uploadId | Parameter | String | Y | 멀티파트 업로드 ID |
+| bucket | Path | String | Y | バケット名 |
+| objectKey | Path | String | Y | オブジェクト名 |
+| x-amz-storage-class | Header | String | N | ストレージクラス |
+| uploadId | Parameter | String | Y | マルチパートアップロードID |
 
-### 요청 본문
-| 이름 | 타입 | 필수 | 설명 |
+### リクエストボディ
+| 名前 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- |
-| CompleteMultipartUpload | Object | Y | 멀티파트 업로드 완료 요청 |
-| CompleteMultipartUpload.Part | Object | N | 파트 목록 |
-| CompleteMultipartUpload.Part.PartNumber | Integer | N | 파트 번호 |
-| CompleteMultipartUpload.Part.ETag | String | N | 객체 고유 식별자 |
+| CompleteMultipartUpload | Object | Y | マルチパートアップロード完了リクエスト |
+| CompleteMultipartUpload.Part | Object | N | パート一覧 |
+| CompleteMultipartUpload.Part.PartNumber | Integer | N | パート番号 |
+| CompleteMultipartUpload.Part.ETag | String | N | オブジェクト固有識別子 |
 
-### 응답
+### レスポンス
 
 ```http
 HTTP/1.1 200 OK
@@ -51,10 +51,10 @@ HTTP/1.1 200 OK
 </CompleteMultipartUploadResult>
 ```
 
-| 이름 | 타입 | 설명 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
-| CompleteMultipartUploadResult | Object | 멀티파트 업로드 완료 결과 |
-| CompleteMultipartUploadResult.Location | String | 생성된 객체 경로 |
-| CompleteMultipartUploadResult.Bucket | String | 대상 버킷 이름 |
-| CompleteMultipartUploadResult.Key | String | 생성된 객체 키 |
-| CompleteMultipartUploadResult.ETag | String | 최종 결합된 객체 고유 식별자 |
+| CompleteMultipartUploadResult | Object | マルチパートアップロード完了結果 |
+| CompleteMultipartUploadResult.Location | String | 作成されたオブジェクトパス |
+| CompleteMultipartUploadResult.Bucket | String | 対象バケット名 |
+| CompleteMultipartUploadResult.Key | String | 作成されたオブジェクトキー |
+| CompleteMultipartUploadResult.ETag | String | 最終的に結合されたオブジェクト固有識別子 |

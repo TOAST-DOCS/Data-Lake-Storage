@@ -1,27 +1,27 @@
 ## GetObject
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Object > GetObject**
+**Data & Analytics > Data Lake Storage > API ガイド > Object > GetObject**
 
-버킷에 저장된 객체를 조회합니다.
+バケットに保存されたオブジェクトを照会します。
 
-### 요청
+### リクエスト
 
 ```http
 GET /{bucket}/{objectKey} HTTP/1.1
 ```
 
-### 요청 파라미터
+### リクエストパラメータ
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)をご参照ください。
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| objectKey | Path | String | Y | 객체 이름 |
-| Range | Header | String | N | 부분 다운로드 범위 |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
+| bucket | Path | String | Y | バケット名 |
+| objectKey | Path | String | Y | オブジェクト名 |
+| Range | Header | String | N | 部分ダウンロードの範囲 |
+| x-amz-storage-class | Header | String | N | ストレージクラス |
 
-### 응답
+### レスポンス
 
 ```http
 HTTP/1.1 200 OK
