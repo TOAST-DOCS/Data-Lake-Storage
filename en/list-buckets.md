@@ -1,26 +1,26 @@
 ## ListBuckets
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Bucket > ListBuckets**
+**Data & Analytics > Data Lake Storage > API Guide > Bucket > ListBuckets**
 
-버킷 목록을 조회합니다.
+Lists buckets.
 
-### 요청
+### Request
 
 ```http
 GET /?max-buckets=20 HTTP/1.1
 ```
 
-### 요청 파라미터
+### Request Parameter
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/).
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| continuation-token | Parameter | String | N | 다음 페이지 조회를 위한 연속 토큰 |
-| max-buckets | Parameter | Integer | N | 반환할 최대 버킷 수 |
-| prefix | Parameter | String | N | 버킷 이름 필터링 접두어 |
+| continuation-token | Parameter | String | N | Continuation token for retrieving the next page |
+| max-buckets | Parameter | Integer | N | Maximum number of buckets to return |
+| prefix | Parameter | String | N | Prefix for filtering bucket names |
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 200 OK
@@ -43,15 +43,15 @@ HTTP/1.1 200 OK
 </ListAllMyBucketsResult>
 ```
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | --- | --- | --- |
-| ListAllMyBuckets | Object | 버킷 목록 조회 결과 |
-| ListAllMyBuckets.Buckets | Object | 버킷 정보 |
-| ListAllMyBuckets.Buckets.BucketRegion | String | 버킷이 위치한 리전 |
-| ListAllMyBuckets.Buckets.CreationDate | Timestamp | 버킷 생성 일시 (ISO 8601) |
-| ListAllMyBuckets.Buckets.Name | String | 버킷 이름 |
-| ListAllMyBuckets.Owner | Object | 버킷 소유자 정보 |
-| ListAllMyBuckets.Owner.DisplayName | String | 소유자 표시 이름 |
-| ListAllMyBuckets.Owner.ID | String | 소유자 ID |
-| ListAllMyBuckets.ContinuationToken | String | 다음 페이지 조회용 연속 토큰 (마지막 페이지면 미포함) |
-| ListAllMyBuckets.Prefix | String | 요청에 사용된 접두어 필터 |
+| ListAllMyBuckets | Object | Result of bucket list retrieval |
+| ListAllMyBuckets.Buckets | Object | Bucket information |
+| ListAllMyBuckets.Buckets.BucketRegion | String | Region where the bucket is located |
+| ListAllMyBuckets.Buckets.CreationDate | Timestamp | Bucket creation time (ISO 8601) |
+| ListAllMyBuckets.Buckets.Name | String | Bucket name |
+| ListAllMyBuckets.Owner | Object | Bucket owner information |
+| ListAllMyBuckets.Owner.DisplayName | String | Owner display name |
+| ListAllMyBuckets.Owner.ID | String | Owner ID |
+| ListAllMyBuckets.ContinuationToken | String | Continuation token for retrieving the next page (not included if this is the last page) |
+| ListAllMyBuckets.Prefix | String | Prefix filter used in the request |
