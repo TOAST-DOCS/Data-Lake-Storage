@@ -1,10 +1,10 @@
 ## CompleteMultipartUpload
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Multipart > CompleteMultipartUpload**
+**Data & Analytics > Data Lake Storage > API Guide > Multipart > CompleteMultipartUpload**
 
-업로드된 파트들을 조합하여 객체를 저장하고 멀티파트 업로드를 완료합니다.
+Combine the uploaded parts to save the object and complete the multipart upload.
 
-### 요청
+### Request
 
 ```http
 POST /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
@@ -18,26 +18,26 @@ POST /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 </CompleteMultipartUpload>
 ```
 
-### 요청 파라미터
+### Request Parameter
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/).
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| objectKey | Path | String | Y | 객체 이름 |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
-| uploadId | Parameter | String | Y | 멀티파트 업로드 ID |
+| bucket | Path | String | Y | Bucket name |
+| objectKey | Path | String | Y | Object name |
+| x-amz-storage-class | Header | String | N | Storage class |
+| uploadId | Parameter | String | Y | Multipart upload ID |
 
-### 요청 본문
-| 이름 | 타입 | 필수 | 설명 |
+### Request Body
+| Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| CompleteMultipartUpload | Object | Y | 멀티파트 업로드 완료 요청 |
-| CompleteMultipartUpload.Part | Object | N | 파트 목록 |
-| CompleteMultipartUpload.Part.PartNumber | Integer | N | 파트 번호 |
-| CompleteMultipartUpload.Part.ETag | String | N | 객체 고유 식별자 |
+| CompleteMultipartUpload | Object | Y | Request to complete multipart upload |
+| CompleteMultipartUpload.Part | Object | N | Part list |
+| CompleteMultipartUpload.Part.PartNumber | Integer | N | Part number |
+| CompleteMultipartUpload.Part.ETag | String | N | Unique identifier of the object |
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 200 OK
@@ -51,10 +51,10 @@ HTTP/1.1 200 OK
 </CompleteMultipartUploadResult>
 ```
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | --- | --- | --- |
-| CompleteMultipartUploadResult | Object | 멀티파트 업로드 완료 결과 |
-| CompleteMultipartUploadResult.Location | String | 생성된 객체 경로 |
-| CompleteMultipartUploadResult.Bucket | String | 대상 버킷 이름 |
-| CompleteMultipartUploadResult.Key | String | 생성된 객체 키 |
-| CompleteMultipartUploadResult.ETag | String | 최종 결합된 객체 고유 식별자 |
+| CompleteMultipartUploadResult | Object | Multipart upload completion result |
+| CompleteMultipartUploadResult.Location | String | Path of the created object |
+| CompleteMultipartUploadResult.Bucket | String | Target bucket name |
+| CompleteMultipartUploadResult.Key | String | Generated object key |
+| CompleteMultipartUploadResult.ETag | String | Unique identifier of the final combined object |

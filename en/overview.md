@@ -1,34 +1,34 @@
-## Data Lake Storage 개요
+## Data Lake Storage Overview
 
-**Data & Analytics > Data Lake Storage > 개요**
+**Data & Analytics > Data Lake Storage > Overview**
 
-Data Lake Storage는 NHN Cloud가 제공하는 분석용 객체 스토리지 서비스입니다.
+Data Lake Storage is an object storage service for analytics provided by NHN Cloud.
 
-예측 불가능한 형식과 크기를 가지는 비정형 원천 데이터부터 처리 및 가공을 거친 정형 데이터까지, 사전 용량 설정 없이 원하는 구조로 저장할 수 있는 확장성과 유연성을 제공합니다.
+It provides the scalability and flexibility to store data in any structure without pre-configuring capacity — from unstructured raw data with unpredictable formats and sizes, to structured data that has been processed and refined.
 
-AWS S3 API와 높은 호환성을 바탕으로 기존 분석 생태계에서 사용하던 SDK, CLI, 서드파티 도구를 그대로 활용할 수 있어, 새로운 마이그레이션 비용 없이 예측 가능한 데이터 접근 환경을 구성할 수 있습니다.
+Built on high compatibility with the AWS S3 API, you can use the SDKs, CLIs, and third-party tools from your existing analytics ecosystem as-is, enabling a predictable data access environment without additional migration costs.
 
-!!! danger "주의"
-    서비스를 비활성화하면 스토리지에 저장된 데이터는 모두 삭제되며, 복구할 수 없습니다.
+!!! danger "Caution"
+    If you disable the service, all data stored in the storage will be deleted and cannot be recovered.
 
 
-## 주요 특징
-* 유연한 확장성
-    * 저장 용량 걱정 없이 데이터를 보관할 수 있도록 수평적 확장 구조를 갖추고 있습니다.
-* 스토리지 클래스
-    * 데이터 접근 빈도와 비용 효율성에 따라 다양한 저장소를 선택할 수 있습니다.(추가 예정)
-* AWS S3 호환 API
-    * AWS S3 API와 높은 수준의 호환성을 제공하여 기존에 사용하던 S3 SDK, CLI, 서드파티 도구를 그대로 활용할 수 있습니다.
+## Main features
+* Flexible scaling
+    * Supports horizontal scaling so you can store data without worrying about storage capacity.
+* Storage class
+    * Allows you to choose from a variety of storage options based on data access frequency and cost efficiency. (Upcoming)
+* AWS S3 compatible API
+    * Provides high-level compatibility with AWS S3 API, allowing you to use existing S3 SDKs, CLIs, and third-party tools as-is.
 
-## 동작 방식
+## How it works
 <img src="https://static.toastoven.net/prod_data_lake_storage/15_data&analytics_data-lake-storage_img_en.png" />
 
 
-## 용어 정리
-| 용어 | 설명 |
+## Glossary
+| Terms | Description |
 | --- | --- |
-| 객체 | 데이터와 메타데이터로 구성된 파일 단위의 저장 요소 |
-| 버킷 | 객체를 저장하고 관리하는 최상위 저장 공간 |
-| API 자격 증명 | 서비스 접근 시 인증과 권한을 확인하기 위한 인증 정보(Access Key 등) |
-| 스토리지 클래스 | 데이터의 접근 빈도와 비용에 따라 구분된 저장 등급 |
+| Object | A file-based storage element consisting of data and metadata |
+| Bucket | The top-level storage space for storing and managing objects |
+| API credentials | Authentication information (such as Access Key) used to verify authentication and authorization when accessing the service |
+| Storage class | A storage tier categorized by data access frequency and cost |
 

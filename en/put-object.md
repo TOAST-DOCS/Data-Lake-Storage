@@ -1,10 +1,10 @@
 ## PutObject
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Object > PutObject**
+**Data & Analytics > Data Lake Storage > API Guide > Object > PutObject**
 
-버킷에 객체를 저장합니다.
+Stores an object in a bucket.
 
-### 요청
+### Request
 
 ```http
 PUT /{bucket}/{objectKey} HTTP/1.1
@@ -12,27 +12,27 @@ PUT /{bucket}/{objectKey} HTTP/1.1
 Body
 ```
 
-### 요청 파라미터
+### Request Parameter
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/).
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| objectKey | Path | String | Y | 객체 이름 |
-| Content-Type | Header | String | N | 객체 콘텐츠 타입 |
-| Content-Length | Header | Long | Y | 객체 크기(bytes) |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
-| x-amz-meta-\* | Header | String | N | 사용자 정의 메타데이터 |
+| bucket | Path | String | Y | Bucket name |
+| objectKey | Path | String | Y | Object name |
+| Content-Type | Header | String | N | Object content type |
+| Content-Length | Header | Long | Y | Object size (bytes) |
+| x-amz-storage-class | Header | String | N | Storage class |
+| x-amz-meta-* | Header | String | N | Custom metadata |
 
-### 요청 본문
+### Request Body
 
-| 이름 | 타입 | 필수 | 설명 |
+| Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| Body | Binary | Y | 객체 데이터 |
+| Body | Binary | Y | Object data |
 
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 200 OK
