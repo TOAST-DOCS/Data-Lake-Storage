@@ -1,27 +1,27 @@
 ## ListParts
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Multipart > ListParts**
+**Data & Analytics > Data Lake Storage > API ガイド > Multipart > ListParts**
 
-멀티파트 업로드의 파트 목록을 조회합니다.
+マルチパートアップロードのパート一覧を照会します。
 
-### 요청
+### リクエスト
 
 ```http
 GET /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
-### 요청 파라미터
+### リクエストパラメータ
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)をご参照ください。
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| objectKey | Path | String | Y | 객체 이름 |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
-| uploadId | Parameter | String | Y | 멀티파트 업로드 ID |
+| bucket | Path | String | Y | バケット名 |
+| objectKey | Path | String | Y | オブジェクト名 |
+| x-amz-storage-class | Header | String | N | ストレージクラス |
+| uploadId | Parameter | String | Y | マルチパートアップロードID |
 
-### 응답
+### レスポンス
 
 ```http
 HTTP/1.1 200 OK
@@ -45,19 +45,19 @@ HTTP/1.1 200 OK
 </ListPartsResult>
 ```
 
-| 이름 | 타입 | 설명 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
-| ListPartsResult | Object | 파트 목록 조회 결과 |
-| ListPartsResult.Bucket | String | 버킷 이름 |
-| ListPartsResult.Key | String | 객체 키 |
-| ListPartsResult.UploadId | String | 멀티파트 업로드 ID |
-| ListPartsResult.StorageClass | String | 스토리지 클래스 |
-| ListPartsResult.PartNumberMarker | Integer | 조회 시작 기준 |
-| ListPartsResult.NextPartNumberMarker | Integer | 다음 조회 시작 기준 |
-| ListPartsResult.MaxParts | Integer | 최대 파트 수 |
-| ListPartsResult.IsTruncated | Boolean | 추가 페이지 존재 여부 |
-| ListPartsResult.Part | Object | 파트 정보 |
-| ListPartsResult.Part.PartNumber | Integer | 파트 번호 |
-| ListPartsResult.Part.LastModified | Timestamp | 마지막 수정 일시(ISO 8601 형식) |
-| ListPartsResult.Part.ETag | String | 파트 객체 고유 식별자 |
-| ListPartsResult.Part.Size | Long | 파트 크기(bytes) |
+| ListPartsResult | Object | パート一覧照会結果 |
+| ListPartsResult.Bucket | String | バケット名 |
+| ListPartsResult.Key | String | オブジェクトキー |
+| ListPartsResult.UploadId | String | マルチパートアップロードID |
+| ListPartsResult.StorageClass | String | ストレージクラス |
+| ListPartsResult.PartNumberMarker | Integer | 照会開始の基準 |
+| ListPartsResult.NextPartNumberMarker | Integer | 次の照会開始の基準 |
+| ListPartsResult.MaxParts | Integer | 最大パート数 |
+| ListPartsResult.IsTruncated | Boolean | 次のページがあるかどうか |
+| ListPartsResult.Part | Object | パート情報 |
+| ListPartsResult.Part.PartNumber | Integer | パート番号 |
+| ListPartsResult.Part.LastModified | Timestamp | 最終更新日時(ISO 8601 形式) |
+| ListPartsResult.Part.ETag | String | パートのオブジェクト固有識別子 |
+| ListPartsResult.Part.Size | Long | パートのサイズ(bytes) |
