@@ -1,26 +1,26 @@
 ## HeadObject
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Object > HeadObject**
+**Data & Analytics > Data Lake Storage > API Guide > Object > HeadObject**
 
-버킷에 저장된 객체의 메타데이터를 조회합니다.
+Retrieves the metadata of an object stored in a bucket.
 
-### 요청
+### Request
 
 ```http
 HEAD /{bucket}/{objectKey} HTTP/1.1
 ```
 
-### 요청 파라미터
+### Request Parameter
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| objectKey | Path | String | Y | 객체 이름 |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
+| bucket | Path | String | Y | Bucket name |
+| objectKey | Path | String | Y | Object name |
+| x-amz-storage-class | Header | String | N | Storage class |
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 200 OK

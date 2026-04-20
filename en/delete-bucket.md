@@ -1,24 +1,24 @@
 ## DeleteBucket
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Bucket > DeleteBucket**
+**Data & Analytics > Data Lake Storage > API Guide > Bucket > DeleteBucket**
 
-버킷을 삭제합니다.
+Deletes bucket.
 
-### 요청
+### Request
 
 ```http
 DELETE /{bucket} HTTP/1.1
 ```
 
-### 요청 파라미터
+### Request Parameter
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
+| bucket | Path | String | Y | Bucket name |
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 204 No Content

@@ -1,64 +1,64 @@
-## Data Lake Storage API 가이드
+## Data Lake Storage API ガイド
 
-**Data & Analytics > Data Lake Storage > API 가이드 > 공통**
+**Data & Analytics > Data Lake Storage > API ガイド > 共通**
 
-## Data Lake Storage API 공통 정보
+## Data Lake Storage API 共通情報
 
-!!! tip "알아두기"
-    NHN Cloud Data Lake Storage 서비스는 Amazon S3 API 2006-03-01 버전과 호환되도록 설계되어 있습니다.
+!!! tip 「ポイント」
+    NHN Cloud Data Lake Storageサービスは、Amazon S3 API 2006-03-01バージョンと互換性を持つように設計されています。
 
-### API 엔드포인트
+### API エンドポイント
 
-| 리전 | 엔드포인트 |
+| リージョン | エンドポイント |
 | --- | ----- |
 | KR3 | https://kr3-data-lake-storage.nhncloudservice.com |
 
-### 인증 및 권한
+### 認証及び権限
 
-Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명이 필요합니다. [S3 API 자격 증명(S3 API Credential)](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/console-user-guide/#_10)를 참고하여 API 사용에 필요한 정보를 준비합니다.
+Data Lake Storageは、API呼び出し時の認証と認可のためにS3 API認証情報が必要です。[S3 API 認証情報(S3 API Credential)](console-user-guide/#_10)を参照して、APIの使用に必要な情報を準備してください。
 
-### 요청
+### リクエスト
 
-#### 요청 헤더
+#### リクエストヘッダ
 
-| 필드 | 필수 여부 | 설명 |
+| フィールド | 必須 | 説明 |
 | --- | ----- | --- |
-| Authorization | Y | 인증을 위한 서명입니다. 콘솔에서 발급한 API 자격 증명 정보를 바탕으로 AWS Signature Version 4 서명을 만들어야 합니다. |
-| Host | Y | 리전별 엔드포인트입니다. |
-| x-amz-date | Y | ISO 8601 형식(UTC 기준) 요청 일시입니다. |
+| Authorization | Y | 認証のための署名です。コンソールで発行したAPI認証情報を基に、AWS Signature Version 4の署名を作成する必要があります。 |
+| Host | Y | リージョン別のエンドポイントです。 |
+| x-amz-date | Y | ISO 8601 形式(UTC 基準) のリクエスト日時です。 |
 
-### 응답
+### レスポンス
 
-#### 실패 응답 코드
+#### エラーレスポンスコード
 
-| HTTP 상태 코드 | 코드 | 설명 |
+| HTTP ステータスコード | コード | 説明 |
 | ---------- | --- | --- |
-| 400 | InvalidPart | 지정한 파트 중 하나 이상을 찾을 수 없습니다. 파트가 업로드되지 않았거나, 지정한 ETag가 파트의 ETag와 일치하지 않을 수 있습니다. |
-| 400 | InvalidPartOrder | 파트 목록이 오름차순으로 정렬되지 않았습니다. 파트 목록은 파트 번호 순서대로 지정해야 합니다. |
-| 400 | EntityTooSmall | 업로드하려는 파트가 최소 허용 크기(5MiB)보다 작습니다. 마지막 파트를 제외한 모든 파트는 최소 크기 이상이어야 합니다. |
-| 400 | EntityTooLarge | 업로드하려는 객체가 최대 허용 크기(5GiB)를 초과합니다. |
-| 404 | NoSuchKey | 지정한 키가 존재하지 않습니다. |
-| 404 | NoSuchBucket | 지정한 버킷이 존재하지 않습니다. |
-| 405 | MethodNotAllowed | 해당 리소스에 대해 지정한 HTTP 메서드가 허용되지 않습니다. |
-| 409 | BucketAlreadyOwnedByYou | 생성하려는 버킷이 이미 존재하며 사용자가 소유하고 있습니다. |
-| 500 | InternalError | 서버 내부에 오류가 발생했습니다. |
-| 503 | ServiceUnavailable | 서비스가 현재 요청을 처리할 수 없습니다. 잠시 후 다시 시도하세요. |
-| 503 | SlowDown | 요청 속도를 줄이세요. |
+| 400 | InvalidPart | 指定したパートのうち1つ以上が見つかりません。パートがアップロードされていないか、指定したETagがパートのETagと一致しない可能性があります。 |
+| 400 | InvalidPartOrder | パート一覧が昇順に並べ替えられていません。パート一覧はパート番号の順に指定する必要があります。 |
+| 400 | EntityTooSmall | アップロードしようとしているパートが最小許容サイズ(5MiB)より小さいです。最後のパートを除く全てのパートは最小サイズ以上である必要があります。 |
+| 400 | EntityTooLarge | アップロードしようとしているオブジェクトが最大許容サイズ(5GiB)を超えています。 |
+| 404 | NoSuchKey | 指定したキーが存在しません。 |
+| 404 | NoSuchBucket | 指定したバケットが存在しません。 |
+| 405 | MethodNotAllowed | 該当リソースに対して指定したHTTPメソッドは許可されていません。 |
+| 409 | BucketAlreadyOwnedByYou | 作成しようとしているバケットはすでに存在しており、ユーザー自身が所有しています。 |
+| 500 | InternalError | サーバー内部でエラーが発生しました。 |
+| 503 | ServiceUnavailable | サービスが現在リクエストを処理できません。しばらくしてからもう一度お試しください。 |
+| 503 | SlowDown | リクエストの送信頻度を下げてください。 |
 
-## AWS 명령줄 인터페이스(CLI)
+## AWS コマンドラインインターフェース(CLI)
 
-S3 호환 API를 이용하여 AWS 명령줄 인터페이스로 NHN Cloud Data Lake Storage 서비스를 사용할 수 있습니다.
+S3互換APIを利用して、AWSコマンドラインインターフェースでNHN Cloud Data Lake Storageサービスを使用できます。
 
-### 설치
+### インストール
 
-[Installing past releases of the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html) 문서를 참고해 AWS 명령줄 인터페이스를 설치합니다.
+[Installing past releases of the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html) のドキュメントを参照し、AWSコマンドラインインターフェースをインストールします。
 
-!!! tip "알아두기"
-    NHN Cloud Data Lake Storage 서비스는 AWS CLI 버전 2.22.35까지 지원합니다.
+!!! tip 「ポイント」
+    NHN Cloud Data Lake Storageサービスは、AWS CLI バージョン 2.22.35までサポートしています。
 
-### 설정
+### 設定
 
-AWS 명령줄 인터페이스를 사용하려면 먼저 S3 API 자격 증명과 환경을 설정해야 합니다.
+AWSコマンドラインインターフェースを使用するには、まずS3 API認証情報と環境を設定する必要があります。
 
 ```sh
 $ aws configure
@@ -68,41 +68,41 @@ Default region name [None]: ${Region Name}
 Default output format [None]:
 ```
 
-| 이름 | 설명 |
+| 名前 | 説明 |
 | --- | --- |
-| Access Key | S3 API 자격 증명 접근 키 |
-| Secret Key | S3 API 자격 증명 비밀 키 |
-| Region Name | KR3 - 한국(광주) 리전 |
+| Access Key | S3 API認証情報のAccess Key |
+| Secret Key | S3 API認証情報のSecret Key |
+| Region Name | KR3 - 韓国(光州)リージョン |
 
-### S3 명령 사용 방법
+### S3 コマンドの使用方法
 
 ```sh
 $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
 ```
 
-| 이름 | 설명 |
+| 名前 | 説明 |
 | --- | --- |
-| Endpoint | https://kr3-data-lake-storage.nhncloudservice.com - 한국(광주) 리전 |
-| Command | AWS 명령줄 인터페이스 명령 |
-| Bucket | 버킷 이름 |
+| Endpoint | https://kr3-data-lake-storage.nhncloudservice.com - 韓国(光州)リージョン |
+| Command | AWSコマンドラインインターフェースのコマンド |
+| Bucket | バケット名 |
 
-!!! tip "알아두기"
-    AWS 명령줄 인터페이스는 AWS를 사용하기 위해 제공되는 도구이기 때문에 AWS 도메인을 사용하도록 설정되어 있습니다. 따라서 NHN Cloud Data Lake Storage 서비스를 사용하려면 반드시 명령마다 엔드포인트를 지정해야 합니다.
-    AWS 명령줄 인터페이스 명령은 [AWS CLI에서 상위 수준(s3) 명령 사용](https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-services-s3-commands.html) 문서를 참고하세요.
+!!! tip 「ポイント」
+    AWSコマンドラインインターフェースはAWSを使用するために提供されるツールであるため、AWSのドメインを使用するように設定されています。したがって、NHN Cloud Data Lake Storageサービスを使用するには、必ずコマンドごとにエンドポイントを指定する必要があります。
+    AWSコマンドラインインターフェースのコマンドは、[AWS CLI での高レベル (s3) コマンドの使用](https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-services-s3-commands.html)のドキュメントをご参照ください。
 
 ## AWS SDK
 
-AWS는 여러 가지 프로그래밍 언어를 위한 SDK를 제공하고 있습니다. S3 호환 API를 이용하여 AWS SDK로 NHN Cloud Data Lake Storage 서비스를 사용할 수 있습니다.
+AWSは様々なプログラミング言語向けのSDKを提供しています。S3互換APIを利用して、AWS SDKでNHN Cloud Data Lake Storageサービスを使用できます。
 
-!!! tip "알아두기"
-    자세한 내용은 [AWS SDK](https://builder.aws.com/build/tools) 문서를 참고하세요.
+!!! tip 「ポイント」
+    詳細は[AWS SDK](https://builder.aws.com/build/tools)のドキュメントをご参照ください。
 
 ### Java SDK
 
-!!! tip "알아두기"
-    자세한 내용은 [AWS SDK for Java](https://docs.aws.amazon.com/ja_jp/sdk-for-java/) 문서를 참고하세요.
+!!! tip 「ポイント」
+    詳細は[AWS SDK for Java](https://docs.aws.amazon.com/ja_jp/sdk-for-java/)のドキュメントをご参照ください。
 
 ### Boto3 - Python SDK
 
-!!! tip "알아두기"
-    자세한 내용은 [AWS SDK for Python(Boto3)](https://docs.aws.amazon.com/ja_jp/pythonsdk/) 문서를 참고하세요.
+!!! tip 「ポイント」
+    詳細は[AWS SDK for Python(Boto3)](https://docs.aws.amazon.com/ja_jp/pythonsdk/)のドキュメントをご参照ください。

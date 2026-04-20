@@ -1,27 +1,27 @@
 ## AbortMultipartUpload
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Multipart > AbortMultipartUpload**
+**Data & Analytics > Data Lake Storage > API Guide > Multipart > AbortMultipartUpload**
 
-진행 중인 멀티파트 업로드를 중단합니다.
+Aborts an in-progress multipart upload.
 
-### 요청
+### Request
 
 ```http
 DELETE /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
-### 요청 파라미터
+### Request Parameter
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참조하세요.
+For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| objectKey | Path | String | Y | 객체 이름 |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
-| uploadId | Parameter | String | Y | 멀티파트 업로드 ID |
+| bucket | Path | String | Y | Bucket name |
+| objectKey | Path | String | Y | Object name |
+| x-amz-storage-class | Header | String | N | Storage class |
+| uploadId | Parameter | String | Y | Multipart upload ID |
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 204 No Content

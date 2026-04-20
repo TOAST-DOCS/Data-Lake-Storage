@@ -1,27 +1,27 @@
 ## ListParts
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Multipart > ListParts**
+**Data & Analytics > Data Lake Storage > API Guide > Multipart > ListParts**
 
-멀티파트 업로드의 파트 목록을 조회합니다.
+Retrieves a list of parts in a multipart upload.
 
-### 요청
+### Request
 
 ```http
 GET /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
-### 요청 파라미터
+### Request Parameter
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| objectKey | Path | String | Y | 객체 이름 |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
-| uploadId | Parameter | String | Y | 멀티파트 업로드 ID |
+| bucket | Path | String | Y | Bucket name |
+| objectKey | Path | String | Y | Object name |
+| x-amz-storage-class | Header | String | N | Storage class |
+| uploadId | Parameter | String | Y | Multipart upload ID |
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 200 OK
@@ -45,19 +45,19 @@ HTTP/1.1 200 OK
 </ListPartsResult>
 ```
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | --- | --- | --- |
-| ListPartsResult | Object | 파트 목록 조회 결과 |
-| ListPartsResult.Bucket | String | 버킷 이름 |
-| ListPartsResult.Key | String | 객체 키 |
-| ListPartsResult.UploadId | String | 멀티파트 업로드 ID |
-| ListPartsResult.StorageClass | String | 스토리지 클래스 |
-| ListPartsResult.PartNumberMarker | Integer | 조회 시작 기준 |
-| ListPartsResult.NextPartNumberMarker | Integer | 다음 조회 시작 기준 |
-| ListPartsResult.MaxParts | Integer | 최대 파트 수 |
-| ListPartsResult.IsTruncated | Boolean | 추가 페이지 존재 여부 |
-| ListPartsResult.Part | Object | 파트 정보 |
-| ListPartsResult.Part.PartNumber | Integer | 파트 번호 |
-| ListPartsResult.Part.LastModified | Timestamp | 마지막 수정 일시(ISO 8601 형식) |
-| ListPartsResult.Part.ETag | String | 파트 객체 고유 식별자 |
-| ListPartsResult.Part.Size | Long | 파트 크기(bytes) |
+| ListPartsResult | Object | Result of part list retrieval |
+| ListPartsResult.Bucket | String | Bucket name |
+| ListPartsResult.Key | String | Object key |
+| ListPartsResult.UploadId | String | Multipart upload ID |
+| ListPartsResult.StorageClass | String | Storage class |
+| ListPartsResult.PartNumberMarker | Integer | Starting point for retrieval |
+| ListPartsResult.NextPartNumberMarker | Integer | Starting point for next retrieval |
+| ListPartsResult.MaxParts | Integer | Maximum number of parts |
+| ListPartsResult.IsTruncated | Boolean | Whether additional pages exist |
+| ListPartsResult.Part | Object | Part information |
+| ListPartsResult.Part.PartNumber | Integer | Part number |
+| ListPartsResult.Part.LastModified | Timestamp | Last modified time (in ISO 8601 format) |
+| ListPartsResult.Part.ETag | String | Unique identifier of the part object |
+| ListPartsResult.Part.Size | Long | Part size (bytes) |

@@ -1,33 +1,33 @@
 ## ListObjectsV2
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Object > ListObjectsV2**
+**Data & Analytics > Data Lake Storage > API ガイド > Object > ListObjectsV2**
 
-버킷에 저장된 객체 목록을 조회합니다.
+バケットに保存されたオブジェクト一覧を照会します。
 
-### 요청
+### リクエスト
 
 ```http
 GET /{bucket}?list-type=2&continuation-token={continuationToken}&delimiter={delimiter}&encoding-type={encodingType}&fetch-owner={fetchOwner}&max-keys={maxKeys}&prefix={prefix}&start-after={startAfter} HTTP/1.1
 ```
 
-### 요청 파라미터
+### リクエストパラメータ
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
-| list-type | Parameter | String | Y | 2 고정(V2 API 구분자) |
-| continuation-token | Parameter | String | N | 다음 페이지 조회 식별자 |
-| delimiter | Parameter | String | N | 키 그룹 구분자(기본: /) |
-| encoding-type | Parameter | String | N | 키 인코딩 방식 |
-| fetch-owner | Parameter | Boolean | N | 소유자 정보 포함 여부 |
-| max-keys | Parameter | Integer | N | 반환할 최대 객체 수 |
-| prefix | Parameter | String | N | 객체 이름 접두어 |
-| start-after | Parameter | String | N | 조회 시작 기준 |
+| bucket | Path | String | Y | バケット名 |
+| x-amz-storage-class | Header | String | N | ストレージクラス |
+| list-type | Parameter | String | Y | 2に固定（V2 API識別用） |
+| continuation-token | Parameter | String | N | 次のページ照会識別子 |
+| delimiter | Parameter | String | N | キーグループの区切り文字(デフォルト: /) |
+| encoding-type | Parameter | String | N | キーのエンコーディング方式 |
+| fetch-owner | Parameter | Boolean | N | 所有者情報を含めるかどうか |
+| max-keys | Parameter | Integer | N | 返却する最大オブジェクト数 |
+| prefix | Parameter | String | N | オブジェクト名のプレフィックス |
+| start-after | Parameter | String | N | 照会開始の基準 |
 
-### 응답
+### レスポンス
 
 ```http
 HTTP/1.1 200 OK
@@ -60,24 +60,24 @@ HTTP/1.1 200 OK
 </ListBucketResult>
 ```
 
-| 이름 | 타입 | 설명 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
-| ListBucketResult | Object | 객체 목록 조회 결과 |
-| ListBucketResult.Name | String | 버킷 이름 |
-| ListBucketResult.Prefix | String | 요청 시 지정한 객체 이름 접두어 |
-| ListBucketResult.StartAfter | String | 요청 시 지정한 조회 시작 기준 |
-| ListBucketResult.ContinuationToken | String | 이번 요청에 사용된 페이지 조회 식별자 |
-| ListBucketResult.NextContinuationToken | String | 다음 페이지 요청 시 사용할 페이지 조회 식별자 |
-| ListBucketResult.KeyCount | Integer | 응답 객체 수 |
-| ListBucketResult.MaxKeys | Integer | 요청 시 지정한 최대 객체 수 |
-| ListBucketResult.Delimiter | String | 요청 시 지정한 키 그룹 구분자 |
-| ListBucketResult.IsTruncated | Boolean | 추가 페이지 존재 여부 |
-| ListBucketResult.Contents | Array | 객체 목록 |
-| ListBucketResult.Contents.Key | String | 객체 키 |
-| ListBucketResult.Contents.LastModified | Timestamp | 마지막 수정 일시 (ISO 8601 형식) |
-| ListBucketResult.Contents.ETag | String | 객체 고유 식별자 |
-| ListBucketResult.Contents.Size | Long | 객체 크기(bytes) |
-| ListBucketResult.Contents.StorageClass | String | 스토리지 클래스 |
-| ListBucketResult.Contents.Owner.ID | String | 소유자 ID (fetch-owner=true 시 포함) |
-| ListBucketResult.CommonPrefixes | Array | delimiter 기준으로 그룹화된 공통 prefix 목록 |
-| ListBucketResult.CommonPrefixes.Prefix | String | delimiter 기준으로 그룹화된 경로 |
+| ListBucketResult | Object | オブジェクト一覧照会結果 |
+| ListBucketResult.Name | String | バケット名 |
+| ListBucketResult.Prefix | String | リクエスト時に指定したオブジェクト名のプレフィックス |
+| ListBucketResult.StartAfter | String | リクエスト時に指定した照会開始の基準 |
+| ListBucketResult.ContinuationToken | String | 今回のリクエストに使用されたページ照会識別子 |
+| ListBucketResult.NextContinuationToken | String | 次のページをリクエストする際に使用するページ照会識別子 |
+| ListBucketResult.KeyCount | Integer | レスポンスのオブジェクト数 |
+| ListBucketResult.MaxKeys | Integer | リクエスト時に指定した最大オブジェクト数 |
+| ListBucketResult.Delimiter | String | リクエスト時に指定したキーグループの区切り文字 |
+| ListBucketResult.IsTruncated | Boolean | 次のページがあるかどうか |
+| ListBucketResult.Contents | Array | オブジェクト一覧 |
+| ListBucketResult.Contents.Key | String | オブジェクトキー |
+| ListBucketResult.Contents.LastModified | Timestamp | 最終更新日時 (ISO 8601 形式) |
+| ListBucketResult.Contents.ETag | String | オブジェクト固有識別子 |
+| ListBucketResult.Contents.Size | Long | オブジェクトサイズ(bytes) |
+| ListBucketResult.Contents.StorageClass | String | ストレージクラス |
+| ListBucketResult.Contents.Owner.ID | String | 所有者ID (fetch-owner=true の場合に包含) |
+| ListBucketResult.CommonPrefixes | Array | delimiter基準でグループ化された共通のプレフィックス一覧 |
+| ListBucketResult.CommonPrefixes.Prefix | String | delimiter基準でグループ化されたパス |

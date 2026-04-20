@@ -1,28 +1,28 @@
 ## CreateMultipartUpload
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Multipart > CreateMultipartUpload**
+**Data & Analytics > Data Lake Storage > API ガイド > Multipart > CreateMultipartUpload**
 
-대용량 객체를 업로드할 수 있도록 멀티파트 업로드를 시작하고 업로드 ID를 생성합니다. 업로드 ID는 최대 한 시간 동안 유효합니다.
+大容量のオブジェクトをアップロードできるように、マルチパートアップロードを開始してアップロードIDを生成します。アップロードIDは最大1時間有効です。
 
-### 요청
+### リクエスト
 
 ```http
 POST /{bucket}/{objectKey}?uploads HTTP/1.1
 ```
 
-### 요청 파라미터
+### リクエストパラメータ
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](https://docs.beta-nhncloud.com/ja/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/)를 참고하세요.
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-| objectKey | Path | String | Y | 객체 이름 |
-| Content-Type | Header | String | N | 객체 콘텐츠 타입 |
-| x-amz-storage-class | Header | String | N | 스토리지 클래스 |
-| x-amz-meta-\* | Header | String | N | 사용자 정의 메타데이터 |
+| bucket | Path | String | Y | バケット名 |
+| objectKey | Path | String | Y | オブジェクト名 |
+| Content-Type | Header | String | N | オブジェクトのコンテンツタイプ |
+| x-amz-storage-class | Header | String | N | ストレージクラス |
+| x-amz-meta-\* | Header | String | N | ユーザー定義メタデータ |
 
-### 응답
+### レスポンス
 
 ```http
 HTTP/1.1 200 OK
@@ -35,9 +35,9 @@ HTTP/1.1 200 OK
 </InitiateMultipartUploadResult>
 ```
 
-| 이름 | 타입 | 설명 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
-| InitiateMultipartUploadResult | Object | 멀티파트 업로드 시작 결과 |
-| InitiateMultipartUploadResult.Bucket | String | 대상 버킷 이름 |
-| InitiateMultipartUploadResult.Key | String | 객체 키 |
-| InitiateMultipartUploadResult.UploadId | String | 멀티파트 업로드 ID |
+| InitiateMultipartUploadResult | Object | マルチパートアップロード開始結果 |
+| InitiateMultipartUploadResult.Bucket | String | 対象バケット名 |
+| InitiateMultipartUploadResult.Key | String | オブジェクトキー |
+| InitiateMultipartUploadResult.UploadId | String | マルチパートアップロードID |
