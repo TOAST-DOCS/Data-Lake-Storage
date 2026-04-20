@@ -15,7 +15,7 @@
 
 ### 인증 및 권한
 
-Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명이 필요합니다. [S3 API 자격 증명(S3 API Credential)](https://docs.beta-nhncloud.com/ko/Data%20&%20Analytics/Data%20Lake%20Storage/ko/console-user-guide/#_10)를 참고하여 API 사용에 필요한 정보를 준비합니다.
+Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명이 필요합니다. [S3 API 자격 증명(S3 API Credential)](console-user-guide/#_10)를 참고하여 API 사용에 필요한 정보를 준비합니다.
 
 ### 요청
 

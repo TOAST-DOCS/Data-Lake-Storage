@@ -15,7 +15,7 @@
 
 ### Authentication and Authorization
 
-Data Lake Storage requires S3 API credentials for authentication/authorization when making API calls. Refer to [S3 API Credential](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/console-user-guide/#_10) to prepare the information required to use the API.
+Data Lake Storage requires S3 API credentials for authentication/authorization when making API calls. Refer to [S3 API Credential](console-user-guide/#manage-credentials) to prepare the information required to use the API.
 
 ### Request
 

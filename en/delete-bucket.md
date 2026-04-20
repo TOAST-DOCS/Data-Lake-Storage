@@ -12,7 +12,7 @@ DELETE /{bucket} HTTP/1.1
 
 ### Request Parameter
 
-For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](https://docs.beta-nhncloud.com/en/Data%20&%20Analytics/Data%20Lake%20Storage/ko/api-guide-common/).
+For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
