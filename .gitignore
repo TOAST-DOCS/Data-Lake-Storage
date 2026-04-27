@@ -1,0 +1,9 @@
+# Created by https://www.toptal.com/developers/gitignore/api/intellij,intellij+iml,intellij+all
+# Edit at https://www.toptal.com/developers/gitignore?templates=intellij,intellij+iml,intellij+all
+
+.idea/*
+
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
