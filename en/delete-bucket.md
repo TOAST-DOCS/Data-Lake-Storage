@@ -1,0 +1,25 @@
+## DeleteBucket
+
+**Data & Analytics > Data Lake Storage > API Guide > Bucket > DeleteBucket**
+
+Deletes bucket.
+
+### Request
+
+```http
+DELETE /{bucket} HTTP/1.1
+```
+
+### Request Parameter
+
+For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
+
+| Name | Category | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| bucket | Path | String | Y | Bucket name |
+
+### Response
+
+```http
+HTTP/1.1 204 No Content
+```
