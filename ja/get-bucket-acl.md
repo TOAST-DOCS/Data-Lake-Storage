@@ -1,24 +1,24 @@
 ## GetBucketAcl
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Bucket > GetBucketAcl**
+**Data & Analytics > Data Lake Storage > API ガイド > Bucket > GetBucketAcl**
 
-버킷의 액세스 제어 목록(ACL)을 조회합니다.
+バケットのアクセス制御リスト(ACL)を照会します。
 
-### 요청
+### リクエスト
 
 ```http
 GET /{bucket}?acl HTTP/1.1
 ```
 
-### 요청 파라미터
+### リクエストパラメータ
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
+| bucket | Path | String | Y | バケット名 |
 
-### 응답
+### レスポンス
 
 ```http
 HTTP/1.1 200 OK
@@ -42,16 +42,16 @@ HTTP/1.1 200 OK
 </AccessControlPolicy>
 ```
 
-| 이름 | 타입 | 설명 |
+| 名前 | タイプ | 説明 |
 | --- | --- | --- |
-| AccessControlPolicy | Object | 버킷 ACL 조회 결과의 루트 요소 |
-| AccessControlPolicy.Owner | Object | 버킷 소유자 정보 |
-| AccessControlPolicy.Owner.DisplayName | String | 버킷 소유자 이름 |
-| AccessControlPolicy.Owner.ID | String | 버킷 소유자 ID |
-| AccessControlPolicy.AccessControlList | Object | 권한 부여 목록 |
-| AccessControlPolicy.AccessControlList.Grant | Array | 개별 권한 부여 항목 |
-| AccessControlPolicy.AccessControlList.Grant.Grantee | Object | 권한을 부여받은 대상 정보 |
-| AccessControlPolicy.AccessControlList.Grant.Grantee.xsi:type | String | 권한을 부여받은 대상 유형. `CanonicalUser`만 지원 |
-| AccessControlPolicy.AccessControlList.Grant.Grantee.DisplayName | String | 권한을 부여받은 대상 이름 |
-| AccessControlPolicy.AccessControlList.Grant.Grantee.ID | String | 권한을 부여받은 대상 ID |
-| AccessControlPolicy.AccessControlList.Grant.Permission | String | 부여된 권한. `FULL_CONTROL`만 지원 |
+| AccessControlPolicy | Object | バケットACL照会結果のルート要素 |
+| AccessControlPolicy.Owner | Object | バケット所有者情報 |
+| AccessControlPolicy.Owner.DisplayName | String | バケット所有者名 |
+| AccessControlPolicy.Owner.ID | String | バケット所有者ID |
+| AccessControlPolicy.AccessControlList | Object | 権限付与一覧 |
+| AccessControlPolicy.AccessControlList.Grant | Array | 個別の権限付与項目 |
+| AccessControlPolicy.AccessControlList.Grant.Grantee | Object | 権限を付与された対象の情報 |
+| AccessControlPolicy.AccessControlList.Grant.Grantee.xsi:type | String | 権限を付与された対象のタイプ。`CanonicalUser`のみサポート |
+| AccessControlPolicy.AccessControlList.Grant.Grantee.DisplayName | String | 権限を付与された対象名 |
+| AccessControlPolicy.AccessControlList.Grant.Grantee.ID | String | 権限を付与された対象ID |
+| AccessControlPolicy.AccessControlList.Grant.Permission | String | 付与された権限。`FULL_CONTROL`のみサポート |

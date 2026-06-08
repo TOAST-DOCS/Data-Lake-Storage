@@ -2,9 +2,9 @@
 
 ## 2026. 06. 23.
 
-### 신규 기능 추가
+### 新規機能追加
 
-* [API] Amazon S3 호환 API GetBucketAcl, DeleteObjects가 추가됩니다.
+* [API] Amazon S3互換APIのGetBucketAcl、DeleteObjectsが追加されます。
 
 ## 2026. 04. 28.
 
