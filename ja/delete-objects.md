@@ -29,7 +29,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
-| Content-MD5 | Header | String | Y | 요청 본문의 MD5 해시값 (전송 중 변조 검증용) |
+| Content-MD5 | Header | String | Y | 요청 본문의 MD5 해시 값(전송 중 변조 검증용) |
 
 ### 요청 본문
 
@@ -44,8 +44,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | Delete.Quiet | Boolean | N | `true`로 설정하면 Quiet 모드로 동작하며, 실패한 항목만 응답에 포함됩니다. 기본값은 Verbose 모드(전체 결과 반환)입니다. |
 
 ### 응답
-```http
 
+```http
 HTTP/1.1 200 OK
 
 <?xml version="1.0" encoding="UTF-8"?>
