@@ -1,10 +1,10 @@
 # Data Lake Storage Release Notes
 
-## 2026. 06. 23.
+## June 23, 2026
 
-### 신규 기능 추가
+### Added Features
 
-* [API] Amazon S3 호환 API GetBucketAcl, DeleteObjects가 추가됩니다.
+* [API] Added Amazon S3 compatible API GetBucketAcl and DeleteObjects.
 
 ## April 28, 2026
 

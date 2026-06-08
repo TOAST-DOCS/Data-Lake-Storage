@@ -1,24 +1,24 @@
 ## GetBucketAcl
 
-**Data & Analytics > Data Lake Storage > API 가이드 > Bucket > GetBucketAcl**
+**Data & Analytics > Data Lake Storage > API Guide > Bucket > GetBucketAcl**
 
-버킷의 액세스 제어 목록(ACL)을 조회합니다.
+Retrieves the access control list (ACL) of a bucket.
 
-### 요청
+### Request
 
 ```http
 GET /{bucket}?acl HTTP/1.1
 ```
 
-### 요청 파라미터
+### Request Parameter
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
+| bucket | Path | String | Y | Bucket name |
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 200 OK
@@ -42,16 +42,16 @@ HTTP/1.1 200 OK
 </AccessControlPolicy>
 ```
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | --- | --- | --- |
-| AccessControlPolicy | Object | 버킷 ACL 조회 결과의 루트 요소 |
-| AccessControlPolicy.Owner | Object | 버킷 소유자 정보 |
-| AccessControlPolicy.Owner.DisplayName | String | 버킷 소유자 이름 |
-| AccessControlPolicy.Owner.ID | String | 버킷 소유자 ID |
-| AccessControlPolicy.AccessControlList | Object | 권한 부여 목록 |
-| AccessControlPolicy.AccessControlList.Grant | Array | 개별 권한 부여 항목 |
-| AccessControlPolicy.AccessControlList.Grant.Grantee | Object | 권한을 부여받은 대상 정보 |
-| AccessControlPolicy.AccessControlList.Grant.Grantee.xsi:type | String | 권한을 부여받은 대상 유형. `CanonicalUser`만 지원 |
-| AccessControlPolicy.AccessControlList.Grant.Grantee.DisplayName | String | 권한을 부여받은 대상 이름 |
-| AccessControlPolicy.AccessControlList.Grant.Grantee.ID | String | 권한을 부여받은 대상 ID |
-| AccessControlPolicy.AccessControlList.Grant.Permission | String | 부여된 권한. `FULL_CONTROL`만 지원 |
+| AccessControlPolicy | Object | Root element of the bucket ACL retrieval result |
+| AccessControlPolicy.Owner | Object | Bucket owner information |
+| AccessControlPolicy.Owner.DisplayName | String | Bucket owner name |
+| AccessControlPolicy.Owner.ID | String | Bucket owner ID |
+| AccessControlPolicy.AccessControlList | Object | List of grants |
+| AccessControlPolicy.AccessControlList.Grant | Array | Individual grant entries |
+| AccessControlPolicy.AccessControlList.Grant.Grantee | Object | Information about the grantee |
+| AccessControlPolicy.AccessControlList.Grant.Grantee.xsi:type | String | Type of the grantee. Only `CanonicalUser` is supported. |
+| AccessControlPolicy.AccessControlList.Grant.Grantee.DisplayName | String | Name of the grantee |
+| AccessControlPolicy.AccessControlList.Grant.Grantee.ID | String | ID of the grantee |
+| AccessControlPolicy.AccessControlList.Grant.Permission | String | Permission granted. Only `FULL_CONTROL` is supported. |
