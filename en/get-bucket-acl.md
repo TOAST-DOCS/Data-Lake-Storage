@@ -10,9 +10,11 @@ Retrieves the access control list (ACL) of a bucket.
 GET /{bucket}?acl HTTP/1.1
 ```
 
-### Request Parameter
+#### Request Header
 
 For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
+
+#### Request Parameter
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -41,6 +43,8 @@ HTTP/1.1 200 OK
   </AccessControlList>
 </AccessControlPolicy>
 ```
+
+#### Response Body
 
 | Name | Type | Description |
 | --- | --- | --- |

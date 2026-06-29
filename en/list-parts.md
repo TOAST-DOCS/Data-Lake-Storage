@@ -10,9 +10,11 @@ Retrieves a list of parts in a multipart upload.
 GET /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
-### Request Parameter
+#### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
+
+#### Request Parameter
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -44,6 +46,8 @@ HTTP/1.1 200 OK
   </Part>
 </ListPartsResult>
 ```
+
+#### Response Body
 
 | Name | Type | Description |
 | --- | --- | --- |

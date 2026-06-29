@@ -15,15 +15,17 @@ PUT /{bucket} HTTP/1.1
 </CreateBucketConfiguration>
 ```
 
-### Request Parameter
+#### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
+
+#### Request Parameter
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | Bucket name |
 
-### Request Body
+#### Request Body
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
