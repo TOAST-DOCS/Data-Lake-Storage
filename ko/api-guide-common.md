@@ -53,9 +53,6 @@ S3 호환 API를 이용하여 AWS 명령줄 인터페이스로 NHN Cloud Data La
 
 [Installing past releases of the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html) 문서를 참고해 AWS 명령줄 인터페이스를 설치합니다.
 
-!!! tip "알아두기"
-    NHN Cloud Data Lake Storage 서비스는 AWS CLI 버전 2.22.35까지 지원합니다.
-
 ### 설정
 
 AWS 명령줄 인터페이스를 사용하려면 먼저 S3 API 자격 증명과 환경을 설정해야 합니다.

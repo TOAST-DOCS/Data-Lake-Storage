@@ -53,9 +53,6 @@ You can use the NHN Cloud Data Lake Storage service with the AWS command-line in
 
 See [Installing past releases of the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html) to install the AWS command-line interface.
 
-!!! tip "Note"
-    NHN Cloud Data Lake Storage service supports up to version 2.22.35 of the AWS CLI.
-
 ### Configuration
 
 To use the AWS Command Line Interface, you must first configure the S3 API credentials and environment.
