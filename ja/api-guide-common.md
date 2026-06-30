@@ -53,9 +53,6 @@ S3互換APIを利用して、AWSコマンドラインインターフェースで
 
 [Installing past releases of the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html) のドキュメントを参照し、AWSコマンドラインインターフェースをインストールします。
 
-!!! tip 「ポイント」
-    NHN Cloud Data Lake Storageサービスは、AWS CLI バージョン 2.22.35までサポートしています。
-
 ### 設定
 
 AWSコマンドラインインターフェースを使用するには、まずS3 API認証情報と環境を設定する必要があります。
