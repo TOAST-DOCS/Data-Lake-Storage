@@ -39,6 +39,7 @@ Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명
 | 400 | EntityTooLarge | 업로드하려는 객체가 최대 허용 크기(5GiB)를 초과합니다. |
 | 404 | NoSuchKey | 지정한 키가 존재하지 않습니다. |
 | 404 | NoSuchBucket | 지정한 버킷이 존재하지 않습니다. |
+| 404 | NoSuchBucketPolicy | 지정한 버킷에 정책이 존재하지 않습니다. |
 | 405 | MethodNotAllowed | 해당 리소스에 대해 지정한 HTTP 메서드가 허용되지 않습니다. |
 | 409 | BucketAlreadyOwnedByYou | 생성하려는 버킷이 이미 존재하며 사용자가 소유하고 있습니다. |
 | 500 | InternalError | 서버 내부에 오류가 발생했습니다. |
