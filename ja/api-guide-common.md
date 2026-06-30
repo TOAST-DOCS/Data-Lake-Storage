@@ -39,6 +39,7 @@ Data Lake Storageは、API呼び出し時の認証と認可のためにS3 API認
 | 400 | EntityTooLarge | アップロードしようとしているオブジェクトが最大許容サイズ(5GiB)を超えています。 |
 | 404 | NoSuchKey | 指定したキーが存在しません。 |
 | 404 | NoSuchBucket | 指定したバケットが存在しません。 |
+| 404 | NoSuchBucketPolicy | 지정한 버킷에 정책이 존재하지 않습니다. |
 | 405 | MethodNotAllowed | 該当リソースに対して指定したHTTPメソッドは許可されていません。 |
 | 409 | BucketAlreadyOwnedByYou | 作成しようとしているバケットはすでに存在しており、ユーザー自身が所有しています。 |
 | 500 | InternalError | サーバー内部でエラーが発生しました。 |

@@ -39,6 +39,7 @@ Data Lake Storage requires S3 API credentials for authentication/authorization w
 | 400 | EntityTooLarge | The object to be uploaded exceeds the maximum allowed size (5 GiB). |
 | 404 | NoSuchKey | The specified key does not exist. |
 | 404 | NoSuchBucket | The specified bucket does not exist. |
+| 404 | NoSuchBucketPolicy | 지정한 버킷에 정책이 존재하지 않습니다. |
 | 405 | MethodNotAllowed | The HTTP method specified for the resource is not allowed. |
 | 409 | BucketAlreadyOwnedByYou | The bucket you want to create already exists and is owned by the user. |
 | 500 | InternalError | An internal server error occurred. |
