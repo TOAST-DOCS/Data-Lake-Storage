@@ -15,15 +15,17 @@ PUT /{bucket} HTTP/1.1
 </CreateBucketConfiguration>
 ```
 
-### 요청 파라미터
+#### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+
+#### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
 
-### 요청 본문
+#### 요청 본문
 
 | 이름 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- |
