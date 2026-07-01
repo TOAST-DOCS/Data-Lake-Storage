@@ -10,22 +10,25 @@ Retrieves an object list stored in a bucket.
 GET /{bucket}?list-type=2&continuation-token={continuationToken}&delimiter={delimiter}&encoding-type={encodingType}&fetch-owner={fetchOwner}&max-keys={maxKeys}&prefix={prefix}&start-after={startAfter} HTTP/1.1
 ```
 
-### Request Parameter
+#### Request Header
 
-For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
+For the common header information for Data Lake Storage API, see the Data Lake
+Storage [API Request Header Guide](api-guide-common).
 
-| Name | Category | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | Bucket name |
-| x-amz-storage-class | Header | String | N | Storage class |
-| list-type | Parameter | String | Y | Fixed as 2 (V2 API identifier) |
-| continuation-token | Parameter | String | N | Identifier for retrieving the next page |
-| delimiter | Parameter | String | N | Key group delimiter (default: /) |
-| encoding-type | Parameter | String | N | Key encoding method |
-| fetch-owner | Parameter | Boolean | N | Whether to include owner information |
-| max-keys | Parameter | Integer | N | Maximum number of objects to return |
-| prefix | Parameter | String | N | Object name prefix |
-| start-after | Parameter | String | N | Starting point for retrieval |
+#### Request Parameter
+
+| Name                | Category  | Type    | Required | Description                             |
+|---------------------|-----------|---------|----------|-----------------------------------------|
+| bucket              | Path      | String  | Y        | Bucket name                             |
+| x-amz-storage-class | Header    | String  | N        | Storage class                           |
+| list-type           | Parameter | String  | Y        | Fixed as 2 (V2 API identifier)          |
+| continuation-token  | Parameter | String  | N        | Identifier for retrieving the next page |
+| delimiter           | Parameter | String  | N        | Key group delimiter (default: /)        |
+| encoding-type       | Parameter | String  | N        | Key encoding method                     |
+| fetch-owner         | Parameter | Boolean | N        | Whether to include owner information    |
+| max-keys            | Parameter | Integer | N        | Maximum number of objects to return     |
+| prefix              | Parameter | String  | N        | Object name prefix                      |
+| start-after         | Parameter | String  | N        | Starting point for retrieval            |
 
 ### Response
 
@@ -45,6 +48,9 @@ HTTP/1.1 200 OK
   <IsTruncated>Boolean</IsTruncated>
   <EncodingType>String</EncodingType>
   <Contents>
+    <ChecksumAlgorithm>string</ChecksumAlgorithm>
+    ...
+    <ChecksumType>string</ChecksumType>
     <Key>String</Key>
     <LastModified>Timestamp</LastModified>
     <ETag>String</ETag>
@@ -60,24 +66,28 @@ HTTP/1.1 200 OK
 </ListBucketResult>
 ```
 
-| Name | Type | Description |
-| --- | --- | --- |
-| ListBucketResult | Object | Result of object list retrieval |
-| ListBucketResult.Name | String | Bucket name |
-| ListBucketResult.Prefix | String | Object name prefix specified in the request |
-| ListBucketResult.StartAfter | String | Starting point for retrieval specified in the request |
-| ListBucketResult.ContinuationToken | String | Page retrieval identifier used the current request |
-| ListBucketResult.NextContinuationToken | String | Page retrieval identifier to use when requesting the next page |
-| ListBucketResult.KeyCount | Integer | Number of objects in the response |
-| ListBucketResult.MaxKeys | Integer | Maximum number of objects specified in the request |
-| ListBucketResult.Delimiter | String | Key group delimiter specified in the request |
-| ListBucketResult.IsTruncated | Boolean | Whether additional pages exist |
-| ListBucketResult.Contents | Array | Object list |
-| ListBucketResult.Contents.Key | String | Object key |
-| ListBucketResult.Contents.LastModified | Timestamp | Last modified time (in ISO 8601 format) |
-| ListBucketResult.Contents.ETag | String | Unique identifier of the object |
-| ListBucketResult.Contents.Size | Long | Object size (bytes) |
-| ListBucketResult.Contents.StorageClass | String | Storage class |
-| ListBucketResult.Contents.Owner.ID | String | Owner ID (included when fetch-owner=true) |
-| ListBucketResult.CommonPrefixes | Array | List of common prefixes grouped by delimiter |
-| ListBucketResult.CommonPrefixes.Prefix | String | Path grouped by delimiter |
+#### Response Body
+
+| Name                                        | Type      | Description                                                    |
+|---------------------------------------------|-----------|----------------------------------------------------------------|
+| ListBucketResult                            | Object    | Result of object list retrieval                                |
+| ListBucketResult.Name                       | String    | Bucket name                                                    |
+| ListBucketResult.Prefix                     | String    | Object name prefix specified in the request                    |
+| ListBucketResult.StartAfter                 | String    | Starting point for retrieval specified in the request          |
+| ListBucketResult.ContinuationToken          | String    | Page retrieval identifier used the current request             |
+| ListBucketResult.NextContinuationToken      | String    | Page retrieval identifier to use when requesting the next page |
+| ListBucketResult.KeyCount                   | Integer   | Number of objects in the response                              |
+| ListBucketResult.MaxKeys                    | Integer   | Maximum number of objects specified in the request             |
+| ListBucketResult.Delimiter                  | String    | Key group delimiter specified in the request                   |
+| ListBucketResult.IsTruncated                | Boolean   | Whether additional pages exist                                 |
+| ListBucketResult.Contents                   | Array     | Object list                                                    |
+| ListBucketResult.Contents.ChecksumAlgorithm | Array     | 오브젝트의 체크섬 생성에 사용된 알고리즘                                         |
+| ListBucketResult.Contents.ChecksumType      | String    | 오브젝트의 체크섬 값을 계산하는 방식                                           |
+| ListBucketResult.Contents.Key               | String    | Object key                                                     |
+| ListBucketResult.Contents.LastModified      | Timestamp | Last modified time (in ISO 8601 format)                        |
+| ListBucketResult.Contents.ETag              | String    | Unique identifier of the object                                |
+| ListBucketResult.Contents.Size              | Long      | Object size (bytes)                                            |
+| ListBucketResult.Contents.StorageClass      | String    | Storage class                                                  |
+| ListBucketResult.Contents.Owner.ID          | String    | Owner ID (included when fetch-owner=true)                      |
+| ListBucketResult.CommonPrefixes             | Array     | List of common prefixes grouped by delimiter                   |
+| ListBucketResult.CommonPrefixes.Prefix      | String    | Path grouped by delimiter                                      |

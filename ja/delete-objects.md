@@ -22,16 +22,18 @@ POST /{bucket}?delete HTTP/1.1
 </Delete>
 ```
 
-### リクエストパラメータ
+#### 요청 헤더
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
+
+#### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 | Content-MD5 | Header | String | Y | リクエスト本文のMD5ハッシュ値(送信中の改ざん検証用) |
 
-### リクエスト本文
+#### リクエスト本文
 
 | 名前 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- |
@@ -62,6 +64,8 @@ HTTP/1.1 200 OK
   ...
 </DeleteResult>
 ```
+
+#### 응답 본문
 
 | 名前 | タイプ | 説明 |
 | --- | --- | --- |

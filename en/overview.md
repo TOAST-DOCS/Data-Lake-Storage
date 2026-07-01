@@ -23,7 +23,6 @@ Built on high compatibility with the AWS S3 API, you can use the SDKs, CLIs, and
 ## How it works
 <img src="https://static.toastoven.net/prod_data_lake_storage/15_data&analytics_data-lake-storage_img_en.png" />
 
-
 ## Glossary
 | Terms | Description |
 | --- | --- |

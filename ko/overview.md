@@ -23,7 +23,6 @@ AWS S3 API와 높은 호환성을 바탕으로 기존 분석 생태계에서 사
 ## 동작 방식
 <img src="https://static.toastoven.net/prod_data_lake_storage/15_data&analytics_data-lake-storage_img_kr.png" />
 
-
 ## 용어 정리
 | 용어 | 설명 |
 | --- | --- |

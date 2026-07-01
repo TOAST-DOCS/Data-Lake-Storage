@@ -10,9 +10,11 @@ Deletes objects stored in the bucket.
 DELETE /{bucket}/{objectKey} HTTP/1.1
 ```
 
-### Request Parameter
+#### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
+
+#### Request Parameter
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |

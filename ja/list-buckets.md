@@ -10,9 +10,11 @@
 GET /?max-buckets=20 HTTP/1.1
 ```
 
-### リクエストパラメータ
+#### 요청 헤더
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
+
+#### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
@@ -42,6 +44,8 @@ HTTP/1.1 200 OK
   <Prefix></Prefix>
 </ListAllMyBucketsResult>
 ```
+
+#### 응답 본문
 
 | 名前 | タイプ | 説明 |
 | --- | --- | --- |

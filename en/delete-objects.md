@@ -22,16 +22,18 @@ POST /{bucket}?delete HTTP/1.1
 </Delete>
 ```
 
-### Request Parameter
+#### Request Header
 
 For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
+
+#### Request Parameter
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | Bucket name |
 | Content-MD5 | Header | String | Y | MD5 hash of the request body (used to verify integrity during transmission) |
 
-### Request Body
+#### Request Body
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
@@ -62,6 +64,8 @@ HTTP/1.1 200 OK
   ...
 </DeleteResult>
 ```
+
+#### Response Body
 
 | Name | Type | Description |
 | --- | --- | --- |
