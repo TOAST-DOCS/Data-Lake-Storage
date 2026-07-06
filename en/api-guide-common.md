@@ -1,6 +1,6 @@
-## Data Lake Storage API Guide
+## Amazon S3 호환 API 가이드
 
-**Data & Analytics > Data Lake Storage > API Guide > Common**
+**Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Common**
 
 ## Common Information for Data Lake Storage API
 
