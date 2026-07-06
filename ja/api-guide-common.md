@@ -1,6 +1,6 @@
-## Data Lake Storage API ガイド
+## Amazon S3 호환 API 가이드
 
-**Data & Analytics > Data Lake Storage > API ガイド > 共通**
+**Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > 共通**
 
 ## Data Lake Storage API 共通情報
 
