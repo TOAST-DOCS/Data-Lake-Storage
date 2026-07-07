@@ -16,13 +16,12 @@ AWS S3 APIとの高い互換性をベースに、既存の分析エコシステ�
 * 柔軟な拡張性
     * ストレージ容量を気にせずデータを保管できるよう、水平方向にスケールする構造を備えています。
 * ストレージクラス
-    * データへのアクセス頻度と費用効率に応じて、多様なストレージを選択できます。(追加予定)
+    * データへのアクセス頻度と費用効率に応じて、多様なストレージを選択できます(追加予定)。
 * AWS S3互換API
     * AWS S3 APIと高いレベルの互換性を提供しており、既存のS3 SDK、CLI、サードパーティ製ツールをそのまま活用できます。
 
 ## 動作方式
-<img src="https://static.toastoven.net/prod_data_lake_storage/15_data&analytics_data-lake-storage_img_jp.png" />
-
+<img src="https://static.toastoven.net/prod_data_lake_storage/15_data&analytics_data-lake-storage_img_jp.png" alt="Data Lake Storage 동작 방식"/>
 
 ## 用語集
 | 用語 | 説明 |
