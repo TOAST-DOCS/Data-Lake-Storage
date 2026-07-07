@@ -79,9 +79,11 @@ HTTP/1.1 204 No Content
 DELETE /{bucket}?policy HTTP/1.1
 ```
 
-### 요청 파라미터
+#### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+
+#### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
@@ -165,9 +167,11 @@ HTTP/1.1 200 OK
 GET /{bucket}?policy HTTP/1.1
 ```
 
-### 요청 파라미터
+#### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+
+#### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
@@ -248,21 +252,21 @@ HTTP/1.1 200 OK
 
 | Name | Type | Description |
 | --- | --- | --- |
-| ListAllMyBuckets | Object | Result of bucket list retrieval |
-| ListAllMyBuckets.Buckets | Object | Bucket information |
-| ListAllMyBuckets.Buckets.BucketRegion | String | Region where the bucket is located |
-| ListAllMyBuckets.Buckets.CreationDate | Timestamp | Bucket creation time (ISO 8601) |
-| ListAllMyBuckets.Buckets.Name | String | Bucket name |
-| ListAllMyBuckets.Owner | Object | Bucket owner information |
-| ListAllMyBuckets.Owner.DisplayName | String | Owner display name |
-| ListAllMyBuckets.Owner.ID | String | Owner ID |
-| ListAllMyBuckets.ContinuationToken | String | Continuation token for retrieving the next page (not included if this is the last page) |
-| ListAllMyBuckets.Prefix | String | Prefix filter used in the request |
+| ListAllMyBucketsResult | Object | Result of bucket list retrieval |
+| ListAllMyBucketsResult.Buckets | Object | Bucket information |
+| ListAllMyBucketsResult.Buckets.BucketRegion | String | Region where the bucket is located |
+| ListAllMyBucketsResult.Buckets.CreationDate | Timestamp | Bucket creation time (ISO 8601) |
+| ListAllMyBucketsResult.Buckets.Name | String | Bucket name |
+| ListAllMyBucketsResult.Owner | Object | Bucket owner information |
+| ListAllMyBucketsResult.Owner.DisplayName | String | Owner display name |
+| ListAllMyBucketsResult.Owner.ID | String | Owner ID |
+| ListAllMyBucketsResult.ContinuationToken | String | Continuation token for retrieving the next page (not included if this is the last page) |
+| ListAllMyBucketsResult.Prefix | String | Prefix filter used in the request |
 
 
 ## PutBucketPolicy
 
-버킷에 정책(Bucket Policy)을 등록하거나 기존 정책을 교체합니다. 버킷 정책은 JSON 형식의 정책 문서로, 어떤 주체(Principal)가 어떤 작업(Action)을 어떤 리소스(Resource)에 대해 허용 또는 거부할지 정의합니다.
+버킷에 정책(Bucket Policy)을 등록하거나 기존 정책을 교체합니다. 버킷 정책은 JSON 형식의 정책 문서로, 어떤 주체(Principal)가 어떤 리소스(Resource)의 어떤 작업(Action)을 허용 또는 거부할지 정의합니다.
 
 ### 요청
 
@@ -283,15 +287,17 @@ PUT /{bucket}?policy HTTP/1.1
 }
 ```
 
-### 요청 파라미터
+#### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+
+#### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
 
-### 요청 본문
+#### 요청 본문
 
 요청 본문은 정책 문서 전체를 담은 JSON입니다.
 
@@ -340,7 +346,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | s3:AbortMultipartUpload | 멀티파트 업로드 중단 |
 | s3:* | 위 작업을 포함한 모든 작업 |
 
-!!! warning "주의"
+!!! danger "주의"
     버킷 생성/삭제, 버킷 정책 및 ACL 관리 등 버킷 관리(Bucket Administration) 작업은 버킷 정책으로 부여할 수 없습니다. 해당 권한은 프로젝트/버킷 소유자 역할로만 수행할 수 있습니다.
 
 #### Resource
@@ -353,10 +359,10 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | `curated/*` | `curated/` 접두사를 가진 모든 객체 |
 | `report.csv` | 특정 객체 키 |
 
-!!! warning "주의"
+!!! danger "주의"
     리소스는 `arn:`으로 시작하거나 `/`로 시작할 수 없습니다.
 
-### 요청 예시
+#### 요청 예시
 
 ```json
 {

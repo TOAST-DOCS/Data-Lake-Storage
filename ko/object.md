@@ -153,20 +153,20 @@ data
 
 #### 응답 헤더
 
-| 필드                       | 설명                                                                               |
-|--------------------------|----------------------------------------------------------------------------------|
-| ETag                     | 특정 버전의 리소스에 대해 서버가 할당하는 고유 식별자                                                   |
-| x-amz-checksum-crc32     | 오브젝트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                         |
-| x-amz-checksum-crc32c    | 오브젝트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                        |
-| x-amz-checksum-crc64nvme | 오브젝트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                     |
-| x-amz-checksum-sha1      | 오브젝트의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값.                                      |
-| x-amz-checksum-sha256    | 오브젝트의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                     |
-| x-amz-checksum-sha512    | 오브젝트의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                     |
-| x-amz-checksum-md5       | 오브젝트의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                        |
-| x-amz-checksum-xxhash64  | 오브젝트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                      |
-| x-amz-checksum-xxhash3   | 오브젝트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                       |
-| x-amz-checksum-xxhash128 | 오브젝트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                    |
-| x-amz-checksum-type      | 멀티파트 오브젝트의 파트별 체크섬을 결합하여 오브젝트 수준의 체크섬을 생성한 방식. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
+| 필드                       | 설명                                                                          |
+|--------------------------|-----------------------------------------------------------------------------|
+| ETag                     | 특정 버전의 리소스에 서버가 할당하는 고유 식별자                                                 |
+| x-amz-checksum-crc32     | 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                      |
+| x-amz-checksum-crc32c    | 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                     |
+| x-amz-checksum-crc64nvme | 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                  |
+| x-amz-checksum-sha1      | 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                    |
+| x-amz-checksum-sha256    | 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                  |
+| x-amz-checksum-sha512    | 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                  |
+| x-amz-checksum-md5       | 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                     |
+| x-amz-checksum-xxhash64  | 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                   |
+| x-amz-checksum-xxhash3   | 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                    |
+| x-amz-checksum-xxhash128 | 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                 |
+| x-amz-checksum-type      | 멀티파트 객체의 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성한 방식. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
 
 
 ## HeadObject
@@ -216,23 +216,23 @@ x-amz-checksum-type: ChecksumType
 
 #### 응답 헤더
 
-| 필드                       | 설명                                                                               |
-|--------------------------|----------------------------------------------------------------------------------|
-| Content-Length           | 응답 본문의 크기(바이트)                                                                   |
-| Content-Type             | 오브젝트 데이터의 형식을 나타내는 표준 MIME 타입                                                    |
-| ETag                     | 특정 버전의 리소스에 대해 서버가 할당하는 고유 식별자.                                                  |
-| Last-Modified            | 오브젝트가 마지막으로 수정된 날짜 및 시간                                                          |
-| x-amz-checksum-crc32     | 오브젝트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                         |
-| x-amz-checksum-crc32c    | 오브젝트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                        |
-| x-amz-checksum-crc64nvme | 오브젝트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                     |
-| x-amz-checksum-sha1      | 오브젝트의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                       |
-| x-amz-checksum-sha256    | 오브젝트의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                     |
-| x-amz-checksum-sha512    | 오브젝트의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                     |
-| x-amz-checksum-md5       | 오브젝트의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                        |
-| x-amz-checksum-xxhash64  | 오브젝트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                      |
-| x-amz-checksum-xxhash3   | 오브젝트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                       |
-| x-amz-checksum-xxhash128 | 오브젝트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                    |
-| x-amz-checksum-type      | 멀티파트 오브젝트의 파트별 체크섬을 결합하여 오브젝트 수준의 체크섬을 생성한 방식. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
+| 필드                       | 설명                                                                           |
+|--------------------------|------------------------------------------------------------------------------|
+| Content-Length           | 응답 본문의 크기(바이트)                                                               |
+| Content-Type             | 객체 데이터의 형식을 나타내는 표준 MIME 타입                                                  |
+| ETag                     | 특정 버전의 리소스에 서버가 할당하는 고유 식별자                                                  |
+| Last-Modified            | 객체가 마지막으로 수정된 날짜 및 시간                                                        |
+| x-amz-checksum-crc32     | 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                       |
+| x-amz-checksum-crc32c    | 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                      |
+| x-amz-checksum-crc64nvme | 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                   |
+| x-amz-checksum-sha1      | 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                     |
+| x-amz-checksum-sha256    | 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                   |
+| x-amz-checksum-sha512    | 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                   |
+| x-amz-checksum-md5       | 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                      |
+| x-amz-checksum-xxhash64  | 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                    |
+| x-amz-checksum-xxhash3   | 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                     |
+| x-amz-checksum-xxhash128 | 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                  |
+| x-amz-checksum-type      | 멀티파트 객체의 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성한 방식. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
 
 
 ## ListObjectsV2
@@ -315,12 +315,12 @@ HTTP/1.1 200 OK
 | ListBucketResult.Delimiter                  | String    | 요청 시 지정한 키 그룹 구분자                |
 | ListBucketResult.IsTruncated                | Boolean   | 추가 페이지 존재 여부                     |
 | ListBucketResult.Contents                   | Array     | 객체 목록                            |
-| ListBucketResult.Contents.ChecksumAlgorithm | Array     | 오브젝트의 체크섬 생성에 사용된 알고리즘           |
-| ListBucketResult.Contents.ChecksumType      | String    | 오브젝트의 체크섬 값을 계산하는 방식             |
+| ListBucketResult.Contents.ChecksumAlgorithm | Array     | 객체의 체크섬 생성에 사용된 알고리즘             |
+| ListBucketResult.Contents.ChecksumType      | String    | 객체의 체크섬 값을 계산하는 방식               |
 | ListBucketResult.Contents.Key               | String    | 객체 키                             |
 | ListBucketResult.Contents.LastModified      | Timestamp | 마지막 수정 일시 (ISO 8601 형식)          |
 | ListBucketResult.Contents.ETag              | String    | 객체 고유 식별자                        |
-| ListBucketResult.Contents.Size              | Long      | 객체 크기(bytes)                     |
+| ListBucketResult.Contents.Size              | Long      | 객체 크기(바이트)                       |
 | ListBucketResult.Contents.StorageClass      | String    | 스토리지 클래스                         |
 | ListBucketResult.Contents.Owner.ID          | String    | 소유자 ID (fetch-owner=true 시 포함)   |
 | ListBucketResult.CommonPrefixes             | Array     | delimiter 기준으로 그룹화된 공통 prefix 목록 |
@@ -356,21 +356,21 @@ Body
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
-| 필드                           | 필수 여부 | 설명                                                                                                                                                 |
-|------------------------------|-------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Content-Length               | N     | 요청 본문의 크기(바이트)입니다. 본문의 크기를 자동으로 결정할 수 없는 경우 사용.                                                                                                    |
-| Content-MD5                  | N     | RFC 1864에 따라 메시지 본문을 128비트 `MD5` 다이제스트로 계산한 후 Base64로 인코딩한 값. 데이터 무결성 검증을 위해 사용할 수 있으며, 필수는 아니지만 종단 간 무결성 검증 수단으로 사용하는 것을 권장                       |
-| x-amz-checksum-crc32         | N     | 오브젝트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                                                                                           |
-| x-amz-checksum-crc32c        | N     | 오브젝트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값 .                                                                                                        |
-| x-amz-checksum-crc64nvme     | N     | 오브젝트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                                                                                       |
-| x-amz-checksum-sha1          | N     | 오브젝트의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                                                                                         |
-| x-amz-checksum-sha256        | N     | 오브젝트의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                                                                                       |
-| x-amz-checksum-sha512        | N     | 오브젝트의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                                                                                       |
-| x-amz-checksum-md5           | N     | 오브젝트의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                                                                                          |
-| x-amz-checksum-xxhash64      | N     | 오브젝트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                                                                                        |
-| x-amz-checksum-xxhash3       | N     | 오브젝트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                                                                                         |
-| x-amz-checksum-xxhash128     | N     | 오브젝트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                                      |
-| x-amz-sdk-checksum-algorithm | N     | SDK를 사용하여 오브젝트의 체크섬을 생성할 때 사용한 알고리즘을 지정. 이 헤더를 전송할 경우 반드시 `x-amz-checksum-algorithm` 또는 `x-amz-trailer` 헤더를 함께 전송해야 하며, 그렇지 않을 경우 HTTP 400 오류가 반환됨 |
+| 필드                           | 필수 여부 | 설명                                                                                                                                               |
+|------------------------------|-------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| Content-Length               | N     | 요청 본문의 크기(바이트)입니다. 본문의 크기를 자동으로 결정할 수 없는 경우 사용.                                                                                                  |
+| Content-MD5                  | N     | RFC 1864에 따라 메시지 본문을 128비트 `MD5` 다이제스트로 계산한 후 Base64로 인코딩한 값. 데이터 무결성 검증을 위해 사용할 수 있으며, 필수는 아니지만 종단 간 무결성 검증 수단으로 사용하는 것을 권장                     |
+| x-amz-checksum-crc32         | N     | 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                                                                                         |
+| x-amz-checksum-crc32c        | N     | 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                                                                                        |
+| x-amz-checksum-crc64nvme     | N     | 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                                                                                     |
+| x-amz-checksum-sha1          | N     | 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                                                                                       |
+| x-amz-checksum-sha256        | N     | 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                                                                                     |
+| x-amz-checksum-sha512        | N     | 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                                                                                     |
+| x-amz-checksum-md5           | N     | 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                                                                                        |
+| x-amz-checksum-xxhash64      | N     | 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                                                                                      |
+| x-amz-checksum-xxhash3       | N     | 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                                                                                       |
+| x-amz-checksum-xxhash128     | N     | 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                                    |
+| x-amz-sdk-checksum-algorithm | N     | SDK를 사용하여 객체의 체크섬을 생성할 때 사용한 알고리즘을 지정. 이 헤더를 전송할 경우 반드시 `x-amz-checksum-algorithm` 또는 `x-amz-trailer` 헤더를 함께 전송해야 하며, 그렇지 않을 경우 HTTP 400 오류가 반환됨 |
 
 #### 요청 파라미터
 
@@ -379,7 +379,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | bucket              | Path   | String | Y  | 버킷 이름        |
 | objectKey           | Path   | String | Y  | 객체 이름        |
 | Content-Type        | Header | String | N  | 객체 콘텐츠 타입    |
-| Content-Length      | Header | Long   | Y  | 객체 크기(bytes) |
+| Content-Length      | Header | Long   | Y  | 객체 크기(바이트)   |
 | x-amz-storage-class | Header | String | N  | 스토리지 클래스     |
 | x-amz-meta-\*       | Header | String | N  | 사용자 정의 메타데이터 |
 
@@ -409,17 +409,17 @@ x-amz-checksum-type: ChecksumType
 
 #### 응답 헤더
 
-| 필드                       | 설명                                                                                                                                  |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| ETag                     | 업로드된 오브젝트의 엔티티 태그입. ETag가 오브젝트의 MD5 다이제스트인 경우, 오브젝트 업로드 시 계산한 MD5 값과 반환된 ETag를 비교하여 데이터 무결성을 확인 가능                                  |
-| x-amz-checksum-crc32     | 오브젝트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                                                                            |
-| x-amz-checksum-crc32c    | 오브젝트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                                                                           |
-| x-amz-checksum-crc64nvme | 오브젝트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값. `CRC64NVME` 알고리즘으로 업로드되었거나, 체크섬 없이 업로드되어 기본 체크섬(`CRC64NVME`)이 자동으로 추가된 경우에 응답에 포함됩니다. |
-| x-amz-checksum-sha1      | 오브젝트의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                                                                          |
-| x-amz-checksum-sha256    | 오브젝트의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                                                                        |
-| x-amz-checksum-sha512    | 오브젝트의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                                                                        |
-| x-amz-checksum-md5       | 오브젝트의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                                                                           |
-| x-amz-checksum-xxhash64  | 오브젝트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                                                                         |
-| x-amz-checksum-xxhash3   | 오브젝트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                                                                          |
-| x-amz-checksum-xxhash128 | 오브젝트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                       |
-| x-amz-checksum-type      | 멀티파트 오브젝트의 파트별 체크섬을 결합하여 오브젝트 수준의 체크섬을 생성한 방식. PutObject 업로드의 경우 항상 `FULL_OBJECT`로 반환됨                                              |
+| 필드                       | 설명                                                                                                                                 |
+|--------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| ETag                     | 업로드된 객체의 엔티티 태그. ETag가 객체의 MD5 다이제스트인 경우, 객체 업로드 시 계산한 MD5 값과 반환된 ETag를 비교하여 데이터 무결성을 확인 가능                                  |
+| x-amz-checksum-crc32     | 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                                                                           |
+| x-amz-checksum-crc32c    | 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                                                                          |
+| x-amz-checksum-crc64nvme | 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값. `CRC64NVME` 알고리즘으로 업로드되었거나, 체크섬 없이 업로드되어 기본 체크섬(`CRC64NVME`)이 자동으로 추가된 경우에 응답에 포함됩니다. |
+| x-amz-checksum-sha1      | 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                                                                         |
+| x-amz-checksum-sha256    | 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                                                                       |
+| x-amz-checksum-sha512    | 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                                                                       |
+| x-amz-checksum-md5       | 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                                                                          |
+| x-amz-checksum-xxhash64  | 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                                                                        |
+| x-amz-checksum-xxhash3   | 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                                                                         |
+| x-amz-checksum-xxhash128 | 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                      |
+| x-amz-checksum-type      | 멀티파트 객체의 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성한 방식. PutObject 업로드의 경우 항상 `FULL_OBJECT`로 반환됨                                             |

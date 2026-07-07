@@ -49,7 +49,7 @@ Data Lake Storage requires S3 API credentials for authentication/authorization w
 ## 데이터 무결성 검증
 
 Data Lake Storage는 업로드 및 다운로드 시 체크섬을 통한 데이터 무결성 검증을 지원합니다.
-업로드 시 지정한 체크섬 알고리즘으로 체크섬 값을 계산하여 전송하면, 서버에서 독립적으로 체크섬을 계산하여 일치 여부를 확인한 후 오브젝트를 저장합니다.
+업로드 시 지정한 체크섬 알고리즘으로 체크섬 값을 계산하여 전송하면, 서버에서 독립적으로 체크섬을 계산하여 일치 여부를 확인한 후 객체를 저장합니다.
 
 !!! tip "알아두기"
     `x-amz-checksum-*` 헤더와 `Content-MD5` 헤더가 동시에 요청에 포함된 경우, `x-amz-checksum-*` 헤더가 우선 적용됩니다.
@@ -107,7 +107,7 @@ $ aws --endpoint-url=${Endpoint} s3api put-object \
 
 ### 페이로드 서명 방식
 
-`x-amz-content-sha256` 헤더를 통해 페이로드 서명 방식을 지정할 수 있습니다.
+`x-amz-content-sha256` 헤더로 페이로드 서명 방식을 지정할 수 있습니다.
 Data Lake Storage에서 지원하는 방식은 아래와 같습니다.
 
 | 방식 | 헤더 값 | 설명 |

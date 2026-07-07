@@ -15,7 +15,7 @@
 
 ### 인증 및 권한
 
-Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명이 필요합니다. [S3 API 자격 증명(S3 API Credential)](console-user-guide/#_10)를 참고하여 API 사용에 필요한 정보를 준비합니다.
+Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명이 필요합니다. [S3 API 자격 증명(S3 API Credential)](console-user-guide/#_10)을 참고하여 API 사용에 필요한 정보를 준비합니다.
 
 ### 요청
 
@@ -49,7 +49,7 @@ Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명
 ## 데이터 무결성 검증
 
 Data Lake Storage는 업로드 및 다운로드 시 체크섬을 통한 데이터 무결성 검증을 지원합니다.
-업로드 시 지정한 체크섬 알고리즘으로 체크섬 값을 계산하여 전송하면, 서버에서 독립적으로 체크섬을 계산하여 일치 여부를 확인한 후 오브젝트를 저장합니다.
+업로드 시 지정한 체크섬 알고리즘으로 체크섬 값을 계산하여 전송하면, 서버에서 독립적으로 체크섬을 계산하여 일치 여부를 확인한 후 객체를 저장합니다.
 
 !!! tip "알아두기"
     `x-amz-checksum-*` 헤더와 `Content-MD5` 헤더가 동시에 요청에 포함된 경우, `x-amz-checksum-*` 헤더가 우선 적용됩니다.
@@ -107,7 +107,7 @@ $ aws --endpoint-url=${Endpoint} s3api put-object \
 
 ### 페이로드 서명 방식
 
-`x-amz-content-sha256` 헤더를 통해 페이로드 서명 방식을 지정할 수 있습니다.
+`x-amz-content-sha256` 헤더로 페이로드 서명 방식을 지정할 수 있습니다.
 Data Lake Storage에서 지원하는 방식은 아래와 같습니다.
 
 | 방식 | 헤더 값 | 설명 |
@@ -157,12 +157,12 @@ $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
 | Bucket | 버킷 이름 |
 
 !!! tip "알아두기"
-    AWS 명령줄 인터페이스는 AWS를 사용하기 위해 제공되는 도구이기 때문에 AWS 도메인을 사용하도록 설정되어 있습니다. 따라서 NHN Cloud Data Lake Storage 서비스를 사용하려면 반드시 명령마다 엔드포인트를 지정해야 합니다.
+    AWS 명령줄 인터페이스는 AWS용으로 제공되는 도구이므로 AWS 도메인을 사용하도록 설정되어 있습니다. 따라서 NHN Cloud Data Lake Storage 서비스를 사용하려면 반드시 명령마다 엔드포인트를 지정해야 합니다.
     AWS 명령줄 인터페이스 명령은 [AWS CLI에서 상위 수준(s3) 명령 사용](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-services-s3-commands.html) 문서를 참고하세요.
 
 ## AWS SDK
 
-AWS는 여러 가지 프로그래밍 언어를 위한 SDK를 제공하고 있습니다. S3 호환 API를 이용하여 AWS SDK로 NHN Cloud Data Lake Storage 서비스를 사용할 수 있습니다.
+AWS는 여러 가지 프로그래밍 언어를 지원하는 SDK를 제공합니다. S3 호환 API를 이용하여 AWS SDK로 NHN Cloud Data Lake Storage 서비스를 사용할 수 있습니다.
 
 !!! tip "알아두기"
     자세한 내용은 [AWS SDK](https://builder.aws.com/build/tools) 문서를 참고하세요.
