@@ -1,5 +1,5 @@
 ## Bucket
-**Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Bucket**
+**Data & Analytics > Data Lake Storage > Amazon S3-Compatible API Guide > Bucket**
 
 
 ## CreateBucket
@@ -71,25 +71,25 @@ HTTP/1.1 204 No Content
 
 ## DeleteBucketPolicy
 
-버킷에 등록된 정책(Bucket Policy)을 삭제합니다.
+Deletes the policy (bucket policy) registered for a bucket.
 
-### 요청
+### Request
 
 ```http
 DELETE /{bucket}?policy HTTP/1.1
 ```
 
-#### 요청 헤더
+#### Request Header
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-#### 요청 파라미터
+#### Request Parameter
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
+| bucket | Path | String | Y | Bucket name |
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 204 No Content
@@ -159,27 +159,27 @@ HTTP/1.1 200 OK
 
 ## GetBucketPolicy
 
-버킷에 등록된 정책(Bucket Policy)을 조회합니다. 정책 문서가 JSON 형식의 응답 본문으로 그대로 반환됩니다.
+Retrieves the policy (bucket policy) registered for a bucket. The policy document is returned as-is in the response body in JSON format.
 
-### 요청
+### Request
 
 ```http
 GET /{bucket}?policy HTTP/1.1
 ```
 
-#### 요청 헤더
+#### Request Header
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-#### 요청 파라미터
+#### Request Parameter
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
+| bucket | Path | String | Y | Bucket name |
 
-### 응답
+### Response
 
-등록된 정책 문서가 JSON 본문으로 반환됩니다. 정책 문서의 각 필드에 대한 설명은 [PutBucketPolicy](#putbucketpolicy)를 참고하세요.
+The registered policy document is returned as a JSON body. For descriptions of each field in the policy document, see [PutBucketPolicy](#putbucketpolicy).
 
 ```http
 HTTP/1.1 200 OK
@@ -199,8 +199,8 @@ Content-Type: application/json
 }
 ```
 
-!!! tip "알아두기"
-    버킷에 정책이 등록되어 있지 않으면 `404 NoSuchBucketPolicy` 오류가 반환됩니다.
+!!! tip "Note"
+    If no policy is registered for the bucket, a `404 NoSuchBucketPolicy` error is returned.
 
 
 ## ListBuckets
@@ -266,9 +266,9 @@ HTTP/1.1 200 OK
 
 ## PutBucketPolicy
 
-버킷에 정책(Bucket Policy)을 등록하거나 기존 정책을 교체합니다. 버킷 정책은 JSON 형식의 정책 문서로, 어떤 주체(Principal)가 어떤 리소스(Resource)의 어떤 작업(Action)을 허용 또는 거부할지 정의합니다.
+Registers or replaces a policy (bucket policy) for a bucket. A bucket policy is a policy document in JSON format that defines which principal is allowed or denied access to which actions on which resources.
 
-### 요청
+### Request
 
 ```http
 PUT /{bucket}?policy HTTP/1.1
@@ -287,82 +287,82 @@ PUT /{bucket}?policy HTTP/1.1
 }
 ```
 
-#### 요청 헤더
+#### Request Header
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-#### 요청 파라미터
+#### Request Parameters
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
+| bucket | Path | String | Y | Bucket name |
 
-#### 요청 본문
+#### Request Body
 
-요청 본문은 정책 문서 전체를 담은 JSON입니다.
+The request body is a JSON containing the entire policy document.
 
-| 이름 | 타입 | 필수 | 설명 |
+| Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| Version | String | Y | 정책 언어 버전. `2012-10-17`을 사용합니다. |
-| Id | String | N | 정책 식별자 |
-| Statement | Array | Y | 정책 구문 목록. 최소 1개 이상이어야 합니다. |
-| Statement.Sid | String | N | 정책 구문 식별자 |
-| Statement.Effect | String | Y | 권한 적용 방식. `Allow` 또는 `Deny` |
-| Statement.Principal | Object | Y | 권한을 적용할 주체. `NotPrincipal`과 함께 사용할 수 없습니다. |
-| Statement.NotPrincipal | Object | N | 권한 적용에서 제외할 주체. `Principal`과 함께 사용할 수 없습니다. |
-| Statement.Action | Array | Y | 적용할 작업 목록. `NotAction`과 함께 사용할 수 없습니다. |
-| Statement.NotAction | Array | N | 적용에서 제외할 작업 목록. `Action`과 함께 사용할 수 없습니다. |
-| Statement.Resource | Array | Y | 작업 대상 리소스 목록. `NotResource`와 함께 사용할 수 없습니다. |
-| Statement.NotResource | Array | N | 적용에서 제외할 리소스 목록. `Resource`와 함께 사용할 수 없습니다. |
-| Statement.Condition | Object | N | 정책 구문이 적용되는 조건 |
+| Version | String | Y | Policy language version. Use `2012-10-17`. |
+| Id | String | N | Policy identifier |
+| Statement | Array | Y | List of policy statements. Must contain at least one statement. |
+| Statement.Sid | String | N | Policy statement identifier |
+| Statement.Effect | String | Y | Permission application method. `Allow` or `Deny` |
+| Statement.Principal | Object | Y | Principal to apply permissions to. Cannot be used together with `NotPrincipal`. |
+| Statement.NotPrincipal | Object | N | Principal to exclude from permission application. Cannot be used together with `Principal`. |
+| Statement.Action | Array | Y | List of actions to apply. Cannot be used together with `NotAction`. |
+| Statement.NotAction | Array | N | List of actions to exclude from application. Cannot be used together with `Action`. |
+| Statement.Resource | Array | Y | List of target resources for the action. Cannot be used together with `NotResource`. |
+| Statement.NotResource | Array | N | List of resources to exclude from application. Cannot be used together with `Resource`. |
+| Statement.Condition | Object | N | Condition under which the policy statement applies |
 
 #### Principal
 
-권한을 적용할 주체를 지정합니다.
+Specifies the principal to apply permissions to.
 
-| 형식 | 설명 |
+| Format | Description |
 | --- | --- |
-| `"*"` | 모든 사용자(익명 포함) |
-| `{ "NHN": "arn:nhn:cloud:iam:{appKey}:user/{memberUuid}" }` | 특정 NHN Cloud IAM 사용자. `appKey`는 16자리 영숫자, `memberUuid`는 UUID 형식입니다. |
-| `{ "NHN": "arn:nhn:cloud:iam:{appKey}:user/*" }` | 프로젝트(appKey)에 속한 모든 사용자 |
+| `"*"` | All users (including anonymous users) |
+| `{ "NHN": "arn:nhn:cloud:iam:{appKey}:user/{memberUuid}" }` | A specific NHN Cloud IAM user. `appKey` is a 16-character alphanumeric string, and `memberUuid` is in UUID format. |
+| `{ "NHN": "arn:nhn:cloud:iam:{appKey}:user/*" }` | All users belonging to the project (appKey) |
 
-!!! tip "알아두기"
-    `Principal`에는 단일 문자열 또는 문자열 배열을 모두 사용할 수 있습니다.
+!!! tip "Note"
+    `Principal` accepts both a single string and an array of strings.
 
 #### Action
 
-정책에서 사용할 수 있는 작업은 다음과 같습니다.
+The following actions are available for use in policies:
 
-| 작업 | 설명 |
+| Action | Description |
 | --- | --- |
-| s3:GetObject | 객체 조회 |
-| s3:PutObject | 객체 업로드 |
-| s3:DeleteObject | 객체 삭제 |
-| s3:GetObjectAcl | 객체 ACL 조회 |
-| s3:PutObjectAcl | 객체 ACL 설정 |
-| s3:ListBucket | 버킷 내 객체 목록 조회 |
-| s3:ListBucketMultipartUploads | 진행 중인 멀티파트 업로드 목록 조회 |
-| s3:ListMultipartUploadParts | 멀티파트 업로드의 파트 목록 조회 |
-| s3:AbortMultipartUpload | 멀티파트 업로드 중단 |
-| s3:* | 위 작업을 포함한 모든 작업 |
+| s3:GetObject | Retrieve an object |
+| s3:PutObject | Upload an object |
+| s3:DeleteObject | Delete an object |
+| s3:GetObjectAcl | Retrieve the ACL of an object |
+| s3:PutObjectAcl | Set the ACL of an object |
+| s3:ListBucket | Retrieve the list of objects in a bucket |
+| s3:ListBucketMultipartUploads | Retrieve the list of in-progress multipart uploads |
+| s3:ListMultipartUploadParts | Retrieve the list of parts in a multipart upload |
+| s3:AbortMultipartUpload | Abort a multipart upload |
+| s3:* | All actions, including the above |
 
-!!! danger "주의"
-    버킷 생성/삭제, 버킷 정책 및 ACL 관리 등 버킷 관리(Bucket Administration) 작업은 버킷 정책으로 부여할 수 없습니다. 해당 권한은 프로젝트/버킷 소유자 역할로만 수행할 수 있습니다.
+!!! danger "Caution"
+    Bucket administration actions such as creating/deleting buckets and managing bucket policies and ACLs cannot be granted through bucket policies. These permissions can only be performed by the project/bucket owner role.
 
 #### Resource
 
-리소스는 ARN이 아닌 버킷 내 경로 형식으로 지정합니다.
+Resources are specified in path format within the bucket, not as ARNs.
 
-| 형식 | 설명 |
+| Format | Description |
 | --- | --- |
-| `*` | 버킷 내 모든 객체 |
-| `curated/*` | `curated/` 접두사를 가진 모든 객체 |
-| `report.csv` | 특정 객체 키 |
+| `*` | All objects in the bucket |
+| `curated/*` | All objects with the `curated/` prefix |
+| `report.csv` | A specific object key |
 
-!!! danger "주의"
-    리소스는 `arn:`으로 시작하거나 `/`로 시작할 수 없습니다.
+!!! danger "Caution"
+    Resources cannot start with `arn:` or `/`.
 
-#### 요청 예시
+#### Request Example
 
 ```json
 {
@@ -379,7 +379,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 }
 ```
 
-### 응답
+### Response
 
 ```http
 HTTP/1.1 204 No Content

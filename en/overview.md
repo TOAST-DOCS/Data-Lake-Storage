@@ -16,7 +16,7 @@ Built on high compatibility with the AWS S3 API, you can use the SDKs, CLIs, and
 * Flexible scaling
     * Supports horizontal scaling so you can store data without worrying about storage capacity.
 * Storage class
-    * Allows you to choose from a variety of storage options based on data access frequency and cost efficiency (Upcoming).
+    * Allows you to choose from various storage options based on data access frequency and cost efficiency (Upcoming).
 * AWS S3 compatible API
     * Provides high-level compatibility with AWS S3 API, allowing you to use existing S3 SDKs, CLIs, and third-party tools as-is.
 
