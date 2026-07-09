@@ -1,6 +1,6 @@
 ## Multipart
 
-**Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Multipart**
+**Data & Analytics > Data Lake Storage > Amazon S3互換APIガイド > Multipart**
 
 
 ## AbortMultipartUpload
@@ -13,7 +13,7 @@
 DELETE /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
-#### 요청 헤더
+#### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
@@ -71,23 +71,23 @@ x-amz-checksum-type: ChecksumType
 </CompleteMultipartUpload>
 ```
 
-#### 요청 헤더
+#### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
-| 이름                       | 필수 여부 | 설명                                                                                                                                                         |
+| 名前                       | 必須 | 説明                                                                                                                                                       |
 |--------------------------|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| x-amz-checksum-crc32     | N     | 데이터 무결성 검증을 위한 헤더. 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                                                                                  |
-| x-amz-checksum-crc32c    | N     | 데이터 무결성 검증을 위한 헤더. 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                                                                                 |
-| x-amz-checksum-crc64nvme | N     | 데이터 무결성 검증을 위한 헤더. 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                                                                              |
-| x-amz-checksum-sha1      | N     | 데이터 무결성 검증을 위한 헤더. 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                                                                                |
-| x-amz-checksum-sha256    | N     | 데이터 무결성 검증을 위한 헤더. 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                                                                              |
-| x-amz-checksum-sha512    | N     | 데이터 무결성 검증을 위한 헤더. 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                                                                              |
-| x-amz-checksum-md5       | N     | 데이터 무결성 검증을 위한 헤더. 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                                                                                 |
-| x-amz-checksum-xxhash64  | N     | 데이터 무결성 검증을 위한 헤더. 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                                                                               |
-| x-amz-checksum-xxhash3   | N     | 데이터 무결성 검증을 위한 헤더. 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                                                                                |
-| x-amz-checksum-xxhash128 | N     | 데이터 무결성 검증을 위한 헤더. 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                             |
-| x-amz-checksum-type      | N     | 멀티파트 업로드에서 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성하는 방식. `CreateMultipartUpload` 요청에서 지정한 체크섬 타입과 일치하지 않을 경우 `BadDigest` 오류가 반환됩니다. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
+| x-amz-checksum-crc32     | N     | データ整合性検証のためのヘッダ。オブジェクトの32ビット`CRC32`チェックサム値をBase64でエンコードした値                                                                                              |
+| x-amz-checksum-crc32c    | N     | データ整合性検証のためのヘッダ。オブジェクトの32ビット`CRC32C`チェックサム値をBase64でエンコードした値                                                                                             |
+| x-amz-checksum-crc64nvme | N     | データ整合性検証のためのヘッダ。オブジェクトの64ビット`CRC64NVME`チェックサム値をBase64でエンコードした値                                                                                            |
+| x-amz-checksum-sha1      | N     | データ整合性検証のためのヘッダ。オブジェクトの160ビット`SHA1`ダイジェスト値をBase64でエンコードした値                                                                                             |
+| x-amz-checksum-sha256    | N     | データ整合性検証のためのヘッダ。オブジェクトの256ビット`SHA256`ダイジェスト値をBase64でエンコードした値                                                                                            |
+| x-amz-checksum-sha512    | N     | データ整合性検証のためのヘッダ。オブジェクトの512ビット`SHA512`ダイジェスト値をBase64でエンコードした値                                                                                            |
+| x-amz-checksum-md5       | N     | データ整合性検証のためのヘッダ。オブジェクトの128ビット`MD5`ダイジェスト値をBase64でエンコードした値                                                                                              |
+| x-amz-checksum-xxhash64  | N     | データ整合性検証のためのヘッダ。オブジェクトの64ビット`XXHASH64`チェックサム値をBase64でエンコードした値                                                                                             |
+| x-amz-checksum-xxhash3   | N     | データ整合性検証のためのヘッダ。オブジェクトの64ビット`XXHASH3`チェックサム値をBase64でエンコードした値                                                                                              |
+| x-amz-checksum-xxhash128 | N     | データ整合性検証のためのヘッダ。オブジェクトの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値                                                                                             |
+| x-amz-checksum-type      | N     | マルチパートアップロードでパート別のチェックサムを結合してオブジェクトレベルのチェックサムを生成する方式。`CreateMultipartUpload`リクエストで指定したチェックサムタイプと一致しない場合、`BadDigest`エラーが返されます。有効な値: `COMPOSITE \| FULL_OBJECT` |
 
 #### リクエストパラメータ
 
@@ -106,16 +106,16 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | CompleteMultipartUpload.Part                   | Object  | N  | パート一覧                                       |
 | CompleteMultipartUpload.Part.PartNumber        | Integer | N  | パート番号                                       |
 | CompleteMultipartUpload.Part.ETag              | String  | N  | オブジェクト固有識別子                                 |
-| CompleteMultipartUpload.Part.ChecksumCRC32     | String  | N  | 파트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값      |
-| CompleteMultipartUpload.Part.ChecksumCRC32C    | String  | N  | 파트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값     |
-| CompleteMultipartUpload.Part.ChecksumCRC64NVME | String  | N  | 파트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값  |
-| CompleteMultipartUpload.Part.ChecksumSHA1      | String  | N  | 파트의 160비트 `SHA1` 체크섬 값을 Base64로 인코딩한 값      |
-| CompleteMultipartUpload.Part.ChecksumSHA256    | String  | N  | 파트의 256비트 `SHA256` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUpload.Part.ChecksumSHA512    | String  | N  | 파트의 512비트 `SHA512` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUpload.Part.ChecksumMD5       | String  | N  | 파트의 128비트 `MD5` 체크섬 값을 Base64로 인코딩한 값       |
-| CompleteMultipartUpload.Part.ChecksumXXHASH64  | String  | N  | 파트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값   |
-| CompleteMultipartUpload.Part.ChecksumXXHASH3   | String  | N  | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUpload.Part.ChecksumXXHASH128 | String  | N  | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
+| CompleteMultipartUpload.Part.ChecksumCRC32     | String  | N  | パートの32ビット`CRC32`チェックサム値をBase64でエンコードした値      |
+| CompleteMultipartUpload.Part.ChecksumCRC32C    | String  | N  | パートの32ビット`CRC32C`チェックサム値をBase64でエンコードした値     |
+| CompleteMultipartUpload.Part.ChecksumCRC64NVME | String  | N  | パートの64ビット`CRC64NVME`チェックサム値をBase64でエンコードした値  |
+| CompleteMultipartUpload.Part.ChecksumSHA1      | String  | N  | パートの160ビット`SHA1`チェックサム値をBase64でエンコードした値      |
+| CompleteMultipartUpload.Part.ChecksumSHA256    | String  | N  | パートの256ビット`SHA256`チェックサム値をBase64でエンコードした値    |
+| CompleteMultipartUpload.Part.ChecksumSHA512    | String  | N  | パートの512ビット`SHA512`チェックサム値をBase64でエンコードした値    |
+| CompleteMultipartUpload.Part.ChecksumMD5       | String  | N  | パートの128ビット`MD5`チェックサム値をBase64でエンコードした値       |
+| CompleteMultipartUpload.Part.ChecksumXXHASH64  | String  | N  | パートの64ビット`XXHASH64`チェックサム値をBase64でエンコードした値   |
+| CompleteMultipartUpload.Part.ChecksumXXHASH3   | String  | N  | パートの64ビット`XXHASH3`チェックサム値をBase64でエンコードした値    |
+| CompleteMultipartUpload.Part.ChecksumXXHASH128 | String  | N  | パートの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値 |
 
 ### レスポンス
 
@@ -142,7 +142,7 @@ HTTP/1.1 200 OK
 </CompleteMultipartUploadResult>
 ```
 
-#### 응답 본문
+#### レスポンス本文
 
 | 名前                                              | タイプ    | 説明                                          |
 |-------------------------------------------------|--------|---------------------------------------------|
@@ -151,16 +151,16 @@ HTTP/1.1 200 OK
 | CompleteMultipartUploadResult.Bucket            | String | 対象バケット名                                     |
 | CompleteMultipartUploadResult.Key               | String | 作成されたオブジェクトキー                               |
 | CompleteMultipartUploadResult.ETag              | String | 最終的に結合されたオブジェクト固有識別子                        |
-| CompleteMultipartUploadResult.ChecksumCRC32     | String | 파트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값      |
-| CompleteMultipartUploadResult.ChecksumCRC32C    | String | 파트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값     |
-| CompleteMultipartUploadResult.ChecksumCRC64NVME | String | 파트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값  |
-| CompleteMultipartUploadResult.ChecksumSHA1      | String | 파트의 160비트 `SHA1` 체크섬 값을 Base64로 인코딩한 값      |
-| CompleteMultipartUploadResult.ChecksumSHA256    | String | 파트의 256비트 `SHA256` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUploadResult.ChecksumSHA512    | String | 파트의 512비트 `SHA512` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUploadResult.ChecksumMD5       | String | 파트의 128비트 `MD5` 체크섬 값을 Base64로 인코딩한 값       |
-| CompleteMultipartUploadResult.ChecksumXXHASH64  | String | 파트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값   |
-| CompleteMultipartUploadResult.ChecksumXXHASH3   | String | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUploadResult.ChecksumXXHASH128 | String | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
+| CompleteMultipartUploadResult.ChecksumCRC32     | String | パートの32ビット`CRC32`チェックサム値をBase64でエンコードした値      |
+| CompleteMultipartUploadResult.ChecksumCRC32C    | String | パートの32ビット`CRC32C`チェックサム値をBase64でエンコードした値     |
+| CompleteMultipartUploadResult.ChecksumCRC64NVME | String | パートの64ビット`CRC64NVME`チェックサム値をBase64でエンコードした値  |
+| CompleteMultipartUploadResult.ChecksumSHA1      | String | パートの160ビット`SHA1`チェックサム値をBase64でエンコードした値      |
+| CompleteMultipartUploadResult.ChecksumSHA256    | String | パートの256ビット`SHA256`チェックサム値をBase64でエンコードした値    |
+| CompleteMultipartUploadResult.ChecksumSHA512    | String | パートの512ビット`SHA512`チェックサム値をBase64でエンコードした値    |
+| CompleteMultipartUploadResult.ChecksumMD5       | String | パートの128ビット`MD5`チェックサム値をBase64でエンコードした値       |
+| CompleteMultipartUploadResult.ChecksumXXHASH64  | String | パートの64ビット`XXHASH64`チェックサム値をBase64でエンコードした値   |
+| CompleteMultipartUploadResult.ChecksumXXHASH3   | String | パートの64ビット`XXHASH3`チェックサム値をBase64でエンコードした値    |
+| CompleteMultipartUploadResult.ChecksumXXHASH128 | String | パートの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値 |
 
 
 ## CreateMultipartUpload
@@ -175,14 +175,14 @@ x-amz-checksum-algorithm: ChecksumAlgorithm
 x-amz-checksum-type: ChecksumType
 ```
 
-#### 요청 헤더
+#### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
-| 필드                       | 필수 여부 | 설명                                                                                                                                     |
+| フィールド                 | 必須 | 説明                                                                                                                                                                                             |
 |--------------------------|-------|----------------------------------------------------------------------------------------------------------------------------------------|
-| x-amz-checksum-algorithm | N     | 객체의 체크섬 생성에 사용할 알고리즘을 지정. 유효한 값: `CRC32 \| CRC32C \| SHA1 \| SHA256 \| CRC64NVME \| SHA512 \| MD5 \| XXHASH64 \| XXHASH3 \| XXHASH128` |
-| x-amz-checksum-type      | N     | 객체의 체크섬 값을 계산하는 방식을 지정. 유효한 값: `COMPOSITE \| FULL_OBJECT`                                                                              |
+| x-amz-checksum-algorithm | N     | オブジェクトのチェックサム生成に使用するアルゴリズムを指定。有効な値: `CRC32 \| CRC32C \| SHA1 \| SHA256 \| CRC64NVME \| SHA512 \| MD5 \| XXHASH64 \| XXHASH3 \| XXHASH128` |
+| x-amz-checksum-type      | N     | オブジェクトのチェックサム値を計算する方式を指定。有効な値: `COMPOSITE \| FULL_OBJECT`                                                                                                |
 
 #### リクエストパラメータ
 
@@ -209,14 +209,14 @@ x-amz-checksum-type: ChecksumType
 </InitiateMultipartUploadResult>
 ```
 
-#### 응답 헤더
+#### レスポンスヘッダ
 
-| 필드                       | 설명                     |
+| フィールド                 | 説明                     |
 |--------------------------|------------------------|
-| x-amz-checksum-algorithm | 객체의 체크섬 생성에 사용한 알고리즘 값 |
-| x-amz-checksum-type      | 객체의 체크섬 값을 계산한 방식      |
+| x-amz-checksum-algorithm | オブジェクトのチェックサム生成に使用したアルゴリズム値 |
+| x-amz-checksum-type      | オブジェクトのチェックサム値を計算した方式      |
 
-#### 응답 본문
+#### レスポンス本文
 
 | 名前                                     | タイプ    | 説明               |
 |----------------------------------------|--------|------------------|
@@ -236,7 +236,7 @@ x-amz-checksum-type: ChecksumType
 GET /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
-#### 요청 헤더
+#### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
@@ -273,7 +273,7 @@ HTTP/1.1 200 OK
 </ListPartsResult>
 ```
 
-#### 응답 본문
+#### レスポンス本文
 
 | 名前                                   | タイプ       | 説明                  |
 |--------------------------------------|-----------|---------------------|
@@ -318,24 +318,24 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 body
 ```
 
-#### 요청 헤더
+#### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
-| 필드                       | 필수 여부 | 설명                                         |
+| フィールド                 | 必須 | 説明                                         |
 |--------------------------|-------|--------------------------------------------|
-| Content-Length           | N     | 요청 본문의 크기(바이트). 본문의 크기를 자동으로 결정할 수 없는 경우 사용 |
-| Content-MD5              | N     | 파트 데이터의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값 |
-| x-amz-checksum-crc32     | N     | 파트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값     |
-| x-amz-checksum-crc32c    | N     | 파트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-crc64nvme | N     | 파트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값 |
-| x-amz-checksum-sha1      | N     | 파트의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값   |
-| x-amz-checksum-sha256    | N     | 파트의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값 |
-| x-amz-checksum-sha512    | N     | 파트의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값 |
-| x-amz-checksum-md5       | N     | 파트의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-xxhash64  | N     | 파트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값  |
-| x-amz-checksum-xxhash3   | N     | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값   |
-| x-amz-checksum-xxhash128 | N     | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
+| Content-Length           | N     | リクエスト本文のサイズ(バイト)。本文のサイズを自動的に決定できない場合に使用 |
+| Content-MD5              | N     | パートデータの128ビット`MD5`ダイジェスト値をBase64でエンコードした値 |
+| x-amz-checksum-crc32     | N     | パートの32ビット`CRC32`チェックサム値をBase64でエンコードした値     |
+| x-amz-checksum-crc32c    | N     | パートの32ビット`CRC32C`チェックサム値をBase64でエンコードした値    |
+| x-amz-checksum-crc64nvme | N     | パートの64ビット`CRC64NVME`チェックサム値をBase64でエンコードした値 |
+| x-amz-checksum-sha1      | N     | パートの160ビット`SHA1`ダイジェスト値をBase64でエンコードした値   |
+| x-amz-checksum-sha256    | N     | パートの256ビット`SHA256`ダイジェスト値をBase64でエンコードした値 |
+| x-amz-checksum-sha512    | N     | パートの512ビット`SHA512`ダイジェスト値をBase64でエンコードした値 |
+| x-amz-checksum-md5       | N     | パートの128ビット`MD5`ダイジェスト値をBase64でエンコードした値    |
+| x-amz-checksum-xxhash64  | N     | パートの64ビット`XXHASH64`チェックサム値をBase64でエンコードした値  |
+| x-amz-checksum-xxhash3   | N     | パートの64ビット`XXHASH3`チェックサム値をBase64でエンコードした値   |
+| x-amz-checksum-xxhash128 | N     | パートの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値 |
 
 #### リクエストパラメータ
 
@@ -370,18 +370,18 @@ x-amz-checksum-xxhash3: ChecksumXXHASH3
 x-amz-checksum-xxhash128: ChecksumXXHASH128
 ```
 
-#### 응답 헤더
+#### レスポンスヘッダ
 
-| 필드                       | 설명                                          |
+| フィールド                 | 説明                                          |
 |--------------------------|---------------------------------------------|
-| ETag                     | 업로드된 파트의 엔티티 태그                             |
-| x-amz-checksum-crc32     | 파트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값      |
-| x-amz-checksum-crc32c    | 파트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값     |
-| x-amz-checksum-crc64nvme | 파트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값  |
-| x-amz-checksum-sha1      | 파트의 160비트 `SHA1` 체크섬 값을 Base64로 인코딩한 값      |
-| x-amz-checksum-sha256    | 파트의 256비트 `SHA256` 체크섬 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-sha512    | 파트의 512비트 `SHA512` 체크섬 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-md5       | 파트의 128비트 `MD5` 체크섬 값을 Base64로 인코딩한 값       |
-| x-amz-checksum-xxhash64  | 파트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값   |
-| x-amz-checksum-xxhash3   | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-xxhash128 | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
+| ETag                     | アップロードされたパートのエンティティタグ                             |
+| x-amz-checksum-crc32     | パートの32ビット`CRC32`チェックサム値をBase64でエンコードした値      |
+| x-amz-checksum-crc32c    | パートの32ビット`CRC32C`チェックサム値をBase64でエンコードした値     |
+| x-amz-checksum-crc64nvme | パートの64ビット`CRC64NVME`チェックサム値をBase64でエンコードした値  |
+| x-amz-checksum-sha1      | パートの160ビット`SHA1`チェックサム値をBase64でエンコードした値      |
+| x-amz-checksum-sha256    | パートの256ビット`SHA256`チェックサム値をBase64でエンコードした値    |
+| x-amz-checksum-sha512    | パートの512ビット`SHA512`チェックサム値をBase64でエンコードした値    |
+| x-amz-checksum-md5       | パートの128ビット`MD5`チェックサム値をBase64でエンコードした値       |
+| x-amz-checksum-xxhash64  | パートの64ビット`XXHASH64`チェックサム値をBase64でエンコードした値   |
+| x-amz-checksum-xxhash3   | パートの64ビット`XXHASH3`チェックサム値をBase64でエンコードした値    |
+| x-amz-checksum-xxhash128 | パートの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値 |
