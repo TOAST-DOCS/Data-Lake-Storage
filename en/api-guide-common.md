@@ -1,24 +1,32 @@
-## Amazon S3-Compatible API Guide
+<!-- pre-align:aligned sig=bd9519149408 -->
+
+<a id="amazon-s3-compatible-api-guide"></a>
+## Amazon S3-Compatible API Guide { #amazon-s3-compatible-api-guide }
 
 **Data & Analytics > Data Lake Storage > Amazon S3-Compatible API Guide > Common**
 
-## Common Information for Data Lake Storage API
+<a id="common-information-for-data-lake-storage-api"></a>
+## Common Information for Data Lake Storage API { #common-information-for-data-lake-storage-api }
 
 !!! tip "Note"
     NHN Cloud Data Lake Storage is designed to be compatible with Amazon S3 API 2006-03-01.
 
-### API Endpoint
+<a id="api-endpoint"></a>
+### API Endpoint { #api-endpoint }
 
 | Region | Endpoint |
 | --- | ----- |
 | KR3 | https://kr3-data-lake-storage.nhncloudservice.com |
 
-### Authentication and Authorization
+<a id="authentication-and-authorization"></a>
+### Authentication and Authorization { #authentication-and-authorization }
 
 Data Lake Storage requires S3 API credentials for authentication/authorization when making API calls. Refer to [S3 API Credential](console-user-guide/#manage-credentials) to prepare the information required to use the API.
 
-### Request
+<a id="request"></a>
+### Request { #request }
 
+<a id="request-header"></a>
 #### Request Header
 
 | Field | Required | Description |
@@ -27,8 +35,10 @@ Data Lake Storage requires S3 API credentials for authentication/authorization w
 | Host | Y | Endpoint per region. |
 | x-amz-date | Y | Request time in ISO 8601 format (UTC). |
 
-### Response
+<a id="response"></a>
+### Response { #response }
 
+<a id="response-failure-response-code"></a>
 #### Failure Response Code
 
 | HTTP Status Code | Code | Description |
@@ -46,7 +56,8 @@ Data Lake Storage requires S3 API credentials for authentication/authorization w
 | 503 | ServiceUnavailable | The service can't process the request right now. Please try again later. |
 | 503 | SlowDown | Reduce the request speed. |
 
-## Data Integrity Verification
+<a id="data-integrity-verification"></a>
+## Data Integrity Verification { #data-integrity-verification }
 
 Data Lake Storage supports data integrity verification through checksums during upload and download.
 When uploading, calculate and send the checksum value using the specified checksum algorithm. The server independently calculates the checksum and verifies that the values match before storing the object.
@@ -54,7 +65,8 @@ When uploading, calculate and send the checksum value using the specified checks
 !!! tip "Note"
     If both the `x-amz-checksum-*` header and the `Content-MD5` header are included in the request, the `x-amz-checksum-*` header takes precedence.
 
-### Supported Checksum Algorithms
+<a id="supported-checksum-algorithms"></a>
+### Supported Checksum Algorithms { #supported-checksum-algorithms }
 
 | Algorithm | Parameter value | Single-part upload | Multipart FULL_OBJECT | Multipart COMPOSITE |
 | --- | --- | --- | --- | --- |
@@ -74,7 +86,8 @@ When uploading, calculate and send the checksum value using the specified checks
 !!! tip "Note"
     The latest version of the AWS SDK is required to use the XXHash64, XXHash3, XXHash128, and SHA-512 algorithms.
 
-### Checksum Type
+<a id="checksum-type"></a>
+### Checksum Type { #checksum-type }
 
 A checksum type can be specified for multipart uploads.
 
@@ -86,7 +99,8 @@ A checksum type can be specified for multipart uploads.
 !!! tip "Note"
     For single-part uploads (PutObject), no checksum type is specified separately, and `x-amz-checksum-type` is always returned as `FULL_OBJECT` in the response.
 
-### Single-Part Upload Checksum
+<a id="single-part-upload-checksum"></a>
+### Single-Part Upload Checksum { #single-part-upload-checksum }
 
 When calling the `PutObject` API, a checksum algorithm can be specified using the `--checksum-algorithm` option.
 
@@ -98,14 +112,16 @@ $ aws --endpoint-url=${Endpoint} s3api put-object \
     --checksum-algorithm CRC32
 ```
 
-### Multipart Upload Checksum
+<a id="multipart-upload-checksum"></a>
+### Multipart Upload Checksum { #multipart-upload-checksum }
 
 For multipart uploads, specify the algorithm and checksum type in `CreateMultipartUpload`, and use the same algorithm in subsequent `UploadPart` calls.
 
 !!! danger "Caution"
     If the algorithm specified in `CreateMultipartUpload` differs from the algorithm specified in `UploadPart`, a 400 error is returned.
 
-### Payload Signing Method
+<a id="payload-signing-method"></a>
+### Payload Signing Method { #payload-signing-method }
 
 The payload signing method can be specified using the `x-amz-content-sha256` header.
 The methods supported by Data Lake Storage are as follows:
@@ -118,15 +134,18 @@ The methods supported by Data Lake Storage are as follows:
 !!! tip "Note"
     When using AWS CLI v2.23.0 or later and the latest AWS SDK, upload requests that include a checksum are sent using the `STREAMING-UNSIGNED-PAYLOAD-TRAILER` method by default.
 
-## AWS Command Line Interface (CLI)
+<a id="aws-command-line-interface-cli"></a>
+## AWS Command Line Interface (CLI) { #aws-command-line-interface-cli }
 
 You can use the NHN Cloud Data Lake Storage service with the AWS command-line interface using the S3-compatible API.
 
-### Installation
+<a id="installation"></a>
+### Installation { #installation }
 
 See [Installing past releases of the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html) to install the AWS command-line interface.
 
-### Configuration
+<a id="configuration"></a>
+### Configuration { #configuration }
 
 To use the AWS Command Line Interface, you must first configure the S3 API credentials and environment.
 
@@ -144,7 +163,8 @@ Default output format [None]:
 | Secret Key | S3 API credentials secret key |
 | Region Name | KR3 - Korea (Gwangju) region |
 
-### How to Use the S3 Commands
+<a id="how-to-use-the-s3-commands"></a>
+### How to Use the S3 Commands { #how-to-use-the-s3-commands }
 
 ```sh
 $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
@@ -160,19 +180,22 @@ $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
     Since the AWS CLI is provided for use with AWS, it is configured to use the AWS domain. Therefore, to use NHN Cloud Data Lake Storage, you must specify an endpoint for every command.
     For AWS CLI commands, see [Using high-level (s3) commands with the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html).
 
-## AWS SDK
+<a id="aws-sdk"></a>
+## AWS SDK { #aws-sdk }
 
 AWS provides SDKs for many types of programming languages. By using the S3 compatible API, you can use NHN Cloud Data Lake Storage with AWS SDK.
 
 !!! tip "Note"
     For more information, see the [AWS SDK](https://builder.aws.com/build/tools) documentation.
 
-### Java SDK
+<a id="java-sdk"></a>
+### Java SDK { #java-sdk }
 
 !!! tip "Note"
     For more information, see the [AWS SDK for Java](https://docs.aws.amazon.com/en_us/sdk-for-java/) documentation.
 
-### Boto3 - Python SDK
+<a id="boto3---python-sdk"></a>
+### Boto3 - Python SDK { #boto3---python-sdk }
 
 !!! tip "Note"
     For more information, see the [AWS SDK for Python(Boto3)](https://docs.aws.amazon.com/en_us/pythonsdk/).

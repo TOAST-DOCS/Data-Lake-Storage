@@ -1,24 +1,32 @@
-## Amazon S3互換APIガイド
+<!-- pre-align:aligned sig=bd9519149408 -->
+
+<a id="amazon-s3-compatible-api-guide"></a>
+## Amazon S3互換APIガイド { #amazon-s3-compatible-api-guide }
 
 **Data & Analytics > Data Lake Storage > Amazon S3互換APIガイド > 共通**
 
-## Data Lake Storage API 共通情報
+<a id="common-information-for-data-lake-storage-api"></a>
+## Data Lake Storage API 共通情報 { #common-information-for-data-lake-storage-api }
 
 !!! tip 「ポイント」
     NHN Cloud Data Lake Storageサービスは、Amazon S3 API 2006-03-01バージョンと互換性を持つように設計されています。
 
-### API エンドポイント
+<a id="api-endpoint"></a>
+### API エンドポイント { #api-endpoint }
 
 | リージョン | エンドポイント |
 | --- | ----- |
 | KR3 | https://kr3-data-lake-storage.nhncloudservice.com |
 
-### 認証及び権限
+<a id="authentication-and-authorization"></a>
+### 認証及び権限 { #authentication-and-authorization }
 
 Data Lake Storageは、API呼び出し時の認証と認可のためにS3 API認証情報が必要です。[S3 API 認証情報(S3 API Credential)](console-user-guide/#_10)を参照して、APIの使用に必要な情報を準備してください。
 
-### リクエスト
+<a id="request"></a>
+### リクエスト { #request }
 
+<a id="request-header"></a>
 #### リクエストヘッダ
 
 | フィールド | 必須 | 説明 |
@@ -27,8 +35,10 @@ Data Lake Storageは、API呼び出し時の認証と認可のためにS3 API認
 | Host | Y | リージョン別のエンドポイントです。 |
 | x-amz-date | Y | ISO 8601 形式(UTC 基準) のリクエスト日時です。 |
 
-### レスポンス
+<a id="response"></a>
+### レスポンス { #response }
 
+<a id="response-failure-response-code"></a>
 #### エラーレスポンスコード
 
 | HTTP ステータスコード | コード | 説明 |
@@ -46,7 +56,8 @@ Data Lake Storageは、API呼び出し時の認証と認可のためにS3 API認
 | 503 | ServiceUnavailable | サービスが現在リクエストを処理できません。しばらくしてからもう一度お試しください。 |
 | 503 | SlowDown | リクエストの送信頻度を下げてください。 |
 
-## データ整合性検証
+<a id="data-integrity-verification"></a>
+## データ整合性検証 { #data-integrity-verification }
 
 Data Lake Storageは、アップロード及びダウンロード時にチェックサムを使用したデータ整合性検証をサポートします。
 アップロード時に指定したチェックサムアルゴリズムでチェックサム値を計算して送信すると、サーバーで独立してチェックサムを計算し、一致するかどうかを確認した後にオブジェクトを保存します。
@@ -54,7 +65,8 @@ Data Lake Storageは、アップロード及びダウンロード時にチェッ
 !!! tip "ポイント"
     `x-amz-checksum-*`ヘッダと`Content-MD5`ヘッダが同時にリクエストに含まれる場合、`x-amz-checksum-*`ヘッダが優先的に適用されます。
 
-### サポートするチェックサムアルゴリズム
+<a id="supported-checksum-algorithms"></a>
+### サポートするチェックサムアルゴリズム { #supported-checksum-algorithms }
 
 | アルゴリズム | パラメータ値 | 単一パートアップロード | マルチパート FULL_OBJECT | マルチパート COMPOSITE |
 | --- | --- | --- | --- | --- |
@@ -74,7 +86,8 @@ Data Lake Storageは、アップロード及びダウンロード時にチェッ
 !!! tip "ポイント"
     XXHash64、XXHash3、XXHash128、SHA-512アルゴリズムを使用するには、最新バージョンのAWS SDKが必要です。
 
-### チェックサムタイプ
+<a id="checksum-type"></a>
+### チェックサムタイプ { #checksum-type }
 
 マルチパートアップロード時にチェックサムタイプを指定できます。
 
@@ -86,7 +99,8 @@ Data Lake Storageは、アップロード及びダウンロード時にチェッ
 !!! tip "ポイント"
     単一パートアップロード(PutObject)はチェックサムタイプを別途指定せず、レスポンス時に`x-amz-checksum-type`は常に`FULL_OBJECT`として返されます。
 
-### 単一パートアップロードのチェックサム
+<a id="single-part-upload-checksum"></a>
+### 単一パートアップロードのチェックサム { #single-part-upload-checksum }
 
 `PutObject` APIの呼び出し時に`--checksum-algorithm`オプションでチェックサムアルゴリズムを指定できます。
 
@@ -98,14 +112,16 @@ $ aws --endpoint-url=${Endpoint} s3api put-object \
     --checksum-algorithm CRC32
 ```
 
-### マルチパートアップロードのチェックサム
+<a id="multipart-upload-checksum"></a>
+### マルチパートアップロードのチェックサム { #multipart-upload-checksum }
 
 マルチパートアップロード時に`CreateMultipartUpload`でアルゴリズムとチェックサムタイプを指定し、その後`UploadPart`で同じアルゴリズムを使用する必要があります。
 
 !!! danger "注意"
     `CreateMultipartUpload`で指定したアルゴリズムと`UploadPart`で指定したアルゴリズムが異なる場合、400エラーが返されます。
 
-### ペイロード署名方式
+<a id="payload-signing-method"></a>
+### ペイロード署名方式 { #payload-signing-method }
 
 `x-amz-content-sha256`ヘッダでペイロード署名方式を指定できます。
 Data Lake Storageでサポートする方式は次のとおりです。
@@ -118,15 +134,18 @@ Data Lake Storageでサポートする方式は次のとおりです。
 !!! tip "ポイント"
     AWS CLI v2.23.0以上及び最新のAWS SDKを使用する場合、チェックサムが含まれたアップロードリクエストはデフォルトで`STREAMING-UNSIGNED-PAYLOAD-TRAILER`方式で送信されます。
 
-## AWS コマンドラインインターフェース(CLI)
+<a id="aws-command-line-interface-cli"></a>
+## AWS コマンドラインインターフェース(CLI) { #aws-command-line-interface-cli }
 
 S3互換APIを利用して、AWSコマンドラインインターフェースでNHN Cloud Data Lake Storageサービスを使用できます。
 
-### インストール
+<a id="installation"></a>
+### インストール { #installation }
 
 [Installing past releases of the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html) のドキュメントを参照し、AWSコマンドラインインターフェースをインストールします。
 
-### 設定
+<a id="configuration"></a>
+### 設定 { #configuration }
 
 AWSコマンドラインインターフェースを使用するには、まずS3 API認証情報と環境を設定する必要があります。
 
@@ -144,7 +163,8 @@ Default output format [None]:
 | Secret Key | S3 API認証情報のSecret Key |
 | Region Name | KR3 - 韓国(光州)リージョン |
 
-### S3 コマンドの使用方法
+<a id="how-to-use-the-s3-commands"></a>
+### S3 コマンドの使用方法 { #how-to-use-the-s3-commands }
 
 ```sh
 $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
@@ -160,19 +180,22 @@ $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
     AWSコマンドラインインターフェースはAWSを使用するために提供されるツールであるため、AWSのドメインを使用するように設定されています。したがって、NHN Cloud Data Lake Storageサービスを使用するには、必ずコマンドごとにエンドポイントを指定する必要があります。
     AWSコマンドラインインターフェースのコマンドは、[AWS CLI での高レベル (s3) コマンドの使用](https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-services-s3-commands.html)のドキュメントをご参照ください。
 
-## AWS SDK
+<a id="aws-sdk"></a>
+## AWS SDK { #aws-sdk }
 
 AWSは様々なプログラミング言語向けのSDKを提供しています。S3互換APIを利用して、AWS SDKでNHN Cloud Data Lake Storageサービスを使用できます。
 
 !!! tip 「ポイント」
     詳細は[AWS SDK](https://builder.aws.com/build/tools)のドキュメントをご参照ください。
 
-### Java SDK
+<a id="java-sdk"></a>
+### Java SDK { #java-sdk }
 
 !!! tip 「ポイント」
     詳細は[AWS SDK for Java](https://docs.aws.amazon.com/ja_jp/sdk-for-java/)のドキュメントをご参照ください。
 
-### Boto3 - Python SDK
+<a id="boto3---python-sdk"></a>
+### Boto3 - Python SDK { #boto3---python-sdk }
 
 !!! tip 「ポイント」
     詳細は[AWS SDK for Python(Boto3)](https://docs.aws.amazon.com/ja_jp/pythonsdk/)のドキュメントをご参照ください。

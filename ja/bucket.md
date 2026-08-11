@@ -1,12 +1,17 @@
-## Bucket
+<!-- pre-align:aligned sig=b6666f81ba17 -->
+
+<a id="bucket"></a>
+## Bucket { #bucket }
 **Data & Analytics > Data Lake Storage > Amazon S3互換APIガイド > Bucket**
 
 
-## CreateBucket
+<a id="createbucket"></a>
+## CreateBucket { #createbucket }
 
 バケットを作成します。Data Lake Storageサービスのバケット名はリージョン内で一意です。
 
-### リクエスト
+<a id="request"></a>
+### リクエスト { #request }
 
 ```http
 PUT /{bucket} HTTP/1.1
@@ -17,16 +22,19 @@ PUT /{bucket} HTTP/1.1
 </CreateBucketConfiguration>
 ```
 
+<a id="request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 
+<a id="request-body"></a>
 #### リクエストボディ
 
 | 名前 | タイプ | 必須 | 説明 |
@@ -34,7 +42,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | CreateBucketConfiguration | Object | Y | 作成するバケット情報 |
 | CreateBucketConfiguration.LocationConstraint | String | Conditional | リージョンコード。未入力時はエンドポイントに合ったリージョン情報を適用 |
 
-### レスポンス
+<a id="response"></a>
+### レスポンス { #response }
 
 ```http
 HTTP/1.1 200 OK
@@ -42,81 +51,96 @@ Location: "/{bucket}"
 ```
 
 
-## DeleteBucket
+<a id="deletebucket"></a>
+## DeleteBucket { #deletebucket }
 
 バケットを削除します。
 
-### リクエスト
+<a id="deletebucket-request"></a>
+### リクエスト { #deletebucket-request }
 
 ```http
 DELETE /{bucket} HTTP/1.1
 ```
 
+<a id="deletebucket-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="deletebucket-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 
-### レスポンス
+<a id="deletebucket-response"></a>
+### レスポンス { #deletebucket-response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## DeleteBucketPolicy
+<a id="deletebucketpolicy"></a>
+## DeleteBucketPolicy { #deletebucketpolicy }
 
 バケットに登録されたポリシー(Bucket Policy)を削除します。
 
-### リクエスト
+<a id="deletebucketpolicy-request"></a>
+### リクエスト { #deletebucketpolicy-request }
 
 ```http
 DELETE /{bucket}?policy HTTP/1.1
 ```
 
+<a id="deletebucketpolicy-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storageの[APIリクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="deletebucketpolicy-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 
-### レスポンス
+<a id="deletebucketpolicy-response"></a>
+### レスポンス { #deletebucketpolicy-response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## GetBucketAcl
+<a id="getbucketacl"></a>
+## GetBucketAcl { #getbucketacl }
 
 バケットのアクセス制御リスト(ACL)を照会します。
 
-### リクエスト
+<a id="getbucketacl-request"></a>
+### リクエスト { #getbucketacl-request }
 
 ```http
 GET /{bucket}?acl HTTP/1.1
 ```
 
+<a id="getbucketacl-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="getbucketacl-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 
-### レスポンス
+<a id="getbucketacl-response"></a>
+### レスポンス { #getbucketacl-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -140,6 +164,7 @@ HTTP/1.1 200 OK
 </AccessControlPolicy>
 ```
 
+<a id="getbucketacl-response-response-body"></a>
 #### レスポンス本文
 
 | 名前 | タイプ | 説明 |
@@ -157,27 +182,32 @@ HTTP/1.1 200 OK
 | AccessControlPolicy.AccessControlList.Grant.Permission | String | 付与された権限。`FULL_CONTROL`のみサポート |
 
 
-## GetBucketPolicy
+<a id="getbucketpolicy"></a>
+## GetBucketPolicy { #getbucketpolicy }
 
 バケットに登録されたポリシー(Bucket Policy)を照会します。ポリシードキュメントがJSON形式のレスポンス本文としてそのまま返されます。
 
-### リクエスト
+<a id="getbucketpolicy-request"></a>
+### リクエスト { #getbucketpolicy-request }
 
 ```http
 GET /{bucket}?policy HTTP/1.1
 ```
 
+<a id="getbucketpolicy-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storageの[APIリクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="getbucketpolicy-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 
-### レスポンス
+<a id="getbucketpolicy-response"></a>
+### レスポンス { #getbucketpolicy-response }
 
 登録されたポリシードキュメントがJSON本文として返されます。ポリシードキュメントの各フィールドに関する説明は、[PutBucketPolicy](#putbucketpolicy)をご参照ください。
 
@@ -203,20 +233,24 @@ Content-Type: application/json
     バケットにポリシーが登録されていない場合、`404 NoSuchBucketPolicy`エラーが返されます。
 
 
-## ListBuckets
+<a id="listbuckets"></a>
+## ListBuckets { #listbuckets }
 
 バケット一覧を照会します。
 
-### リクエスト
+<a id="listbuckets-request"></a>
+### リクエスト { #listbuckets-request }
 
 ```http
 GET /?max-buckets=20 HTTP/1.1
 ```
 
+<a id="listbuckets-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="listbuckets-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
@@ -225,7 +259,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | max-buckets | Parameter | Integer | N | 返却する最大バケット数 |
 | prefix | Parameter | String | N | バケット名フィルタリングのプレフィックス |
 
-### レスポンス
+<a id="listbuckets-response"></a>
+### レスポンス { #listbuckets-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -248,6 +283,7 @@ HTTP/1.1 200 OK
 </ListAllMyBucketsResult>
 ```
 
+<a id="listbuckets-response-response-body"></a>
 #### レスポンス本文
 
 | 名前 | タイプ | 説明 |
@@ -264,11 +300,13 @@ HTTP/1.1 200 OK
 | ListAllMyBucketsResult.Prefix | String | リクエストに使用されたプレフィックスフィルタ |
 
 
-## PutBucketPolicy
+<a id="putbucketpolicy"></a>
+## PutBucketPolicy { #putbucketpolicy }
 
 バケットにポリシー(Bucket Policy)を登録するか、既存のポリシーを置き換えます。バケットポリシーはJSON形式のポリシードキュメントであり、どの主体(Principal)がどのリソース(Resource)のどのアクション(Action)を許可または拒否するかを定義します。
 
-### リクエスト
+<a id="putbucketpolicy-request"></a>
+### リクエスト { #putbucketpolicy-request }
 
 ```http
 PUT /{bucket}?policy HTTP/1.1
@@ -287,16 +325,19 @@ PUT /{bucket}?policy HTTP/1.1
 }
 ```
 
+<a id="putbucketpolicy-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storageの[APIリクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="putbucketpolicy-request-request-parameters"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 
+<a id="putbucketpolicy-request-request-body"></a>
 #### リクエスト本文
 
 リクエスト本文は、ポリシードキュメント全体を含んだJSONです。
@@ -316,6 +357,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | Statement.NotResource | Array | N | 適用から除外するリソース一覧。`Resource`と一緒には使用できません。 |
 | Statement.Condition | Object | N | ポリシーステートメントが適用される条件 |
 
+<a id="putbucketpolicy-request-principal"></a>
 #### Principal
 
 権限を適用する主体を指定します。
@@ -329,6 +371,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 !!! tip "ポイント"
     `Principal`には単一の文字列または文字列の配列をいずれも使用できます。
 
+<a id="putbucketpolicy-request-action"></a>
 #### Action
 
 ポリシーで使用できるアクションは次のとおりです。
@@ -349,6 +392,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 !!! danger "注意"
     バケットの作成/削除、バケットポリシー及びACL管理など、バケット管理(Bucket Administration)アクションはバケットポリシーで付与できません。該当する権限はプロジェクト/バケット所有者ロールでのみ実行できます。
 
+<a id="putbucketpolicy-request-resource"></a>
 #### Resource
 
 リソースはARNではなくバケット内のパス形式で指定します。
@@ -362,6 +406,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 !!! danger "注意"
     リソースは`arn:`で始まるか、`/`で始まることはできません。
 
+<a id="putbucketpolicy-request-request-example"></a>
 #### リクエスト例
 
 ```json
@@ -379,7 +424,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 }
 ```
 
-### レスポンス
+<a id="putbucketpolicy-response"></a>
+### レスポンス { #putbucketpolicy-response }
 
 ```http
 HTTP/1.1 204 No Content

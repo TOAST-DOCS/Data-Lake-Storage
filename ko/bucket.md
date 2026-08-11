@@ -1,12 +1,17 @@
-## Bucket
+<!-- pre-align:aligned sig=b6666f81ba17 -->
+
+<a id="bucket"></a>
+## Bucket { #bucket }
 **Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Bucket**
 
 
-## CreateBucket
+<a id="createbucket"></a>
+## CreateBucket { #createbucket }
 
 버킷을 생성합니다. Data Lake Storage 서비스의 버킷 이름은 리전에서 고유합니다.
 
-### 요청
+<a id="request"></a>
+### 요청 { #request }
 
 ```http
 PUT /{bucket} HTTP/1.1
@@ -17,16 +22,19 @@ PUT /{bucket} HTTP/1.1
 </CreateBucketConfiguration>
 ```
 
+<a id="request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="request-parameter"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
 
+<a id="request-body"></a>
 #### 요청 본문
 
 | 이름 | 타입 | 필수 | 설명 |
@@ -34,7 +42,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | CreateBucketConfiguration | Object | Y | 생성할 버킷 정보 |
 | CreateBucketConfiguration.LocationConstraint | String | Conditional | 리전 코드, 미입력 시 엔드포인트에 맞는 리전 정보 적용 |
 
-### 응답
+<a id="response"></a>
+### 응답 { #response }
 
 ```http
 HTTP/1.1 200 OK
@@ -42,81 +51,96 @@ Location: "/{bucket}"
 ```
 
 
-## DeleteBucket
+<a id="deletebucket"></a>
+## DeleteBucket { #deletebucket }
 
 버킷을 삭제합니다.
 
-### 요청
+<a id="deletebucket-request"></a>
+### 요청 { #deletebucket-request }
 
 ```http
 DELETE /{bucket} HTTP/1.1
 ```
 
+<a id="deletebucket-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="deletebucket-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
 
-### 응답
+<a id="deletebucket-response"></a>
+### 응답 { #deletebucket-response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## DeleteBucketPolicy
+<a id="deletebucketpolicy"></a>
+## DeleteBucketPolicy { #deletebucketpolicy }
 
 버킷에 등록된 정책(Bucket Policy)을 삭제합니다.
 
-### 요청
+<a id="deletebucketpolicy-request"></a>
+### 요청 { #deletebucketpolicy-request }
 
 ```http
 DELETE /{bucket}?policy HTTP/1.1
 ```
 
+<a id="deletebucketpolicy-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="deletebucketpolicy-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
 
-### 응답
+<a id="deletebucketpolicy-response"></a>
+### 응답 { #deletebucketpolicy-response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## GetBucketAcl
+<a id="getbucketacl"></a>
+## GetBucketAcl { #getbucketacl }
 
 버킷의 액세스 제어 목록(ACL)을 조회합니다.
 
-### 요청
+<a id="getbucketacl-request"></a>
+### 요청 { #getbucketacl-request }
 
 ```http
 GET /{bucket}?acl HTTP/1.1
 ```
 
+<a id="getbucketacl-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="getbucketacl-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
 
-### 응답
+<a id="getbucketacl-response"></a>
+### 응답 { #getbucketacl-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -140,6 +164,7 @@ HTTP/1.1 200 OK
 </AccessControlPolicy>
 ```
 
+<a id="getbucketacl-response-response-body"></a>
 #### 응답 본문
 
 | 이름 | 타입 | 설명 |
@@ -157,27 +182,32 @@ HTTP/1.1 200 OK
 | AccessControlPolicy.AccessControlList.Grant.Permission | String | 부여된 권한. `FULL_CONTROL`만 지원 |
 
 
-## GetBucketPolicy
+<a id="getbucketpolicy"></a>
+## GetBucketPolicy { #getbucketpolicy }
 
 버킷에 등록된 정책(Bucket Policy)을 조회합니다. 정책 문서가 JSON 형식의 응답 본문으로 그대로 반환됩니다.
 
-### 요청
+<a id="getbucketpolicy-request"></a>
+### 요청 { #getbucketpolicy-request }
 
 ```http
 GET /{bucket}?policy HTTP/1.1
 ```
 
+<a id="getbucketpolicy-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="getbucketpolicy-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
 
-### 응답
+<a id="getbucketpolicy-response"></a>
+### 응답 { #getbucketpolicy-response }
 
 등록된 정책 문서가 JSON 본문으로 반환됩니다. 정책 문서의 각 필드에 대한 설명은 [PutBucketPolicy](#putbucketpolicy)를 참고하세요.
 
@@ -203,20 +233,24 @@ Content-Type: application/json
     버킷에 정책이 등록되어 있지 않으면 `404 NoSuchBucketPolicy` 오류가 반환됩니다.
 
 
-## ListBuckets
+<a id="listbuckets"></a>
+## ListBuckets { #listbuckets }
 
 버킷 목록을 조회합니다.
 
-### 요청
+<a id="listbuckets-request"></a>
+### 요청 { #listbuckets-request }
 
 ```http
 GET /?max-buckets=20 HTTP/1.1
 ```
 
+<a id="listbuckets-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="listbuckets-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
@@ -225,7 +259,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | max-buckets | Parameter | Integer | N | 반환할 최대 버킷 수 |
 | prefix | Parameter | String | N | 버킷 이름 필터링 접두어 |
 
-### 응답
+<a id="listbuckets-response"></a>
+### 응답 { #listbuckets-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -248,6 +283,7 @@ HTTP/1.1 200 OK
 </ListAllMyBucketsResult>
 ```
 
+<a id="listbuckets-response-response-body"></a>
 #### 응답 본문
 
 | 이름 | 타입 | 설명 |
@@ -264,11 +300,13 @@ HTTP/1.1 200 OK
 | ListAllMyBucketsResult.Prefix | String | 요청에 사용된 접두어 필터 |
 
 
-## PutBucketPolicy
+<a id="putbucketpolicy"></a>
+## PutBucketPolicy { #putbucketpolicy }
 
 버킷에 정책(Bucket Policy)을 등록하거나 기존 정책을 교체합니다. 버킷 정책은 JSON 형식의 정책 문서로, 어떤 주체(Principal)가 어떤 리소스(Resource)의 어떤 작업(Action)을 허용 또는 거부할지 정의합니다.
 
-### 요청
+<a id="putbucketpolicy-request"></a>
+### 요청 { #putbucketpolicy-request }
 
 ```http
 PUT /{bucket}?policy HTTP/1.1
@@ -287,16 +325,19 @@ PUT /{bucket}?policy HTTP/1.1
 }
 ```
 
+<a id="putbucketpolicy-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="putbucketpolicy-request-request-parameters"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | 버킷 이름 |
 
+<a id="putbucketpolicy-request-request-body"></a>
 #### 요청 본문
 
 요청 본문은 정책 문서 전체를 담은 JSON입니다.
@@ -316,6 +357,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | Statement.NotResource | Array | N | 적용에서 제외할 리소스 목록. `Resource`와 함께 사용할 수 없습니다. |
 | Statement.Condition | Object | N | 정책 구문이 적용되는 조건 |
 
+<a id="putbucketpolicy-request-principal"></a>
 #### Principal
 
 권한을 적용할 주체를 지정합니다.
@@ -329,6 +371,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 !!! tip "알아두기"
     `Principal`에는 단일 문자열 또는 문자열 배열을 모두 사용할 수 있습니다.
 
+<a id="putbucketpolicy-request-action"></a>
 #### Action
 
 정책에서 사용할 수 있는 작업은 다음과 같습니다.
@@ -349,6 +392,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 !!! danger "주의"
     버킷 생성/삭제, 버킷 정책 및 ACL 관리 등 버킷 관리(Bucket Administration) 작업은 버킷 정책으로 부여할 수 없습니다. 해당 권한은 프로젝트/버킷 소유자 역할로만 수행할 수 있습니다.
 
+<a id="putbucketpolicy-request-resource"></a>
 #### Resource
 
 리소스는 ARN이 아닌 버킷 내 경로 형식으로 지정합니다.
@@ -362,6 +406,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 !!! danger "주의"
     리소스는 `arn:`으로 시작하거나 `/`로 시작할 수 없습니다.
 
+<a id="putbucketpolicy-request-request-example"></a>
 #### 요청 예시
 
 ```json
@@ -379,7 +424,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 }
 ```
 
-### 응답
+<a id="putbucketpolicy-response"></a>
+### 응답 { #putbucketpolicy-response }
 
 ```http
 HTTP/1.1 204 No Content

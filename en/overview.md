@@ -1,4 +1,7 @@
-## Data Lake Storage Overview
+<!-- pre-align:aligned sig=bfea2e9c91d3 -->
+
+<a id="data-lake-storage-overview"></a>
+## Data Lake Storage Overview { #data-lake-storage-overview }
 
 **Data & Analytics > Data Lake Storage > Overview**
 
@@ -12,7 +15,8 @@ Built on high compatibility with the AWS S3 API, you can use the SDKs, CLIs, and
     If you disable the service, all data stored in the storage will be deleted and cannot be recovered.
 
 
-## Main features
+<a id="main-features"></a>
+## Main features { #main-features }
 * Flexible scaling
     * Supports horizontal scaling so you can store data without worrying about storage capacity.
 * Storage class
@@ -20,10 +24,12 @@ Built on high compatibility with the AWS S3 API, you can use the SDKs, CLIs, and
 * AWS S3 compatible API
     * Provides high-level compatibility with AWS S3 API, allowing you to use existing S3 SDKs, CLIs, and third-party tools as-is.
 
-## How it works
+<a id="how-it-works"></a>
+## How it works { #how-it-works }
 <img src="https://static.toastoven.net/prod_data_lake_storage/15_data&analytics_data-lake-storage_img_en.png" alt="Data Lake Storage 동작 방식"/>
 
-## Glossary
+<a id="glossary"></a>
+## Glossary { #glossary }
 | Terms | Description |
 | --- | --- |
 | Object | A file-based storage element consisting of data and metadata |

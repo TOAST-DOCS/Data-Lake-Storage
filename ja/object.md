@@ -1,21 +1,28 @@
-## Object
+<!-- pre-align:aligned sig=6cfc8590d826 -->
+
+<a id="object"></a>
+## Object { #object }
 **Data & Analytics > Data Lake Storage > Amazon S3互換APIガイド > Object**
 
 
-## DeleteObject
+<a id="deleteobject"></a>
+## DeleteObject { #deleteobject }
 
 バケットに保存されたオブジェクトを削除します。
 
-### リクエスト
+<a id="request"></a>
+### リクエスト { #request }
 
 ```http
 DELETE /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
@@ -23,18 +30,21 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | bucket | Path | String | Y | バケット名 |
 | objectKey | Path | String | Y | オブジェクト名 |
 
-### レスポンス
+<a id="response"></a>
+### レスポンス { #response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## DeleteObjects
+<a id="deleteobjects"></a>
+## DeleteObjects { #deleteobjects }
 
 1つのリクエストで複数のオブジェクトを削除します。1回のリクエストで最大1,000個のオブジェクトキーを指定できます。
 
-### リクエスト
+<a id="deleteobjects-request"></a>
+### リクエスト { #deleteobjects-request }
 
 ```http
 POST /{bucket}?delete HTTP/1.1
@@ -52,10 +62,12 @@ POST /{bucket}?delete HTTP/1.1
 </Delete>
 ```
 
+<a id="deleteobjects-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="deleteobjects-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
@@ -63,6 +75,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | bucket | Path | String | Y | バケット名 |
 | Content-MD5 | Header | String | Y | リクエスト本文のMD5ハッシュ値(送信中の改ざん検証用) |
 
+<a id="deleteobjects-request-request-body"></a>
 #### リクエスト本文
 
 | 名前 | タイプ | 必須 | 説明 |
@@ -75,7 +88,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | Delete.Object.Size | Long | N | オブジェクトのサイズ(バイト)。指定した場合、該当サイズと一致するオブジェクトのみ削除します。 |
 | Delete.Quiet | Boolean | N | `true`に設定するとQuietモードで動作し、失敗した項目のみレスポンスに含まれます。デフォルト値はVerboseモード(全ての結果を返す)です。 |
 
-### レスポンス
+<a id="deleteobjects-response"></a>
+### レスポンス { #deleteobjects-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -95,6 +109,7 @@ HTTP/1.1 200 OK
 </DeleteResult>
 ```
 
+<a id="deleteobjects-response-response-body"></a>
 #### レスポンス本文
 
 | 名前 | タイプ | 説明 |
@@ -108,20 +123,24 @@ HTTP/1.1 200 OK
 | DeleteResult.Error.Message | String | エラーメッセージ |
 
 
-## GetObject
+<a id="getobject"></a>
+## GetObject { #getobject }
 
 バケットに保存されたオブジェクトを照会します。
 
-### リクエスト
+<a id="getobject-request"></a>
+### リクエスト { #getobject-request }
 
 ```http
 GET /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="getobject-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="getobject-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
@@ -131,7 +150,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | Range | Header | String | N | 部分ダウンロードの範囲 |
 | x-amz-storage-class | Header | String | N | ストレージクラス |
 
-### レスポンス
+<a id="getobject-response"></a>
+### レスポンス { #getobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -151,6 +171,7 @@ x-amz-checksum-type: ChecksumType
 data
 ```
 
+<a id="getobject-response-response-header"></a>
 #### レスポンスヘッダ
 
 | フィールド                 | 説明                                                                         |
@@ -169,20 +190,24 @@ data
 | x-amz-checksum-type      | マルチパートオブジェクトのパート別チェックサムを結合してオブジェクトレベルのチェックサムを生成した方式。有効な値: `COMPOSITE \| FULL_OBJECT` |
 
 
-## HeadObject
+<a id="headobject"></a>
+## HeadObject { #headobject }
 
 バケットに保存されたオブジェクトのメタデータを照会します。
 
-### リクエスト
+<a id="headobject-request"></a>
+### リクエスト { #headobject-request }
 
 ```http
 HEAD /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="headobject-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="headobject-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
@@ -191,7 +216,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | objectKey | Path | String | Y | オブジェクト名 |
 | x-amz-storage-class | Header | String | N | ストレージクラス |
 
-### レスポンス
+<a id="headobject-response"></a>
+### レスポンス { #headobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -214,6 +240,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="headobject-response-response-header"></a>
 #### レスポンスヘッダ
 
 | フィールド                 | 説明                                                                         |
@@ -235,20 +262,24 @@ x-amz-checksum-type: ChecksumType
 | x-amz-checksum-type      | マルチパートオブジェクトのパート別チェックサムを結合してオブジェクトレベルのチェックサムを生成した方式。有効な値: `COMPOSITE \| FULL_OBJECT` |
 
 
-## ListObjectsV2
+<a id="listobjectsv2"></a>
+## ListObjectsV2 { #listobjectsv2 }
 
 バケットに保存されたオブジェクト一覧を照会します。
 
-### リクエスト
+<a id="listobjectsv2-request"></a>
+### リクエスト { #listobjectsv2-request }
 
 ```http
 GET /{bucket}?list-type=2&continuation-token={continuationToken}&delimiter={delimiter}&encoding-type={encodingType}&fetch-owner={fetchOwner}&max-keys={maxKeys}&prefix={prefix}&start-after={startAfter} HTTP/1.1
 ```
 
+<a id="listobjectsv2-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="listobjectsv2-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前                  | 区分        | タイプ     | 必須 | 説明                     |
@@ -264,7 +295,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | prefix              | Parameter | String  | N  | オブジェクト名のプレフィックス        |
 | start-after         | Parameter | String  | N  | 照会開始の基準                |
 
-### レスポンス
+<a id="listobjectsv2-response"></a>
+### レスポンス { #listobjectsv2-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -300,6 +332,7 @@ HTTP/1.1 200 OK
 </ListBucketResult>
 ```
 
+<a id="listobjectsv2-response-response-body"></a>
 #### レスポンス本文
 
 | 名前                                          | タイプ       | 説明                               |
@@ -327,11 +360,13 @@ HTTP/1.1 200 OK
 | ListBucketResult.CommonPrefixes.Prefix      | String    | delimiter基準でグループ化されたパス           |
 
 
-## PutObject
+<a id="putobject"></a>
+## PutObject { #putobject }
 
 バケットにオブジェクトを保存します。
 
-### リクエスト
+<a id="putobject-request"></a>
+### リクエスト { #putobject-request }
 
 ```http
 PUT /{bucket}/{objectKey} HTTP/1.1
@@ -352,6 +387,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 Body
 ```
 
+<a id="putobject-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
@@ -372,6 +408,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | x-amz-checksum-xxhash128     | N     | オブジェクトの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値                                                                                                           |
 | x-amz-sdk-checksum-algorithm | N     | SDKを使用してオブジェクトのチェックサムを生成する際に使用したアルゴリズムを指定。このヘッダを送信する場合、必ず`x-amz-checksum-algorithm`または`x-amz-trailer`ヘッダを一緒に送信する必要があり、そうでない場合はHTTP 400エラーが返される |
 
+<a id="putobject-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明                |
@@ -383,13 +420,15 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | x-amz-storage-class | Header | String | N | ストレージクラス          |
 | x-amz-meta-\* | Header | String | N | ユーザー定義メタデータ       |
 
+<a id="putobject-request-request-body"></a>
 #### リクエストボディ
 
 | 名前 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- |
 | Body | Binary | Y | オブジェクトデータ |
 
-### レスポンス
+<a id="putobject-response"></a>
+### レスポンス { #putobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -407,6 +446,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="putobject-response-response-header"></a>
 #### レスポンスヘッダ
 
 | フィールド                 | 説明                                                                                                                                                                                                             |
