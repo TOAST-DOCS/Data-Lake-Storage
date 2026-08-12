@@ -1,6 +1,7 @@
 <!-- pre-align:aligned sig=cd25e9b09cb4 -->
 
-# Data Lake Storage Release Notes
+<a id="data-lake-storage-release-notes"></a>
+## Data Lake Storage Release Notes { #data-lake-storage-release-notes }
 
 <a id="july-28-2026"></a>
 ## July 28, 2026 { #july-28-2026 }

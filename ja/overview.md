@@ -26,7 +26,7 @@ AWS S3 APIとの高い互換性をベースに、既存の分析エコシステ�
 
 <a id="how-it-works"></a>
 ## 動作方式 { #how-it-works }
-<img src="https://static.toastoven.net/prod_data_lake_storage/15_data&analytics_data-lake-storage_img_jp.png" alt="Data Lake Storageの動作方式"/>
+![Data Lake Storageの動作方式](../static/images/15_data&analytics_data-lake-storage_img_jp.png)
 
 <a id="glossary"></a>
 ## 用語集 { #glossary }
