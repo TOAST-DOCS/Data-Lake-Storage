@@ -1,4 +1,7 @@
-## Data Lake Storage 개요
+<!-- pre-align:aligned sig=bfea2e9c91d3 -->
+
+<a id="data-lake-storage-overview"></a>
+## Data Lake Storage 개요 { #data-lake-storage-overview }
 
 **Data & Analytics > Data Lake Storage > 개요**
 
@@ -12,7 +15,8 @@ AWS S3 API와 높은 호환성을 바탕으로 기존 분석 생태계에서 사
     서비스를 비활성화하면 스토리지에 저장된 데이터는 모두 삭제되며, 복구할 수 없습니다.
 
 
-## 주요 특징
+<a id="main-features"></a>
+## 주요 특징 { #main-features }
 * 유연한 확장성
     * 저장 용량 걱정 없이 데이터를 보관할 수 있도록 수평적 확장 구조를 갖추고 있습니다.
 * 스토리지 클래스
@@ -20,10 +24,12 @@ AWS S3 API와 높은 호환성을 바탕으로 기존 분석 생태계에서 사
 * AWS S3 호환 API
     * AWS S3 API와 높은 수준의 호환성을 제공하여 기존에 사용하던 S3 SDK, CLI, 서드 파티 도구를 그대로 활용할 수 있습니다.
 
-## 동작 방식
+<a id="how-it-works"></a>
+## 동작 방식 { #how-it-works }
 <img src="https://static.toastoven.net/prod_data_lake_storage/15_data&analytics_data-lake-storage_img_kr.png" alt="Data Lake Storage 동작 방식"/>
 
-## 용어 정리
+<a id="glossary"></a>
+## 용어 정리 { #glossary }
 | 용어 | 설명 |
 | --- | --- |
 | 객체 | 데이터와 메타데이터로 구성된 파일 단위의 저장 요소 |

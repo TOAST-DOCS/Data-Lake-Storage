@@ -1,21 +1,28 @@
-## Object
-**Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Object**
+<!-- pre-align:aligned sig=6cfc8590d826 -->
+
+<a id="object"></a>
+## Object { #object }
+**Data & Analytics > Data Lake Storage > Amazon S3-Compatible API Guide > Object**
 
 
-## DeleteObject
+<a id="deleteobject"></a>
+## DeleteObject { #deleteobject }
 
 Deletes objects stored in the bucket.
 
-### Request
+<a id="request"></a>
+### Request { #request }
 
 ```http
 DELETE /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -23,18 +30,21 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | bucket | Path | String | Y | Bucket name |
 | objectKey | Path | String | Y | Object name |
 
-### Response
+<a id="response"></a>
+### Response { #response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## DeleteObjects
+<a id="deleteobjects"></a>
+## DeleteObjects { #deleteobjects }
 
 Deletes multiple objects in a single request. Up to 1,000 object keys can be specified per request.
 
-### Request
+<a id="deleteobjects-request"></a>
+### Request { #deleteobjects-request }
 
 ```http
 POST /{bucket}?delete HTTP/1.1
@@ -52,10 +62,12 @@ POST /{bucket}?delete HTTP/1.1
 </Delete>
 ```
 
+<a id="deleteobjects-request-request-header"></a>
 #### Request Header
 
 For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="deleteobjects-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | In | Type | Required | Description |
@@ -63,6 +75,7 @@ For header information commonly used in Data Lake Storage APIs, see the Data Lak
 | bucket | Path | String | Y | Bucket name |
 | Content-MD5 | Header | String | Y | MD5 hash of the request body (used to verify integrity during transmission) |
 
+<a id="deleteobjects-request-request-body"></a>
 #### Request Body
 
 | Name | Type | Required | Description |
@@ -75,7 +88,8 @@ For header information commonly used in Data Lake Storage APIs, see the Data Lak
 | Delete.Object.Size | Long | N | Size of the object (in bytes). If specified, only objects with a matching size are deleted. |
 | Delete.Quiet | Boolean | N | When set to `true`, operates in Quiet mode, and only failed items are included in the response. The default is Verbose mode (returns all results). |
 
-### Response
+<a id="deleteobjects-response"></a>
+### Response { #deleteobjects-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -95,6 +109,7 @@ HTTP/1.1 200 OK
 </DeleteResult>
 ```
 
+<a id="deleteobjects-response-response-body"></a>
 #### Response Body
 
 | Name | Type | Description |
@@ -108,20 +123,24 @@ HTTP/1.1 200 OK
 | DeleteResult.Error.Message | String | Error message |
 
 
-## GetObject
+<a id="getobject"></a>
+## GetObject { #getobject }
 
 Retrieves an object stored in a bucket.
 
-### Request
+<a id="getobject-request"></a>
+### Request { #getobject-request }
 
 ```http
 GET /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="getobject-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="getobject-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -131,7 +150,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | Range | Header | String | N | Partial download range |
 | x-amz-storage-class | Header | String | N | Storage class |
 
-### Response
+<a id="getobject-response"></a>
+### Response { #getobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -151,38 +171,43 @@ x-amz-checksum-type: ChecksumType
 data
 ```
 
+<a id="getobject-response-response-header"></a>
 #### Response Header
 
-| 필드                       | 설명                                                                              |
+| Field | Description |
 |--------------------------|---------------------------------------------------------------------------------|
-| ETag                     | 특정 버전의 리소스에 대해 서버가 할당하는 고유 식별자                                                  |
-| x-amz-checksum-crc32     | 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                        |
-| x-amz-checksum-crc32c    | 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                       |
-| x-amz-checksum-crc64nvme | 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                    |
-| x-amz-checksum-sha1      | 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                      |
-| x-amz-checksum-sha256    | 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                    |
-| x-amz-checksum-sha512    | 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                    |
-| x-amz-checksum-md5       | 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                       |
-| x-amz-checksum-xxhash64  | 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                     |
-| x-amz-checksum-xxhash3   | 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                      |
-| x-amz-checksum-xxhash128 | 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                   |
-| x-amz-checksum-type      | 멀티파트 객체의 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성한 방식. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
+| ETag | Unique identifier assigned by the server for a specific version of the resource |
+| x-amz-checksum-crc32 | Base64-encoded value of the object's 32-bit `CRC32` checksum |
+| x-amz-checksum-crc32c | Base64-encoded value of the object's 32-bit `CRC32C` checksum |
+| x-amz-checksum-crc64nvme | Base64-encoded value of the object's 64-bit `CRC64NVME` checksum |
+| x-amz-checksum-sha1 | Base64-encoded value of the object's 160-bit `SHA1` digest |
+| x-amz-checksum-sha256 | Base64-encoded value of the object's 256-bit `SHA256` digest |
+| x-amz-checksum-sha512 | Base64-encoded value of the object's 512-bit `SHA512` digest |
+| x-amz-checksum-md5 | Base64-encoded value of the object's 128-bit `MD5` digest |
+| x-amz-checksum-xxhash64 | Base64-encoded value of the object's 64-bit `XXHASH64` checksum |
+| x-amz-checksum-xxhash3 | Base64-encoded value of the object's 64-bit `XXHASH3` checksum |
+| x-amz-checksum-xxhash128 | Base64-encoded value of the object's 128-bit `XXHASH128` checksum |
+| x-amz-checksum-type | Method used to combine part-level checksums of a multipart object to generate an object-level checksum. Valid values: `COMPOSITE \| FULL_OBJECT` |
 
 
-## HeadObject
+<a id="headobject"></a>
+## HeadObject { #headobject }
 
 Retrieves the metadata of an object stored in a bucket.
 
-### Request
+<a id="headobject-request"></a>
+### Request { #headobject-request }
 
 ```http
 HEAD /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="headobject-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="headobject-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -191,7 +216,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | objectKey | Path | String | Y | Object name |
 | x-amz-storage-class | Header | String | N | Storage class |
 
-### Response
+<a id="headobject-response"></a>
+### Response { #headobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -214,41 +240,46 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="headobject-response-response-header"></a>
 #### Response Header
 
-| 필드                       | 설명                                                                           |
+| Field | Description |
 |--------------------------|------------------------------------------------------------------------------|
-| Content-Length           | 응답 본문의 크기(바이트)                                                               |
-| Content-Type             | 객체 데이터의 형식을 나타내는 표준 MIME 타입                                                  |
-| ETag                     | 특정 버전의 리소스에 서버가 할당하는 고유 식별자                                                  |
-| Last-Modified            | 객체가 마지막으로 수정된 날짜 및 시간                                                        |
-| x-amz-checksum-crc32     | 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                       |
-| x-amz-checksum-crc32c    | 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                      |
-| x-amz-checksum-crc64nvme | 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                   |
-| x-amz-checksum-sha1      | 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                     |
-| x-amz-checksum-sha256    | 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                   |
-| x-amz-checksum-sha512    | 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                   |
-| x-amz-checksum-md5       | 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                      |
-| x-amz-checksum-xxhash64  | 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                    |
-| x-amz-checksum-xxhash3   | 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                     |
-| x-amz-checksum-xxhash128 | 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                  |
-| x-amz-checksum-type      | 멀티파트 객체의 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성한 방식. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
+| Content-Length | Size of the response body (in bytes) |
+| Content-Type | Standard MIME type indicating the format of the object data |
+| ETag | Unique identifier assigned by the server for a specific version of the resource |
+| Last-Modified | Date and time when the object was last modified |
+| x-amz-checksum-crc32 | Base64-encoded value of the object's 32-bit `CRC32` checksum |
+| x-amz-checksum-crc32c | Base64-encoded value of the object's 32-bit `CRC32C` checksum |
+| x-amz-checksum-crc64nvme | Base64-encoded value of the object's 64-bit `CRC64NVME` checksum |
+| x-amz-checksum-sha1 | Base64-encoded value of the object's 160-bit `SHA1` digest |
+| x-amz-checksum-sha256 | Base64-encoded value of the object's 256-bit `SHA256` digest |
+| x-amz-checksum-sha512 | Base64-encoded value of the object's 512-bit `SHA512` digest |
+| x-amz-checksum-md5 | Base64-encoded value of the object's 128-bit `MD5` digest |
+| x-amz-checksum-xxhash64 | Base64-encoded value of the object's 64-bit `XXHASH64` checksum |
+| x-amz-checksum-xxhash3 | Base64-encoded value of the object's 64-bit `XXHASH3` checksum |
+| x-amz-checksum-xxhash128 | Base64-encoded value of the object's 128-bit `XXHASH128` checksum |
+| x-amz-checksum-type | Method used to combine part-level checksums of a multipart object to generate an object-level checksum. Valid values: `COMPOSITE \| FULL_OBJECT` |
 
 
-## ListObjectsV2
+<a id="listobjectsv2"></a>
+## ListObjectsV2 { #listobjectsv2 }
 
 Retrieves an object list stored in a bucket.
 
-### Request
+<a id="listobjectsv2-request"></a>
+### Request { #listobjectsv2-request }
 
 ```http
 GET /{bucket}?list-type=2&continuation-token={continuationToken}&delimiter={delimiter}&encoding-type={encodingType}&fetch-owner={fetchOwner}&max-keys={maxKeys}&prefix={prefix}&start-after={startAfter} HTTP/1.1
 ```
 
+<a id="listobjectsv2-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="listobjectsv2-request-request-parameter"></a>
 #### Request Parameter
 
 | Name                | Category  | Type    | Required | Description                             |
@@ -264,7 +295,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | prefix              | Parameter | String  | N        | Object name prefix                      |
 | start-after         | Parameter | String  | N        | Starting point for retrieval            |
 
-### Response
+<a id="listobjectsv2-response"></a>
+### Response { #listobjectsv2-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -300,6 +332,7 @@ HTTP/1.1 200 OK
 </ListBucketResult>
 ```
 
+<a id="listobjectsv2-response-response-body"></a>
 #### Response Body
 
 | Name                                        | Type      | Description                                                    |
@@ -315,8 +348,8 @@ HTTP/1.1 200 OK
 | ListBucketResult.Delimiter                  | String    | Key group delimiter specified in the request                   |
 | ListBucketResult.IsTruncated                | Boolean   | Whether additional pages exist                                 |
 | ListBucketResult.Contents                   | Array     | Object list                                                    |
-| ListBucketResult.Contents.ChecksumAlgorithm | Array     | 객체의 체크섬 생성에 사용된 알고리즘                                         |
-| ListBucketResult.Contents.ChecksumType      | String    | 객체의 체크섬 값을 계산하는 방식                                           |
+| ListBucketResult.Contents.ChecksumAlgorithm | Array     | Algorithm used to generate the object's checksum |
+| ListBucketResult.Contents.ChecksumType      | String    | Method used to calculate the object's checksum value |
 | ListBucketResult.Contents.Key               | String    | Object key                                                     |
 | ListBucketResult.Contents.LastModified      | Timestamp | Last modified time (in ISO 8601 format)                        |
 | ListBucketResult.Contents.ETag              | String    | Unique identifier of the object                                |
@@ -327,11 +360,13 @@ HTTP/1.1 200 OK
 | ListBucketResult.CommonPrefixes.Prefix      | String    | Path grouped by delimiter                                      |
 
 
-## PutObject
+<a id="putobject"></a>
+## PutObject { #putobject }
 
 Stores an object in a bucket.
 
-### Request
+<a id="putobject-request"></a>
+### Request { #putobject-request }
 
 ```http
 PUT /{bucket}/{objectKey} HTTP/1.1
@@ -352,26 +387,28 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 Body
 ```
 
+<a id="putobject-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-| 필드                           | 필수 여부 | 설명                                                                                                                                                |
+| Field | Required | Description |
 |------------------------------|-------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| Content-Length               | N     | 요청 본문의 크기(바이트)입니다. 본문의 크기를 자동으로 결정할 수 없는 경우 사용.                                                                                                   |
-| Content-MD5                  | N     | RFC 1864에 따라 메시지 본문을 128비트 `MD5` 다이제스트로 계산한 후 Base64로 인코딩한 값. 데이터 무결성 검증을 위해 사용할 수 있으며, 필수는 아니지만 종단 간 무결성 검증 수단으로 사용하는 것을 권장                      |
-| x-amz-checksum-crc32         | N     | 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                                                                                          |
-| x-amz-checksum-crc32c        | N     | 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                                                                                         |
-| x-amz-checksum-crc64nvme     | N     | 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                                                                                      |
-| x-amz-checksum-sha1          | N     | 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                                                                                        |
-| x-amz-checksum-sha256        | N     | 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                                                                                      |
-| x-amz-checksum-sha512        | N     | 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                                                                                      |
-| x-amz-checksum-md5           | N     | 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                                                                                         |
-| x-amz-checksum-xxhash64      | N     | 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                                                                                       |
-| x-amz-checksum-xxhash3       | N     | 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                                                                                        |
-| x-amz-checksum-xxhash128     | N     | 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                                     |
-| x-amz-sdk-checksum-algorithm | N     | SDK를 사용하여 객체의 체크섬을 생성할 때 사용한 알고리즘을 지정. 이 헤더를 전송할 경우 반드시 `x-amz-checksum-algorithm` 또는 `x-amz-trailer` 헤더를 함께 전송해야 하며, 그렇지 않을 경우 HTTP 400 오류가 반환됨 |
+| Content-Length | N | Size of the request body (in bytes). Used when the size of the body cannot be determined automatically. |
+| Content-MD5 | N | Base64-encoded value of the message body calculated as a 128-bit `MD5` digest in accordance with RFC 1864. Can be used for data integrity verification. Although not required, it is recommended as a means of end-to-end integrity verification. |
+| x-amz-checksum-crc32 | N | Base64-encoded value of the object's 32-bit `CRC32` checksum |
+| x-amz-checksum-crc32c | N | Base64-encoded value of the object's 32-bit `CRC32C` checksum |
+| x-amz-checksum-crc64nvme | N | Base64-encoded value of the object's 64-bit `CRC64NVME` checksum |
+| x-amz-checksum-sha1 | N | Base64-encoded value of the object's 160-bit `SHA1` digest |
+| x-amz-checksum-sha256 | N | Base64-encoded value of the object's 256-bit `SHA256` digest |
+| x-amz-checksum-sha512 | N | Base64-encoded value of the object's 512-bit `SHA512` digest |
+| x-amz-checksum-md5 | N | Base64-encoded value of the object's 128-bit `MD5` digest |
+| x-amz-checksum-xxhash64 | N | Base64-encoded value of the object's 64-bit `XXHASH64` checksum |
+| x-amz-checksum-xxhash3 | N | Base64-encoded value of the object's 64-bit `XXHASH3` checksum |
+| x-amz-checksum-xxhash128 | N | Base64-encoded value of the object's 128-bit `XXHASH128` checksum |
+| x-amz-sdk-checksum-algorithm | N | Specifies the algorithm used to generate the object's checksum via the SDK. When this header is sent, the `x-amz-checksum-algorithm` or `x-amz-trailer` header must also be sent. Otherwise, an HTTP 400 error is returned. |
 
+<a id="putobject-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -383,13 +420,15 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header | String | N | Storage class |
 | x-amz-meta-* | Header | String | N | Custom metadata |
 
+<a id="putobject-request-request-body"></a>
 #### Request Body
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
 | Body | Binary | Y | Object data |
 
-### Response
+<a id="putobject-response"></a>
+### Response { #putobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -407,19 +446,20 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="putobject-response-response-header"></a>
 #### Response Header
 
-| 필드                       | 설명                                                                                                                             |
+| Field | Description |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| ETag                     | 업로드된 객체의 엔티티 태그. ETag가 객체의 MD5 다이제스트인 경우, 객체 업로드 시 계산한 MD5 값과 반환된 ETag를 비교하여 데이터 무결성을 확인 가능                                    |
-| x-amz-checksum-crc32     | 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                                                                         |
-| x-amz-checksum-crc32c    | 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                                                                        |
-| x-amz-checksum-crc64nvme | 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값. `CRC64NVME` 알고리즘으로 업로드되었거나, 체크섬 없이 업로드되어 기본 체크섬(`CRC64NVME`)이 자동으로 추가된 경우에 응답에 포함됩니다. |
-| x-amz-checksum-sha1      | 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                                                                       |
-| x-amz-checksum-sha256    | 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                                                                     |
-| x-amz-checksum-sha512    | 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                                                                     |
-| x-amz-checksum-md5       | 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                                                                        |
-| x-amz-checksum-xxhash64  | 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                                                                      |
-| x-amz-checksum-xxhash3   | 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                                                                       |
-| x-amz-checksum-xxhash128 | 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                    |
-| x-amz-checksum-type      | 멀티파트 객체의 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성한 방식. PutObject 업로드의 경우 항상 `FULL_OBJECT`로 반환됨                                             |
+| ETag | Entity tag of the uploaded object. If the ETag is the MD5 digest of the object, data integrity can be verified by comparing the MD5 value calculated during upload with the returned ETag. |
+| x-amz-checksum-crc32 | Base64-encoded value of the object's 32-bit `CRC32` checksum |
+| x-amz-checksum-crc32c | Base64-encoded value of the object's 32-bit `CRC32C` checksum |
+| x-amz-checksum-crc64nvme | Base64-encoded value of the object's 64-bit `CRC64NVME` checksum. Included in the response when the object was uploaded using the `CRC64NVME` algorithm, or when a default checksum (`CRC64NVME`) was automatically added to an object uploaded without a checksum. |
+| x-amz-checksum-sha1 | Base64-encoded value of the object's 160-bit `SHA1` digest |
+| x-amz-checksum-sha256 | Base64-encoded value of the object's 256-bit `SHA256` digest |
+| x-amz-checksum-sha512 | Base64-encoded value of the object's 512-bit `SHA512` digest |
+| x-amz-checksum-md5 | Base64-encoded value of the object's 128-bit `MD5` digest |
+| x-amz-checksum-xxhash64 | Base64-encoded value of the object's 64-bit `XXHASH64` checksum |
+| x-amz-checksum-xxhash3 | Base64-encoded value of the object's 64-bit `XXHASH3` checksum |
+| x-amz-checksum-xxhash128 | Base64-encoded value of the object's 128-bit `XXHASH128` checksum |
+| x-amz-checksum-type | Method used to combine part-level checksums of a multipart object to generate an object-level checksum. Always returned as `FULL_OBJECT` for PutObject uploads. |

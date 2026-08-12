@@ -1,21 +1,28 @@
-## Multipart
-**Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Multipart**
+<!-- pre-align:aligned sig=f760859bc93e -->
+
+<a id="multipart"></a>
+## Multipart { #multipart }
+**Data & Analytics > Data Lake Storage > Amazon S3-Compatible API Guide > Multipart**
 
 
-## AbortMultipartUpload
+<a id="abortmultipartupload"></a>
+## AbortMultipartUpload { #abortmultipartupload }
 
 Aborts an in-progress multipart upload.
 
-### Request
+<a id="request"></a>
+### Request { #request }
 
 ```http
 DELETE /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
+<a id="request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -25,18 +32,21 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header | String | N | Storage class |
 | uploadId | Parameter | String | Y | Multipart upload ID |
 
-### Response
+<a id="response"></a>
+### Response { #response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## CompleteMultipartUpload
+<a id="completemultipartupload"></a>
+## CompleteMultipartUpload { #completemultipartupload }
 
 Combine the uploaded parts to save the object and complete the multipart upload.
 
-### Request
+<a id="completemultipartupload-request"></a>
+### Request { #completemultipartupload-request }
 
 ```http
 POST /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
@@ -71,24 +81,26 @@ x-amz-checksum-type: ChecksumType
 </CompleteMultipartUpload>
 ```
 
+<a id="completemultipartupload-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-| 이름                       | 필수 여부 | 설명                                                                                                                                                         |
+| Name | Required | Description |
 |--------------------------|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| x-amz-checksum-crc32     | N     | 데이터 무결성 검증을 위한 헤더. 객체의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값                                                                                                  |
-| x-amz-checksum-crc32c    | N     | 데이터 무결성 검증을 위한 헤더. 객체의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값                                                                                                 |
-| x-amz-checksum-crc64nvme | N     | 데이터 무결성 검증을 위한 헤더. 객체의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값                                                                                              |
-| x-amz-checksum-sha1      | N     | 데이터 무결성 검증을 위한 헤더. 객체의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값                                                                                                |
-| x-amz-checksum-sha256    | N     | 데이터 무결성 검증을 위한 헤더. 객체의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값                                                                                              |
-| x-amz-checksum-sha512    | N     | 데이터 무결성 검증을 위한 헤더. 객체의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값                                                                                              |
-| x-amz-checksum-md5       | N     | 데이터 무결성 검증을 위한 헤더. 객체의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값                                                                                                 |
-| x-amz-checksum-xxhash64  | N     | 데이터 무결성 검증을 위한 헤더. 객체의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값                                                                                               |
-| x-amz-checksum-xxhash3   | N     | 데이터 무결성 검증을 위한 헤더. 객체의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값                                                                                                |
-| x-amz-checksum-xxhash128 | N     | 데이터 무결성 검증을 위한 헤더. 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                             |
-| x-amz-checksum-type      | N     | 멀티파트 업로드에서 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성하는 방식. `CreateMultipartUpload` 요청에서 지정한 체크섬 타입과 일치하지 않을 경우 `BadDigest` 오류가 반환됩니다. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
+| x-amz-checksum-crc32 | N | Header for data integrity verification. Base64-encoded value of the object's 32-bit `CRC32` checksum |
+| x-amz-checksum-crc32c | N | Header for data integrity verification. Base64-encoded value of the object's 32-bit `CRC32C` checksum |
+| x-amz-checksum-crc64nvme | N | Header for data integrity verification. Base64-encoded value of the object's 64-bit `CRC64NVME` checksum |
+| x-amz-checksum-sha1 | N | Header for data integrity verification. Base64-encoded value of the object's 160-bit `SHA1` digest |
+| x-amz-checksum-sha256 | N | Header for data integrity verification. Base64-encoded value of the object's 256-bit `SHA256` digest |
+| x-amz-checksum-sha512 | N | Header for data integrity verification. Base64-encoded value of the object's 512-bit `SHA512` digest |
+| x-amz-checksum-md5 | N | Header for data integrity verification. Base64-encoded value of the object's 128-bit `MD5` digest |
+| x-amz-checksum-xxhash64 | N | Header for data integrity verification. Base64-encoded value of the object's 64-bit `XXHASH64` checksum |
+| x-amz-checksum-xxhash3 | N | Header for data integrity verification. Base64-encoded value of the object's 64-bit `XXHASH3` checksum |
+| x-amz-checksum-xxhash128 | N | Header for data integrity verification. Base64-encoded value of the object's 128-bit `XXHASH128` checksum |
+| x-amz-checksum-type | N | Method used to combine part-level checksums in a multipart upload to generate an object-level checksum. If the value does not match the checksum type specified in the `CreateMultipartUpload` request, a `BadDigest` error is returned. Valid values: `COMPOSITE \| FULL_OBJECT` |
 
+<a id="completemultipartupload-request-request-parameter"></a>
 #### Request Parameter
 
 | Name                | Category  | Type   | Required | Description         |
@@ -98,26 +110,28 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header    | String | N        | Storage class       |
 | uploadId            | Parameter | String | Y        | Multipart upload ID |
 
+<a id="completemultipartupload-request-request-body"></a>
 #### Request Body
 
-| Name                                           | Type    | Required | Description                                 |
+| Name | Type | Required | Description |
 |------------------------------------------------|---------|----------|---------------------------------------------|
-| CompleteMultipartUpload                        | Object  | Y        | Request to complete multipart upload        |
-| CompleteMultipartUpload.Part                   | Object  | N        | Part list                                   |
-| CompleteMultipartUpload.Part.PartNumber        | Integer | N        | Part number                                 |
-| CompleteMultipartUpload.Part.ETag              | String  | N        | Unique identifier of the object             |
-| CompleteMultipartUpload.Part.ChecksumCRC32     | String  | N        | 파트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값      |
-| CompleteMultipartUpload.Part.ChecksumCRC32C    | String  | N        | 파트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값     |
-| CompleteMultipartUpload.Part.ChecksumCRC64NVME | String  | N        | 파트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값  |
-| CompleteMultipartUpload.Part.ChecksumSHA1      | String  | N        | 파트의 160비트 `SHA1` 체크섬 값을 Base64로 인코딩한 값      |
-| CompleteMultipartUpload.Part.ChecksumSHA256    | String  | N        | 파트의 256비트 `SHA256` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUpload.Part.ChecksumSHA512    | String  | N        | 파트의 512비트 `SHA512` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUpload.Part.ChecksumMD5       | String  | N        | 파트의 128비트 `MD5` 체크섬 값을 Base64로 인코딩한 값       |
-| CompleteMultipartUpload.Part.ChecksumXXHASH64  | String  | N        | 파트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값   |
-| CompleteMultipartUpload.Part.ChecksumXXHASH3   | String  | N        | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUpload.Part.ChecksumXXHASH128 | String  | N        | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
+| CompleteMultipartUpload | Object | Y | Request to complete multipart upload |
+| CompleteMultipartUpload.Part | Object | N | Part list |
+| CompleteMultipartUpload.Part.PartNumber | Integer | N | Part number |
+| CompleteMultipartUpload.Part.ETag | String | N | Unique identifier of the object |
+| CompleteMultipartUpload.Part.ChecksumCRC32 | String | N | Base64-encoded value of the part's 32-bit `CRC32` checksum |
+| CompleteMultipartUpload.Part.ChecksumCRC32C | String | N | Base64-encoded value of the part's 32-bit `CRC32C` checksum |
+| CompleteMultipartUpload.Part.ChecksumCRC64NVME | String | N | Base64-encoded value of the part's 64-bit `CRC64NVME` checksum |
+| CompleteMultipartUpload.Part.ChecksumSHA1 | String | N | Base64-encoded value of the part's 160-bit `SHA1` checksum |
+| CompleteMultipartUpload.Part.ChecksumSHA256 | String | N | Base64-encoded value of the part's 256-bit `SHA256` checksum |
+| CompleteMultipartUpload.Part.ChecksumSHA512 | String | N | Base64-encoded value of the part's 512-bit `SHA512` checksum |
+| CompleteMultipartUpload.Part.ChecksumMD5 | String | N | Base64-encoded value of the part's 128-bit `MD5` checksum |
+| CompleteMultipartUpload.Part.ChecksumXXHASH64 | String | N | Base64-encoded value of the part's 64-bit `XXHASH64` checksum |
+| CompleteMultipartUpload.Part.ChecksumXXHASH3 | String | N | Base64-encoded value of the part's 64-bit `XXHASH3` checksum |
+| CompleteMultipartUpload.Part.ChecksumXXHASH128 | String | N | Base64-encoded value of the part's 128-bit `XXHASH128` checksum |
 
-### Response
+<a id="completemultipartupload-response"></a>
+### Response { #completemultipartupload-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -142,32 +156,35 @@ HTTP/1.1 200 OK
 </CompleteMultipartUploadResult>
 ```
 
+<a id="completemultipartupload-response-response-body"></a>
 #### Response Body
 
-| Name                                            | Type   | Description                                   |
+| Name | Type | Description |
 |-------------------------------------------------|--------|-----------------------------------------------|
-| CompleteMultipartUploadResult                   | Object | Multipart upload completion result            |
-| CompleteMultipartUploadResult.Location          | String | Path of the created object                    |
-| CompleteMultipartUploadResult.Bucket            | String | Target bucket name                            |
-| CompleteMultipartUploadResult.Key               | String | Generated object key                          |
-| CompleteMultipartUploadResult.ETag              | String | Unique identifier of the final combined object |
-| CompleteMultipartUploadResult.ChecksumCRC32     | String | 파트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값        |
-| CompleteMultipartUploadResult.ChecksumCRC32C    | String | 파트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값       |
-| CompleteMultipartUploadResult.ChecksumCRC64NVME | String | 파트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값    |
-| CompleteMultipartUploadResult.ChecksumSHA1      | String | 파트의 160비트 `SHA1` 체크섬 값을 Base64로 인코딩한 값   |
-| CompleteMultipartUploadResult.ChecksumSHA256    | String | 파트의 256비트 `SHA256` 체크섬 값을 Base64로 인코딩한 값      |
-| CompleteMultipartUploadResult.ChecksumSHA512    | String | 파트의 512비트 `SHA512` 체크섬 값을 Base64로 인코딩한 값      |
-| CompleteMultipartUploadResult.ChecksumMD5       | String | 파트의 128비트 `MD5` 체크섬 값을 Base64로 인코딩한 값         |
-| CompleteMultipartUploadResult.ChecksumXXHASH64  | String | 파트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값     |
-| CompleteMultipartUploadResult.ChecksumXXHASH3   | String | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값      |
-| CompleteMultipartUploadResult.ChecksumXXHASH128 | String | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값   |
+| CompleteMultipartUploadResult | Object | Multipart upload completion result |
+| CompleteMultipartUploadResult.Location | String | Path of the created object |
+| CompleteMultipartUploadResult.Bucket | String | Target bucket name |
+| CompleteMultipartUploadResult.Key | String | Generated object key |
+| CompleteMultipartUploadResult.ETag | String | Unique identifier of the final combined object |
+| CompleteMultipartUploadResult.ChecksumCRC32 | String | Base64-encoded value of the part's 32-bit `CRC32` checksum |
+| CompleteMultipartUploadResult.ChecksumCRC32C | String | Base64-encoded value of the part's 32-bit `CRC32C` checksum |
+| CompleteMultipartUploadResult.ChecksumCRC64NVME | String | Base64-encoded value of the part's 64-bit `CRC64NVME` checksum |
+| CompleteMultipartUploadResult.ChecksumSHA1 | String | Base64-encoded value of the part's 160-bit `SHA1` checksum |
+| CompleteMultipartUploadResult.ChecksumSHA256 | String | Base64-encoded value of the part's 256-bit `SHA256` checksum |
+| CompleteMultipartUploadResult.ChecksumSHA512 | String | Base64-encoded value of the part's 512-bit `SHA512` checksum |
+| CompleteMultipartUploadResult.ChecksumMD5 | String | Base64-encoded value of the part's 128-bit `MD5` checksum |
+| CompleteMultipartUploadResult.ChecksumXXHASH64 | String | Base64-encoded value of the part's 64-bit `XXHASH64` checksum |
+| CompleteMultipartUploadResult.ChecksumXXHASH3 | String | Base64-encoded value of the part's 64-bit `XXHASH3` checksum |
+| CompleteMultipartUploadResult.ChecksumXXHASH128 | String | Base64-encoded value of the part's 128-bit `XXHASH128` checksum |
 
 
-## CreateMultipartUpload
+<a id="createmultipartupload"></a>
+## CreateMultipartUpload { #createmultipartupload }
 
 Initiates a multipart upload and generates an upload ID to upload large objects. The upload ID is valid for up to one hour.
 
-### Request
+<a id="createmultipartupload-request"></a>
+### Request { #createmultipartupload-request }
 
 ```http
 POST /{bucket}/{objectKey}?uploads HTTP/1.1
@@ -175,15 +192,17 @@ x-amz-checksum-algorithm: ChecksumAlgorithm
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="createmultipartupload-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-| 필드                       | 필수 여부 | 설명                                                                                                                                       |
+| Field                       | Required | Description                                                                                                                                       |
 |--------------------------|-------|------------------------------------------------------------------------------------------------------------------------------------------|
-| x-amz-checksum-algorithm | N     | 객체의 체크섬 생성에 사용할 알고리즘을 지정. 유효한 값: `CRC32 \| CRC32C \| SHA1 \| SHA256 \| CRC64NVME \| SHA512 \| MD5 \| XXHASH64 \| XXHASH3 \| XXHASH128` |
-| x-amz-checksum-type      | N     | 객체의 체크섬 값을 계산하는 방식을 지정. 유효한 값: `COMPOSITE \| FULL_OBJECT`                                                                              |
+| x-amz-checksum-algorithm | N     | Specifies the algorithm to use for generating the object's checksum. Valid values: `CRC32 \| CRC32C \| SHA1 \| SHA256 \| CRC64NVME \| SHA512 \| MD5 \| XXHASH64 \| XXHASH3 \| XXHASH128` |
+| x-amz-checksum-type      | N     | Specifies the method used to calculate the object's checksum value. Valid values: `COMPOSITE \| FULL_OBJECT` |
 
+<a id="createmultipartupload-request-request-parameter"></a>
 #### Request Parameter
 
 | Name                | Category | Type   | Required | Description         |
@@ -194,7 +213,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header   | String | N        | Storage class       |
 | x-amz-meta-\*       | Header   | String | N        | Custom metadata     |
 
-### Response
+<a id="createmultipartupload-response"></a>
+### Response { #createmultipartupload-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -209,13 +229,15 @@ x-amz-checksum-type: ChecksumType
 </InitiateMultipartUploadResult>
 ```
 
+<a id="createmultipartupload-response-response-header"></a>
 #### Response Header
 
-| 필드                       | 설명                       |
+| Field | Description |
 |--------------------------|--------------------------|
-| x-amz-checksum-algorithm | 객체의 체크섬 생성에 사용한 알고리즘 값 |
-| x-amz-checksum-type      | 객체의 체크섬 값을 계산한 방식      |
+| x-amz-checksum-algorithm | Algorithm used to generate the object's checksum |
+| x-amz-checksum-type | Method used to calculate the object's checksum value |
 
+<a id="createmultipartupload-response-response-body"></a>
 #### Response Body
 
 | Name                                   | Type   | Description                     |
@@ -226,20 +248,24 @@ x-amz-checksum-type: ChecksumType
 | InitiateMultipartUploadResult.UploadId | String | Multipart upload ID             |
 
 
-## ListParts
+<a id="listparts"></a>
+## ListParts { #listparts }
 
 Retrieves a list of parts in a multipart upload.
 
-### Request
+<a id="listparts-request"></a>
+### Request { #listparts-request }
 
 ```http
 GET /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
+<a id="listparts-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="listparts-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -249,7 +275,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header | String | N | Storage class |
 | uploadId | Parameter | String | Y | Multipart upload ID |
 
-### Response
+<a id="listparts-response"></a>
+### Response { #listparts-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -273,6 +300,7 @@ HTTP/1.1 200 OK
 </ListPartsResult>
 ```
 
+<a id="listparts-response-response-body"></a>
 #### Response Body
 
 | Name | Type | Description |
@@ -293,11 +321,13 @@ HTTP/1.1 200 OK
 | ListPartsResult.Part.Size | Long | Part size (bytes) |
 
 
-## UploadPart
+<a id="uploadpart"></a>
+## UploadPart { #uploadpart }
 
 Uploads the parts of the multipart upload. Before uploading, you must call the CreateMultipartUpload API to generate a multipart upload ID.
 
-### Request
+<a id="uploadpart-request"></a>
+### Request { #uploadpart-request }
 
 ```http
 PUT /{bucket}/{objectKey}?partNumber={partNumber}&uploadId={uploadId} HTTP/1.1
@@ -318,25 +348,27 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 body
 ```
 
+<a id="uploadpart-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
-| 필드                       | 필수 여부 | 설명                                         |
+| Field | Required | Description |
 |--------------------------|-------|--------------------------------------------|
-| Content-Length           | N     | 요청 본문의 크기(바이트). 본문의 크기를 자동으로 결정할 수 없는 경우 사용 |
-| Content-MD5              | N     | 파트 데이터의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값 |
-| x-amz-checksum-crc32     | N     | 파트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값     |
-| x-amz-checksum-crc32c    | N     | 파트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-crc64nvme | N     | 파트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값 |
-| x-amz-checksum-sha1      | N     | 파트의 160비트 `SHA1` 다이제스트 값을 Base64로 인코딩한 값   |
-| x-amz-checksum-sha256    | N     | 파트의 256비트 `SHA256` 다이제스트 값을 Base64로 인코딩한 값 |
-| x-amz-checksum-sha512    | N     | 파트의 512비트 `SHA512` 다이제스트 값을 Base64로 인코딩한 값 |
-| x-amz-checksum-md5       | N     | 파트의 128비트 `MD5` 다이제스트 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-xxhash64  | N     | 파트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값  |
-| x-amz-checksum-xxhash3   | N     | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값   |
-| x-amz-checksum-xxhash128 | N     | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
+| Content-Length | N | Size of the request body (in bytes). Used when the size of the body cannot be determined automatically. |
+| Content-MD5 | N | Base64-encoded value of the 128-bit `MD5` digest of the part data |
+| x-amz-checksum-crc32 | N | Base64-encoded value of the part's 32-bit `CRC32` checksum |
+| x-amz-checksum-crc32c | N | Base64-encoded value of the part's 32-bit `CRC32C` checksum |
+| x-amz-checksum-crc64nvme | N | Base64-encoded value of the part's 64-bit `CRC64NVME` checksum |
+| x-amz-checksum-sha1 | N | Base64-encoded value of the part's 160-bit `SHA1` digest |
+| x-amz-checksum-sha256 | N | Base64-encoded value of the part's 256-bit `SHA256` digest |
+| x-amz-checksum-sha512 | N | Base64-encoded value of the part's 512-bit `SHA512` digest |
+| x-amz-checksum-md5 | N | Base64-encoded value of the part's 128-bit `MD5` digest |
+| x-amz-checksum-xxhash64 | N | Base64-encoded value of the part's 64-bit `XXHASH64` checksum |
+| x-amz-checksum-xxhash3 | N | Base64-encoded value of the part's 64-bit `XXHASH3` checksum |
+| x-amz-checksum-xxhash128 | N | Base64-encoded value of the part's 128-bit `XXHASH128` checksum |
 
+<a id="uploadpart-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -347,13 +379,15 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | partNumber | Parameter | Integer | Y | Part number (1 to 10,000) |
 | uploadId | Parameter | String | Y | Multipart upload ID |
 
+<a id="uploadpart-request-request-body"></a>
 #### Request Body
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
 | Body | Binary | Y | Part binary data, up to 5 GiB can be uploaded |
 
-### Response
+<a id="uploadpart-response"></a>
+### Response { #uploadpart-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -370,18 +404,19 @@ x-amz-checksum-xxhash3: ChecksumXXHASH3
 x-amz-checksum-xxhash128: ChecksumXXHASH128
 ```
 
+<a id="uploadpart-response-response-header"></a>
 #### Response Header
 
-| 필드                       | 설명                                          |
+| Field | Description |
 |--------------------------|---------------------------------------------|
-| ETag                     | 업로드된 파트의 엔티티 태그                             |
-| x-amz-checksum-crc32     | 파트의 32비트 `CRC32` 체크섬 값을 Base64로 인코딩한 값      |
-| x-amz-checksum-crc32c    | 파트의 32비트 `CRC32C` 체크섬 값을 Base64로 인코딩한 값     |
-| x-amz-checksum-crc64nvme | 파트의 64비트 `CRC64NVME` 체크섬 값을 Base64로 인코딩한 값  |
-| x-amz-checksum-sha1      | 파트의 160비트 `SHA1` 체크섬 값을 Base64로 인코딩한 값      |
-| x-amz-checksum-sha256    | 파트의 256비트 `SHA256` 체크섬 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-sha512    | 파트의 512비트 `SHA512` 체크섬 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-md5       | 파트의 128비트 `MD5` 체크섬 값을 Base64로 인코딩한 값       |
-| x-amz-checksum-xxhash64  | 파트의 64비트 `XXHASH64` 체크섬 값을 Base64로 인코딩한 값   |
-| x-amz-checksum-xxhash3   | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값    |
-| x-amz-checksum-xxhash128 | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
+| ETag | Entity tag of the uploaded part |
+| x-amz-checksum-crc32 | Base64-encoded value of the part's 32-bit `CRC32` checksum |
+| x-amz-checksum-crc32c | Base64-encoded value of the part's 32-bit `CRC32C` checksum |
+| x-amz-checksum-crc64nvme | Base64-encoded value of the part's 64-bit `CRC64NVME` checksum |
+| x-amz-checksum-sha1 | Base64-encoded value of the part's 160-bit `SHA1` checksum |
+| x-amz-checksum-sha256 | Base64-encoded value of the part's 256-bit `SHA256` checksum |
+| x-amz-checksum-sha512 | Base64-encoded value of the part's 512-bit `SHA512` checksum |
+| x-amz-checksum-md5 | Base64-encoded value of the part's 128-bit `MD5` checksum |
+| x-amz-checksum-xxhash64 | Base64-encoded value of the part's 64-bit `XXHASH64` checksum |
+| x-amz-checksum-xxhash3 | Base64-encoded value of the part's 64-bit `XXHASH3` checksum |
+| x-amz-checksum-xxhash128 | Base64-encoded value of the part's 128-bit `XXHASH128` checksum |

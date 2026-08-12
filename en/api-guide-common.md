@@ -1,24 +1,32 @@
-## Amazon S3 호환 API 가이드
+<!-- pre-align:aligned sig=bd9519149408 -->
 
-**Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Common**
+<a id="amazon-s3-compatible-api-guide"></a>
+## Amazon S3-Compatible API Guide { #amazon-s3-compatible-api-guide }
 
-## Common Information for Data Lake Storage API
+**Data & Analytics > Data Lake Storage > Amazon S3-Compatible API Guide > Common**
+
+<a id="common-information-for-data-lake-storage-api"></a>
+## Common Information for Data Lake Storage API { #common-information-for-data-lake-storage-api }
 
 !!! tip "Note"
     NHN Cloud Data Lake Storage is designed to be compatible with Amazon S3 API 2006-03-01.
 
-### API Endpoint
+<a id="api-endpoint"></a>
+### API Endpoint { #api-endpoint }
 
 | Region | Endpoint |
 | --- | ----- |
 | KR3 | https://kr3-data-lake-storage.nhncloudservice.com |
 
-### Authentication and Authorization
+<a id="authentication-and-authorization"></a>
+### Authentication and Authorization { #authentication-and-authorization }
 
 Data Lake Storage requires S3 API credentials for authentication/authorization when making API calls. Refer to [S3 API Credential](console-user-guide/#manage-credentials) to prepare the information required to use the API.
 
-### Request
+<a id="request"></a>
+### Request { #request }
 
+<a id="request-header"></a>
 #### Request Header
 
 | Field | Required | Description |
@@ -27,8 +35,10 @@ Data Lake Storage requires S3 API credentials for authentication/authorization w
 | Host | Y | Endpoint per region. |
 | x-amz-date | Y | Request time in ISO 8601 format (UTC). |
 
-### Response
+<a id="response"></a>
+### Response { #response }
 
+<a id="response-failure-response-code"></a>
 #### Failure Response Code
 
 | HTTP Status Code | Code | Description |
@@ -39,24 +49,26 @@ Data Lake Storage requires S3 API credentials for authentication/authorization w
 | 400 | EntityTooLarge | The object to be uploaded exceeds the maximum allowed size (5 GiB). |
 | 404 | NoSuchKey | The specified key does not exist. |
 | 404 | NoSuchBucket | The specified bucket does not exist. |
-| 404 | NoSuchBucketPolicy | 지정한 버킷에 정책이 존재하지 않습니다. |
+| 404 | NoSuchBucketPolicy | The specified bucket has no policy. |
 | 405 | MethodNotAllowed | The HTTP method specified for the resource is not allowed. |
 | 409 | BucketAlreadyOwnedByYou | The bucket you want to create already exists and is owned by the user. |
 | 500 | InternalError | An internal server error occurred. |
 | 503 | ServiceUnavailable | The service can't process the request right now. Please try again later. |
 | 503 | SlowDown | Reduce the request speed. |
 
-## 데이터 무결성 검증
+<a id="data-integrity-verification"></a>
+## Data Integrity Verification { #data-integrity-verification }
 
-Data Lake Storage는 업로드 및 다운로드 시 체크섬을 통한 데이터 무결성 검증을 지원합니다.
-업로드 시 지정한 체크섬 알고리즘으로 체크섬 값을 계산하여 전송하면, 서버에서 독립적으로 체크섬을 계산하여 일치 여부를 확인한 후 객체를 저장합니다.
+Data Lake Storage supports data integrity verification through checksums during upload and download.
+When uploading, calculate and send the checksum value using the specified checksum algorithm. The server independently calculates the checksum and verifies that the values match before storing the object.
 
-!!! tip "알아두기"
-    `x-amz-checksum-*` 헤더와 `Content-MD5` 헤더가 동시에 요청에 포함된 경우, `x-amz-checksum-*` 헤더가 우선 적용됩니다.
+!!! tip "Note"
+    If both the `x-amz-checksum-*` header and the `Content-MD5` header are included in the request, the `x-amz-checksum-*` header takes precedence.
 
-### 지원 체크섬 알고리즘
+<a id="supported-checksum-algorithms"></a>
+### Supported Checksum Algorithms { #supported-checksum-algorithms }
 
-| 알고리즘 | 파라미터 값 | 단일 파트 업로드 | 멀티파트 FULL_OBJECT | 멀티파트 COMPOSITE |
+| Algorithm | Parameter value | Single-part upload | Multipart FULL_OBJECT | Multipart COMPOSITE |
 | --- | --- | --- | --- | --- |
 | CRC-64/NVME | `CRC64NVME` | ✓ | ✓ | - |
 | CRC-32 | `CRC32` | ✓ | ✓ | ✓ |
@@ -68,27 +80,29 @@ Data Lake Storage는 업로드 및 다운로드 시 체크섬을 통한 데이�
 | XXHash128 | `XXHASH128` | ✓ | - | ✓ |
 | SHA-512 | `SHA512` | ✓ | - | ✓ |
 
-!!! tip "알아두기"
-    MD5는 `ChecksumAlgorithm` 파라미터로 지정할 수 없습니다. MD5 무결성 검증이 필요한 경우 `Content-MD5` 헤더를 사용하세요.
+!!! tip "Note"
+    MD5 cannot be specified using the `ChecksumAlgorithm` parameter. If MD5 integrity verification is required, use the `Content-MD5` header.
 
-!!! tip "알아두기"
-    XXHash64, XXHash3, XXHash128, SHA-512 알고리즘을 사용하려면 최신 버전의 AWS SDK가 필요합니다.
+!!! tip "Note"
+    The latest version of the AWS SDK is required to use the XXHash64, XXHash3, XXHash128, and SHA-512 algorithms.
 
-### 체크섬 타입
+<a id="checksum-type"></a>
+### Checksum Type { #checksum-type }
 
-멀티파트 업로드 시 체크섬 타입을 지정할 수 있습니다.
+A checksum type can be specified for multipart uploads.
 
-| 타입 | 설명 |
+| Type | Description |
 | --- | --- |
-| `FULL_OBJECT` | 전체 오브젝트 데이터를 기반으로 체크섬을 계산합니다. CRC 기반 알고리즘(CRC64NVME, CRC32, CRC32C)만 지원합니다. |
-| `COMPOSITE` | 각 파트별 체크섬을 기반으로 전체 체크섬을 계산합니다. CRC64NVME를 제외한 모든 알고리즘을 지원합니다. |
+| `FULL_OBJECT` | Calculates the checksum based on the entire object data. Only CRC-based algorithms (CRC64NVME, CRC32, CRC32C) are supported. |
+| `COMPOSITE` | Calculates the overall checksum based on the checksum of each part. All algorithms except CRC64NVME are supported. |
 
-!!! tip "알아두기"
-    단일 파트 업로드(PutObject)는 체크섬 타입을 별도로 지정하지 않으며, 응답 시 `x-amz-checksum-type`은 항상 `FULL_OBJECT`로 반환됩니다.
+!!! tip "Note"
+    For single-part uploads (PutObject), no checksum type is specified separately, and `x-amz-checksum-type` is always returned as `FULL_OBJECT` in the response.
 
-### 단일 파트 업로드 체크섬
+<a id="single-part-upload-checksum"></a>
+### Single-Part Upload Checksum { #single-part-upload-checksum }
 
-`PutObject` API 호출 시 `--checksum-algorithm` 옵션으로 체크섬 알고리즘을 지정할 수 있습니다.
+When calling the `PutObject` API, a checksum algorithm can be specified using the `--checksum-algorithm` option.
 
 ```sh
 $ aws --endpoint-url=${Endpoint} s3api put-object \
@@ -98,35 +112,40 @@ $ aws --endpoint-url=${Endpoint} s3api put-object \
     --checksum-algorithm CRC32
 ```
 
-### 멀티파트 업로드 체크섬
+<a id="multipart-upload-checksum"></a>
+### Multipart Upload Checksum { #multipart-upload-checksum }
 
-멀티파트 업로드 시 `CreateMultipartUpload`에서 알고리즘과 체크섬 타입을 지정하고, 이후 `UploadPart`에서 동일한 알고리즘을 사용해야 합니다.
+For multipart uploads, specify the algorithm and checksum type in `CreateMultipartUpload`, and use the same algorithm in subsequent `UploadPart` calls.
 
-!!! danger "주의"
-    `CreateMultipartUpload`에서 지정한 알고리즘과 `UploadPart`에서 지정한 알고리즘이 다를 경우 400 오류가 반환됩니다.
+!!! danger "Caution"
+    If the algorithm specified in `CreateMultipartUpload` differs from the algorithm specified in `UploadPart`, a 400 error is returned.
 
-### 페이로드 서명 방식
+<a id="payload-signing-method"></a>
+### Payload Signing Method { #payload-signing-method }
 
-`x-amz-content-sha256` 헤더로 페이로드 서명 방식을 지정할 수 있습니다.
-Data Lake Storage에서 지원하는 방식은 아래와 같습니다.
+The payload signing method can be specified using the `x-amz-content-sha256` header.
+The methods supported by Data Lake Storage are as follows:
 
-| 방식 | 헤더 값 | 설명 |
+| Method | Header value | Description |
 | --- | --- | --- |
-| 비서명 | `UNSIGNED-PAYLOAD` | 페이로드에 서명을 포함하지 않습니다. |
-| 청크 + 후행 체크섬 | `STREAMING-UNSIGNED-PAYLOAD-TRAILER` | 페이로드를 청크 단위로 전송하며, 체크섬을 데이터 끝에 추가합니다. |
+| Unsigned | `UNSIGNED-PAYLOAD` | Does not include a signature in the payload. |
+| Chunked + trailing checksum | `STREAMING-UNSIGNED-PAYLOAD-TRAILER` | Sends the payload in chunks and appends the checksum at the end of the data. |
 
-!!! tip "알아두기"
-    AWS CLI v2.23.0 이상 및 최신 AWS SDK를 사용하는 경우, 체크섬이 포함된 업로드 요청은 기본적으로 `STREAMING-UNSIGNED-PAYLOAD-TRAILER` 방식으로 전송됩니다.
+!!! tip "Note"
+    When using AWS CLI v2.23.0 or later and the latest AWS SDK, upload requests that include a checksum are sent using the `STREAMING-UNSIGNED-PAYLOAD-TRAILER` method by default.
 
-## AWS Command Line Interface (CLI)
+<a id="aws-command-line-interface-cli"></a>
+## AWS Command Line Interface (CLI) { #aws-command-line-interface-cli }
 
 You can use the NHN Cloud Data Lake Storage service with the AWS command-line interface using the S3-compatible API.
 
-### Installation
+<a id="installation"></a>
+### Installation { #installation }
 
 See [Installing past releases of the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html) to install the AWS command-line interface.
 
-### Configuration
+<a id="configuration"></a>
+### Configuration { #configuration }
 
 To use the AWS Command Line Interface, you must first configure the S3 API credentials and environment.
 
@@ -144,7 +163,8 @@ Default output format [None]:
 | Secret Key | S3 API credentials secret key |
 | Region Name | KR3 - Korea (Gwangju) region |
 
-### How to Use the S3 Commands
+<a id="how-to-use-the-s3-commands"></a>
+### How to Use the S3 Commands { #how-to-use-the-s3-commands }
 
 ```sh
 $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
@@ -160,19 +180,22 @@ $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
     Since the AWS CLI is provided for use with AWS, it is configured to use the AWS domain. Therefore, to use NHN Cloud Data Lake Storage, you must specify an endpoint for every command.
     For AWS CLI commands, see [Using high-level (s3) commands with the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html).
 
-## AWS SDK
+<a id="aws-sdk"></a>
+## AWS SDK { #aws-sdk }
 
 AWS provides SDKs for many types of programming languages. By using the S3 compatible API, you can use NHN Cloud Data Lake Storage with AWS SDK.
 
 !!! tip "Note"
     For more information, see the [AWS SDK](https://builder.aws.com/build/tools) documentation.
 
-### Java SDK
+<a id="java-sdk"></a>
+### Java SDK { #java-sdk }
 
 !!! tip "Note"
     For more information, see the [AWS SDK for Java](https://docs.aws.amazon.com/en_us/sdk-for-java/) documentation.
 
-### Boto3 - Python SDK
+<a id="boto3---python-sdk"></a>
+### Boto3 - Python SDK { #boto3---python-sdk }
 
 !!! tip "Note"
     For more information, see the [AWS SDK for Python(Boto3)](https://docs.aws.amazon.com/en_us/pythonsdk/).

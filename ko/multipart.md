@@ -1,21 +1,28 @@
-## Multipart
+<!-- pre-align:aligned sig=f760859bc93e -->
+
+<a id="multipart"></a>
+## Multipart { #multipart }
 **Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Multipart**
 
 
-## AbortMultipartUpload
+<a id="abortmultipartupload"></a>
+## AbortMultipartUpload { #abortmultipartupload }
 
 진행 중인 멀티파트 업로드를 중단합니다.
 
-### 요청
+<a id="request"></a>
+### 요청 { #request }
 
 ```http
 DELETE /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
+<a id="request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="request-parameter"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
@@ -25,18 +32,21 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | x-amz-storage-class | Header | String | N | 스토리지 클래스 |
 | uploadId | Parameter | String | Y | 멀티파트 업로드 ID |
 
-### 응답
+<a id="response"></a>
+### 응답 { #response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## CompleteMultipartUpload
+<a id="completemultipartupload"></a>
+## CompleteMultipartUpload { #completemultipartupload }
 
 업로드된 파트들을 조합하여 객체를 저장하고 멀티파트 업로드를 완료합니다.
 
-### 요청
+<a id="completemultipartupload-request"></a>
+### 요청 { #completemultipartupload-request }
 
 ```http
 POST /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
@@ -71,6 +81,7 @@ x-amz-checksum-type: ChecksumType
 </CompleteMultipartUpload>
 ```
 
+<a id="completemultipartupload-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
@@ -89,6 +100,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | x-amz-checksum-xxhash128 | N     | 데이터 무결성 검증을 위한 헤더. 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                             |
 | x-amz-checksum-type      | N     | 멀티파트 업로드에서 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성하는 방식. `CreateMultipartUpload` 요청에서 지정한 체크섬 타입과 일치하지 않을 경우 `BadDigest` 오류가 반환됩니다. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
 
+<a id="completemultipartupload-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름                  | 구분        | 타입     | 필수 | 설명          |
@@ -98,6 +110,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | x-amz-storage-class | Header    | String | N  | 스토리지 클래스    |
 | uploadId            | Parameter | String | Y  | 멀티파트 업로드 ID |
 
+<a id="completemultipartupload-request-request-body"></a>
 #### 요청 본문
 
 | 이름                                             | 타입      | 필수 | 설명                                          |
@@ -117,7 +130,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | CompleteMultipartUpload.Part.ChecksumXXHASH3   | String  | N  | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값    |
 | CompleteMultipartUpload.Part.ChecksumXXHASH128 | String  | N  | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
 
-### 응답
+<a id="completemultipartupload-response"></a>
+### 응답 { #completemultipartupload-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -142,6 +156,7 @@ HTTP/1.1 200 OK
 </CompleteMultipartUploadResult>
 ```
 
+<a id="completemultipartupload-response-response-body"></a>
 #### 응답 본문
 
 | 이름                                              | 타입     | 설명                                          |
@@ -163,11 +178,13 @@ HTTP/1.1 200 OK
 | CompleteMultipartUploadResult.ChecksumXXHASH128 | String | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
 
 
-## CreateMultipartUpload
+<a id="createmultipartupload"></a>
+## CreateMultipartUpload { #createmultipartupload }
 
 대용량 객체를 업로드할 수 있도록 멀티파트 업로드를 시작하고 업로드 ID를 생성합니다. 업로드 ID는 최대 한 시간 동안 유효합니다.
 
-### 요청
+<a id="createmultipartupload-request"></a>
+### 요청 { #createmultipartupload-request }
 
 ```http
 POST /{bucket}/{objectKey}?uploads HTTP/1.1
@@ -175,6 +192,7 @@ x-amz-checksum-algorithm: ChecksumAlgorithm
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="createmultipartupload-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
@@ -184,6 +202,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | x-amz-checksum-algorithm | N     | 객체의 체크섬 생성에 사용할 알고리즘을 지정. 유효한 값: `CRC32 \| CRC32C \| SHA1 \| SHA256 \| CRC64NVME \| SHA512 \| MD5 \| XXHASH64 \| XXHASH3 \| XXHASH128` |
 | x-amz-checksum-type      | N     | 객체의 체크섬 값을 계산하는 방식을 지정. 유효한 값: `COMPOSITE \| FULL_OBJECT`                                                                              |
 
+<a id="createmultipartupload-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름                  | 구분     | 타입     | 필수 | 설명           |
@@ -194,7 +213,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | x-amz-storage-class | Header | String | N  | 스토리지 클래스     |
 | x-amz-meta-\*       | Header | String | N  | 사용자 정의 메타데이터 |
 
-### 응답
+<a id="createmultipartupload-response"></a>
+### 응답 { #createmultipartupload-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -209,6 +229,7 @@ x-amz-checksum-type: ChecksumType
 </InitiateMultipartUploadResult>
 ```
 
+<a id="createmultipartupload-response-response-header"></a>
 #### 응답 헤더
 
 | 필드                       | 설명                       |
@@ -216,6 +237,7 @@ x-amz-checksum-type: ChecksumType
 | x-amz-checksum-algorithm | 객체의 체크섬 생성에 사용한 알고리즘 값 |
 | x-amz-checksum-type      | 객체의 체크섬 값을 계산한 방식      |
 
+<a id="createmultipartupload-response-response-body"></a>
 #### 응답 본문
 
 | 이름                                     | 타입     | 설명             |
@@ -226,20 +248,24 @@ x-amz-checksum-type: ChecksumType
 | InitiateMultipartUploadResult.UploadId | String | 멀티파트 업로드 ID    |
 
 
-## ListParts
+<a id="listparts"></a>
+## ListParts { #listparts }
 
 멀티파트 업로드의 파트 목록을 조회합니다.
 
-### 요청
+<a id="listparts-request"></a>
+### 요청 { #listparts-request }
 
 ```http
 GET /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
+<a id="listparts-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="listparts-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름                  | 구분        | 타입     | 필수 | 설명          |
@@ -249,7 +275,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | x-amz-storage-class | Header    | String | N  | 스토리지 클래스    |
 | uploadId            | Parameter | String | Y  | 멀티파트 업로드 ID |
 
-### 응답
+<a id="listparts-response"></a>
+### 응답 { #listparts-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -273,6 +300,7 @@ HTTP/1.1 200 OK
 </ListPartsResult>
 ```
 
+<a id="listparts-response-response-body"></a>
 #### 응답 본문
 
 | 이름                                   | 타입        | 설명                     |
@@ -293,11 +321,13 @@ HTTP/1.1 200 OK
 | ListPartsResult.Part.Size            | Long      | 파트 크기(바이트)             |
 
 
-## UploadPart
+<a id="uploadpart"></a>
+## UploadPart { #uploadpart }
 
 멀티파트 업로드의 파트를 업로드합니다. 업로드하기 전 CreateMultipartUpload API를 호출하여 멀티파트 업로드 ID를 생성해야 합니다.
 
-### 요청
+<a id="uploadpart-request"></a>
+### 요청 { #uploadpart-request }
 
 ```http
 PUT /{bucket}/{objectKey}?partNumber={partNumber}&uploadId={uploadId} HTTP/1.1
@@ -318,6 +348,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 body
 ```
 
+<a id="uploadpart-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
@@ -337,6 +368,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | x-amz-checksum-xxhash3   | N     | 파트의 64비트 `XXHASH3` 체크섬 값을 Base64로 인코딩한 값   |
 | x-amz-checksum-xxhash128 | N     | 파트의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값 |
 
+<a id="uploadpart-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름                  | 구분        | 타입      | 필수 | 설명              |
@@ -347,13 +379,15 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | partNumber          | Parameter | Integer | Y  | 파트 번호(1~10,000) |
 | uploadId            | Parameter | String  | Y  | 멀티파트 업로드 ID     |
 
+<a id="uploadpart-request-request-body"></a>
 #### 요청 본문
 
 | 이름   | 타입     | 필수 | 설명                            |
 |------|--------|----|-------------------------------|
 | Body | Binary | Y  | 파트 바이너리 데이터, 최대 5GiB까지 업로드 가능 |
 
-### 응답
+<a id="uploadpart-response"></a>
+### 응답 { #uploadpart-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -370,6 +404,7 @@ x-amz-checksum-xxhash3: ChecksumXXHASH3
 x-amz-checksum-xxhash128: ChecksumXXHASH128
 ```
 
+<a id="uploadpart-response-response-header"></a>
 #### 응답 헤더
 
 | 필드                       | 설명                                          |

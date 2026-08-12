@@ -1,12 +1,17 @@
-## Bucket
-**Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Bucket**
+<!-- pre-align:aligned sig=b6666f81ba17 -->
+
+<a id="bucket"></a>
+## Bucket { #bucket }
+**Data & Analytics > Data Lake Storage > Amazon S3互換APIガイド > Bucket**
 
 
-## CreateBucket
+<a id="createbucket"></a>
+## CreateBucket { #createbucket }
 
 バケットを作成します。Data Lake Storageサービスのバケット名はリージョン内で一意です。
 
-### リクエスト
+<a id="request"></a>
+### リクエスト { #request }
 
 ```http
 PUT /{bucket} HTTP/1.1
@@ -17,16 +22,19 @@ PUT /{bucket} HTTP/1.1
 </CreateBucketConfiguration>
 ```
 
-#### 요청 헤더
+<a id="request-header"></a>
+#### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 
+<a id="request-body"></a>
 #### リクエストボディ
 
 | 名前 | タイプ | 必須 | 説明 |
@@ -34,7 +42,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | CreateBucketConfiguration | Object | Y | 作成するバケット情報 |
 | CreateBucketConfiguration.LocationConstraint | String | Conditional | リージョンコード。未入力時はエンドポイントに合ったリージョン情報を適用 |
 
-### レスポンス
+<a id="response"></a>
+### レスポンス { #response }
 
 ```http
 HTTP/1.1 200 OK
@@ -42,81 +51,96 @@ Location: "/{bucket}"
 ```
 
 
-## DeleteBucket
+<a id="deletebucket"></a>
+## DeleteBucket { #deletebucket }
 
 バケットを削除します。
 
-### リクエスト
+<a id="deletebucket-request"></a>
+### リクエスト { #deletebucket-request }
 
 ```http
 DELETE /{bucket} HTTP/1.1
 ```
 
-#### 요청 헤더
+<a id="deletebucket-request-request-header"></a>
+#### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="deletebucket-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 
-### レスポンス
+<a id="deletebucket-response"></a>
+### レスポンス { #deletebucket-response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## DeleteBucketPolicy
+<a id="deletebucketpolicy"></a>
+## DeleteBucketPolicy { #deletebucketpolicy }
 
-버킷에 등록된 정책(Bucket Policy)을 삭제합니다.
+バケットに登録されたポリシー(Bucket Policy)を削除します。
 
-### 요청
+<a id="deletebucketpolicy-request"></a>
+### リクエスト { #deletebucketpolicy-request }
 
 ```http
 DELETE /{bucket}?policy HTTP/1.1
 ```
 
-#### 요청 헤더
+<a id="deletebucketpolicy-request-request-header"></a>
+#### リクエストヘッダ
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storageの[APIリクエストヘッダガイド](api-guide-common)をご参照ください。
 
-#### 요청 파라미터
-
-| 이름 | 구분 | 타입 | 필수 | 설명 |
-| --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
-
-### 응답
-
-```http
-HTTP/1.1 204 No Content
-```
-
-
-## GetBucketAcl
-
-バケットのアクセス制御リスト(ACL)を照会します。
-
-### リクエスト
-
-```http
-GET /{bucket}?acl HTTP/1.1
-```
-
-#### 요청 헤더
-
-Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
-
+<a id="deletebucketpolicy-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | バケット名 |
 
-### レスポンス
+<a id="deletebucketpolicy-response"></a>
+### レスポンス { #deletebucketpolicy-response }
+
+```http
+HTTP/1.1 204 No Content
+```
+
+
+<a id="getbucketacl"></a>
+## GetBucketAcl { #getbucketacl }
+
+バケットのアクセス制御リスト(ACL)を照会します。
+
+<a id="getbucketacl-request"></a>
+### リクエスト { #getbucketacl-request }
+
+```http
+GET /{bucket}?acl HTTP/1.1
+```
+
+<a id="getbucketacl-request-request-header"></a>
+#### リクエストヘッダ
+
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
+
+<a id="getbucketacl-request-request-parameter"></a>
+#### リクエストパラメータ
+
+| 名前 | 区分 | タイプ | 必須 | 説明 |
+| --- | --- | --- | --- | --- |
+| bucket | Path | String | Y | バケット名 |
+
+<a id="getbucketacl-response"></a>
+### レスポンス { #getbucketacl-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -140,7 +164,8 @@ HTTP/1.1 200 OK
 </AccessControlPolicy>
 ```
 
-#### 응답 본문
+<a id="getbucketacl-response-response-body"></a>
+#### レスポンス本文
 
 | 名前 | タイプ | 説明 |
 | --- | --- | --- |
@@ -157,29 +182,34 @@ HTTP/1.1 200 OK
 | AccessControlPolicy.AccessControlList.Grant.Permission | String | 付与された権限。`FULL_CONTROL`のみサポート |
 
 
-## GetBucketPolicy
+<a id="getbucketpolicy"></a>
+## GetBucketPolicy { #getbucketpolicy }
 
-버킷에 등록된 정책(Bucket Policy)을 조회합니다. 정책 문서가 JSON 형식의 응답 본문으로 그대로 반환됩니다.
+バケットに登録されたポリシー(Bucket Policy)を照会します。ポリシードキュメントがJSON形式のレスポンス本文としてそのまま返されます。
 
-### 요청
+<a id="getbucketpolicy-request"></a>
+### リクエスト { #getbucketpolicy-request }
 
 ```http
 GET /{bucket}?policy HTTP/1.1
 ```
 
-#### 요청 헤더
+<a id="getbucketpolicy-request-request-header"></a>
+#### リクエストヘッダ
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storageの[APIリクエストヘッダガイド](api-guide-common)をご参照ください。
 
-#### 요청 파라미터
+<a id="getbucketpolicy-request-request-parameter"></a>
+#### リクエストパラメータ
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
+| bucket | Path | String | Y | バケット名 |
 
-### 응답
+<a id="getbucketpolicy-response"></a>
+### レスポンス { #getbucketpolicy-response }
 
-등록된 정책 문서가 JSON 본문으로 반환됩니다. 정책 문서의 각 필드에 대한 설명은 [PutBucketPolicy](#putbucketpolicy)를 참고하세요.
+登録されたポリシードキュメントがJSON本文として返されます。ポリシードキュメントの各フィールドに関する説明は、[PutBucketPolicy](#putbucketpolicy)をご参照ください。
 
 ```http
 HTTP/1.1 200 OK
@@ -199,24 +229,28 @@ Content-Type: application/json
 }
 ```
 
-!!! tip "알아두기"
-    버킷에 정책이 등록되어 있지 않으면 `404 NoSuchBucketPolicy` 오류가 반환됩니다.
+!!! tip "ポイント"
+    バケットにポリシーが登録されていない場合、`404 NoSuchBucketPolicy`エラーが返されます。
 
 
-## ListBuckets
+<a id="listbuckets"></a>
+## ListBuckets { #listbuckets }
 
 バケット一覧を照会します。
 
-### リクエスト
+<a id="listbuckets-request"></a>
+### リクエスト { #listbuckets-request }
 
 ```http
 GET /?max-buckets=20 HTTP/1.1
 ```
 
-#### 요청 헤더
+<a id="listbuckets-request-request-header"></a>
+#### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="listbuckets-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前 | 区分 | タイプ | 必須 | 説明 |
@@ -225,7 +259,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | max-buckets | Parameter | Integer | N | 返却する最大バケット数 |
 | prefix | Parameter | String | N | バケット名フィルタリングのプレフィックス |
 
-### レスポンス
+<a id="listbuckets-response"></a>
+### レスポンス { #listbuckets-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -248,7 +283,8 @@ HTTP/1.1 200 OK
 </ListAllMyBucketsResult>
 ```
 
-#### 응답 본문
+<a id="listbuckets-response-response-body"></a>
+#### レスポンス本文
 
 | 名前 | タイプ | 説明 |
 | --- | --- | --- |
@@ -264,11 +300,13 @@ HTTP/1.1 200 OK
 | ListAllMyBucketsResult.Prefix | String | リクエストに使用されたプレフィックスフィルタ |
 
 
-## PutBucketPolicy
+<a id="putbucketpolicy"></a>
+## PutBucketPolicy { #putbucketpolicy }
 
-버킷에 정책(Bucket Policy)을 등록하거나 기존 정책을 교체합니다. 버킷 정책은 JSON 형식의 정책 문서로, 어떤 주체(Principal)가 어떤 리소스(Resource)의 어떤 작업(Action)을 허용 또는 거부할지 정의합니다.
+バケットにポリシー(Bucket Policy)を登録するか、既存のポリシーを置き換えます。バケットポリシーはJSON形式のポリシードキュメントであり、どの主体(Principal)がどのリソース(Resource)のどのアクション(Action)を許可または拒否するかを定義します。
 
-### 요청
+<a id="putbucketpolicy-request"></a>
+### リクエスト { #putbucketpolicy-request }
 
 ```http
 PUT /{bucket}?policy HTTP/1.1
@@ -287,82 +325,89 @@ PUT /{bucket}?policy HTTP/1.1
 }
 ```
 
-#### 요청 헤더
+<a id="putbucketpolicy-request-request-header"></a>
+#### リクエストヘッダ
 
-Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
+Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storageの[APIリクエストヘッダガイド](api-guide-common)をご参照ください。
 
-#### 요청 파라미터
+<a id="putbucketpolicy-request-request-parameters"></a>
+#### リクエストパラメータ
 
-| 이름 | 구분 | 타입 | 필수 | 설명 |
+| 名前 | 区分 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- | --- |
-| bucket | Path | String | Y | 버킷 이름 |
+| bucket | Path | String | Y | バケット名 |
 
-#### 요청 본문
+<a id="putbucketpolicy-request-request-body"></a>
+#### リクエスト本文
 
-요청 본문은 정책 문서 전체를 담은 JSON입니다.
+リクエスト本文は、ポリシードキュメント全体を含んだJSONです。
 
-| 이름 | 타입 | 필수 | 설명 |
+| 名前 | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- |
-| Version | String | Y | 정책 언어 버전. `2012-10-17`을 사용합니다. |
-| Id | String | N | 정책 식별자 |
-| Statement | Array | Y | 정책 구문 목록. 최소 1개 이상이어야 합니다. |
-| Statement.Sid | String | N | 정책 구문 식별자 |
-| Statement.Effect | String | Y | 권한 적용 방식. `Allow` 또는 `Deny` |
-| Statement.Principal | Object | Y | 권한을 적용할 주체. `NotPrincipal`과 함께 사용할 수 없습니다. |
-| Statement.NotPrincipal | Object | N | 권한 적용에서 제외할 주체. `Principal`과 함께 사용할 수 없습니다. |
-| Statement.Action | Array | Y | 적용할 작업 목록. `NotAction`과 함께 사용할 수 없습니다. |
-| Statement.NotAction | Array | N | 적용에서 제외할 작업 목록. `Action`과 함께 사용할 수 없습니다. |
-| Statement.Resource | Array | Y | 작업 대상 리소스 목록. `NotResource`와 함께 사용할 수 없습니다. |
-| Statement.NotResource | Array | N | 적용에서 제외할 리소스 목록. `Resource`와 함께 사용할 수 없습니다. |
-| Statement.Condition | Object | N | 정책 구문이 적용되는 조건 |
+| Version | String | Y | ポリシー言語のバージョン。`2012-10-17`を使用します。 |
+| Id | String | N | ポリシー識別子 |
+| Statement | Array | Y | ポリシーステートメント一覧。少なくとも1つ以上である必要があります。 |
+| Statement.Sid | String | N | ポリシーステートメント識別子 |
+| Statement.Effect | String | Y | 権限の適用方式。`Allow`または`Deny` |
+| Statement.Principal | Object | Y | 権限を適用する主体。`NotPrincipal`と一緒には使用できません。 |
+| Statement.NotPrincipal | Object | N | 権限の適用から除外する主体。`Principal`と一緒には使用できません。 |
+| Statement.Action | Array | Y | 適用するアクション一覧。`NotAction`と一緒には使用できません。 |
+| Statement.NotAction | Array | N | 適用から除外するアクション一覧。`Action`と一緒には使用できません。 |
+| Statement.Resource | Array | Y | アクション対象のリソース一覧。`NotResource`と一緒には使用できません。 |
+| Statement.NotResource | Array | N | 適用から除外するリソース一覧。`Resource`と一緒には使用できません。 |
+| Statement.Condition | Object | N | ポリシーステートメントが適用される条件 |
 
+<a id="putbucketpolicy-request-principal"></a>
 #### Principal
 
-권한을 적용할 주체를 지정합니다.
+権限を適用する主体を指定します。
 
-| 형식 | 설명 |
+| 形式 | 説明 |
 | --- | --- |
-| `"*"` | 모든 사용자(익명 포함) |
-| `{ "NHN": "arn:nhn:cloud:iam:{appKey}:user/{memberUuid}" }` | 특정 NHN Cloud IAM 사용자. `appKey`는 16자리 영숫자, `memberUuid`는 UUID 형식입니다. |
-| `{ "NHN": "arn:nhn:cloud:iam:{appKey}:user/*" }` | 프로젝트(appKey)에 속한 모든 사용자 |
+| `"*"` | 全てのユーザー(匿名を含む) |
+| `{ "NHN": "arn:nhn:cloud:iam:{appKey}:user/{memberUuid}" }` | 特定のNHN Cloud IAMユーザー。`appKey`は16桁の英数字、`memberUuid`はUUID形式です。 |
+| `{ "NHN": "arn:nhn:cloud:iam:{appKey}:user/*" }` | プロジェクト(appKey)に属する全てのユーザー |
 
-!!! tip "알아두기"
-    `Principal`에는 단일 문자열 또는 문자열 배열을 모두 사용할 수 있습니다.
+!!! tip "ポイント"
+    `Principal`には単一の文字列または文字列の配列をいずれも使用できます。
 
+<a id="putbucketpolicy-request-action"></a>
 #### Action
 
-정책에서 사용할 수 있는 작업은 다음과 같습니다.
+ポリシーで使用できるアクションは次のとおりです。
 
-| 작업 | 설명 |
+| アクション | 説明 |
 | --- | --- |
-| s3:GetObject | 객체 조회 |
-| s3:PutObject | 객체 업로드 |
-| s3:DeleteObject | 객체 삭제 |
-| s3:GetObjectAcl | 객체 ACL 조회 |
-| s3:PutObjectAcl | 객체 ACL 설정 |
-| s3:ListBucket | 버킷 내 객체 목록 조회 |
-| s3:ListBucketMultipartUploads | 진행 중인 멀티파트 업로드 목록 조회 |
-| s3:ListMultipartUploadParts | 멀티파트 업로드의 파트 목록 조회 |
-| s3:AbortMultipartUpload | 멀티파트 업로드 중단 |
-| s3:* | 위 작업을 포함한 모든 작업 |
+| s3:GetObject | オブジェクトの照会 |
+| s3:PutObject | オブジェクトのアップロード |
+| s3:DeleteObject | オブジェクトの削除 |
+| s3:GetObjectAcl | オブジェクトACLの照会 |
+| s3:PutObjectAcl | オブジェクトACLの設定 |
+| s3:ListBucket | バケット内のオブジェクト一覧照会 |
+| s3:ListBucketMultipartUploads | 進行中のマルチパートアップロード一覧照会 |
+| s3:ListMultipartUploadParts | マルチパートアップロードのパート一覧照会 |
+| s3:AbortMultipartUpload | マルチパートアップロードの中断 |
+| s3:* | 上記のアクションを含む全てのアクション |
 
-!!! danger "주의"
-    버킷 생성/삭제, 버킷 정책 및 ACL 관리 등 버킷 관리(Bucket Administration) 작업은 버킷 정책으로 부여할 수 없습니다. 해당 권한은 프로젝트/버킷 소유자 역할로만 수행할 수 있습니다.
+!!! danger "注意"
+    バケットの作成/削除、バケットポリシー及びACL管理など、バケット管理(Bucket Administration)アクションはバケットポリシーで付与できません。該当する権限はプロジェクト/バケット所有者ロールでのみ実行できます。
 
+<a id="putbucketpolicy-request-resource"></a>
 #### Resource
 
-리소스는 ARN이 아닌 버킷 내 경로 형식으로 지정합니다.
+リソースはARNではなくバケット内のパス形式で指定します。
 
-| 형식 | 설명 |
+| 形式 | 説明 |
 | --- | --- |
-| `*` | 버킷 내 모든 객체 |
-| `curated/*` | `curated/` 접두사를 가진 모든 객체 |
-| `report.csv` | 특정 객체 키 |
+| `*` | バケット内の全てのオブジェクト |
+| `curated/*` | `curated/`プレフィックスを持つ全てのオブジェクト |
+| `report.csv` | 特定のオブジェクトキー |
 
-!!! danger "주의"
-    리소스는 `arn:`으로 시작하거나 `/`로 시작할 수 없습니다.
+!!! danger "注意"
+    リソースは`arn:`で始まるか、`/`で始まることはできません。
 
-#### 요청 예시
+<a id="putbucketpolicy-request-request-example"></a>
+#### リクエスト例
 
 ```json
 {
@@ -379,7 +424,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 }
 ```
 
-### 응답
+<a id="putbucketpolicy-response"></a>
+### レスポンス { #putbucketpolicy-response }
 
 ```http
 HTTP/1.1 204 No Content
