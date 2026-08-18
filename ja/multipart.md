@@ -1,22 +1,29 @@
-## Multipart
+<!-- pre-align:aligned sig=f760859bc93e -->
+
+<a id="multipart"></a>
+## Multipart { #multipart }
 
 **Data & Analytics > Data Lake Storage > Amazon S3互換APIガイド > Multipart**
 
 
-## AbortMultipartUpload
+<a id="abortmultipartupload"></a>
+## AbortMultipartUpload { #abortmultipartupload }
 
 進行中のマルチパートアップロードを中断します。
 
-### リクエスト
+<a id="request"></a>
+### リクエスト { #request }
 
 ```http
 DELETE /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
+<a id="request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前                  | 区分        | タイプ    | 必須 | 説明             |
@@ -26,17 +33,20 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | x-amz-storage-class | Header    | String | N  | ストレージクラス       |
 | uploadId            | Parameter | String | Y  | マルチパートアップロードID |
 
-### レスポンス
+<a id="response"></a>
+### レスポンス { #response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
-## CompleteMultipartUpload
+<a id="completemultipartupload"></a>
+## CompleteMultipartUpload { #completemultipartupload }
 
 アップロードされたパートを組み合わせてオブジェクトを保存し、マルチパートアップロードを完了します。
 
-### リクエスト
+<a id="completemultipartupload-request"></a>
+### リクエスト { #completemultipartupload-request }
 
 ```http
 POST /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
@@ -71,6 +81,7 @@ x-amz-checksum-type: ChecksumType
 </CompleteMultipartUpload>
 ```
 
+<a id="completemultipartupload-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
@@ -89,6 +100,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | x-amz-checksum-xxhash128 | N     | データ整合性検証のためのヘッダ。オブジェクトの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値                                                                                             |
 | x-amz-checksum-type      | N     | マルチパートアップロードでパート別のチェックサムを結合してオブジェクトレベルのチェックサムを生成する方式。`CreateMultipartUpload`リクエストで指定したチェックサムタイプと一致しない場合、`BadDigest`エラーが返されます。有効な値: `COMPOSITE \| FULL_OBJECT` |
 
+<a id="completemultipartupload-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前                  | 区分        | タイプ    | 必須 | 説明             |
@@ -98,6 +110,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | x-amz-storage-class | Header    | String | N  | ストレージクラス       |
 | uploadId            | Parameter | String | Y  | マルチパートアップロードID |
 
+<a id="completemultipartupload-request-request-body"></a>
 #### リクエストボディ
 
 | 名前                                             | タイプ     | 必須 | 説明                                          |
@@ -117,7 +130,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | CompleteMultipartUpload.Part.ChecksumXXHASH3   | String  | N  | パートの64ビット`XXHASH3`チェックサム値をBase64でエンコードした値    |
 | CompleteMultipartUpload.Part.ChecksumXXHASH128 | String  | N  | パートの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値 |
 
-### レスポンス
+<a id="completemultipartupload-response"></a>
+### レスポンス { #completemultipartupload-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -142,6 +156,7 @@ HTTP/1.1 200 OK
 </CompleteMultipartUploadResult>
 ```
 
+<a id="completemultipartupload-response-response-body"></a>
 #### レスポンス本文
 
 | 名前                                              | タイプ    | 説明                                          |
@@ -163,11 +178,13 @@ HTTP/1.1 200 OK
 | CompleteMultipartUploadResult.ChecksumXXHASH128 | String | パートの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値 |
 
 
-## CreateMultipartUpload
+<a id="createmultipartupload"></a>
+## CreateMultipartUpload { #createmultipartupload }
 
 大容量のオブジェクトをアップロードできるように、マルチパートアップロードを開始してアップロードIDを生成します。アップロードIDは最大1時間有効です。
 
-### リクエスト
+<a id="createmultipartupload-request"></a>
+### リクエスト { #createmultipartupload-request }
 
 ```http
 POST /{bucket}/{objectKey}?uploads HTTP/1.1
@@ -175,6 +192,7 @@ x-amz-checksum-algorithm: ChecksumAlgorithm
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="createmultipartupload-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
@@ -184,6 +202,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | x-amz-checksum-algorithm | N     | オブジェクトのチェックサム生成に使用するアルゴリズムを指定。有効な値: `CRC32 \| CRC32C \| SHA1 \| SHA256 \| CRC64NVME \| SHA512 \| MD5 \| XXHASH64 \| XXHASH3 \| XXHASH128` |
 | x-amz-checksum-type      | N     | オブジェクトのチェックサム値を計算する方式を指定。有効な値: `COMPOSITE \| FULL_OBJECT`                                                                                                |
 
+<a id="createmultipartupload-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前                  | 区分     | タイプ    | 必須 | 説明              |
@@ -194,7 +213,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | x-amz-storage-class | Header | String | N  | ストレージクラス        |
 | x-amz-meta-\*       | Header | String | N  | ユーザー定義メタデータ     |
 
-### レスポンス
+<a id="createmultipartupload-response"></a>
+### レスポンス { #createmultipartupload-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -209,6 +229,7 @@ x-amz-checksum-type: ChecksumType
 </InitiateMultipartUploadResult>
 ```
 
+<a id="createmultipartupload-response-response-header"></a>
 #### レスポンスヘッダ
 
 | フィールド                 | 説明                     |
@@ -216,6 +237,7 @@ x-amz-checksum-type: ChecksumType
 | x-amz-checksum-algorithm | オブジェクトのチェックサム生成に使用したアルゴリズム値 |
 | x-amz-checksum-type      | オブジェクトのチェックサム値を計算した方式      |
 
+<a id="createmultipartupload-response-response-body"></a>
 #### レスポンス本文
 
 | 名前                                     | タイプ    | 説明               |
@@ -226,20 +248,24 @@ x-amz-checksum-type: ChecksumType
 | InitiateMultipartUploadResult.UploadId | String | マルチパートアップロードID   |
 
 
-## ListParts
+<a id="listparts"></a>
+## ListParts { #listparts }
 
 マルチパートアップロードのパート一覧を照会します。
 
-### リクエスト
+<a id="listparts-request"></a>
+### リクエスト { #listparts-request }
 
 ```http
 GET /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
+<a id="listparts-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
 
+<a id="listparts-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前                  | 区分        | タイプ    | 必須 | 説明             |
@@ -249,7 +275,8 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | x-amz-storage-class | Header    | String | N  | ストレージクラス       |
 | uploadId            | Parameter | String | Y  | マルチパートアップロードID |
 
-### レスポンス
+<a id="listparts-response"></a>
+### レスポンス { #listparts-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -273,6 +300,7 @@ HTTP/1.1 200 OK
 </ListPartsResult>
 ```
 
+<a id="listparts-response-response-body"></a>
 #### レスポンス本文
 
 | 名前                                   | タイプ       | 説明                  |
@@ -293,11 +321,13 @@ HTTP/1.1 200 OK
 | ListPartsResult.Part.Size            | Long      | パートのサイズ(bytes)      |
 
 
-## UploadPart
+<a id="uploadpart"></a>
+## UploadPart { #uploadpart }
 
 マルチパートアップロードのパートをアップロードします。アップロードする前にCreateMultipartUpload APIを呼び出して、マルチパートアップロードIDを生成する必要があります。
 
-### リクエスト
+<a id="uploadpart-request"></a>
+### リクエスト { #uploadpart-request }
 
 ```http
 PUT /{bucket}/{objectKey}?partNumber={partNumber}&uploadId={uploadId} HTTP/1.1
@@ -318,6 +348,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 body
 ```
 
+<a id="uploadpart-request-request-header"></a>
 #### リクエストヘッダ
 
 Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake Storage [API リクエストヘッダガイド](api-guide-common)をご参照ください。
@@ -337,6 +368,7 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | x-amz-checksum-xxhash3   | N     | パートの64ビット`XXHASH3`チェックサム値をBase64でエンコードした値   |
 | x-amz-checksum-xxhash128 | N     | パートの128ビット`XXHASH128`チェックサム値をBase64でエンコードした値 |
 
+<a id="uploadpart-request-request-parameter"></a>
 #### リクエストパラメータ
 
 | 名前                  | 区分        | タイプ     | 必須 | 説明              |
@@ -347,13 +379,15 @@ Data Lake Storage APIで共通して使用するヘッダ情報は、Data Lake S
 | partNumber          | Parameter | Integer | Y  | パート番号(1～10,000) |
 | uploadId            | Parameter | String  | Y  | マルチパートアップロードID  |
 
+<a id="uploadpart-request-request-body"></a>
 #### リクエストボディ
 
 | 名前   | タイプ    | 必須 | 説明                           |
 |------|--------|----|------------------------------|
 | Body | Binary | Y  | パートのバイナリデータ。最大5GiBまでアップロード可能 |
 
-### レスポンス
+<a id="uploadpart-response"></a>
+### レスポンス { #uploadpart-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -370,6 +404,7 @@ x-amz-checksum-xxhash3: ChecksumXXHASH3
 x-amz-checksum-xxhash128: ChecksumXXHASH128
 ```
 
+<a id="uploadpart-response-response-header"></a>
 #### レスポンスヘッダ
 
 | フィールド                 | 説明                                          |

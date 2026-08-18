@@ -1,4 +1,7 @@
-## Console Guide
+<!-- pre-align:aligned sig=30c79989ac5b -->
+
+<a id="console-guide"></a>
+## Console Guide { #console-guide }
 
 **Data & Analytics > Data Lake Storage > Console User Guide**
 
@@ -8,9 +11,11 @@ Data Lake Storage service console provides the following features:
 * Manage and view credentials
 * View object lists and details
 
-## View Bucket
+<a id="view-bucket"></a>
+## View Bucket { #view-bucket }
 
-### List Buckets
+<a id="list-buckets"></a>
+### List Buckets { #list-buckets }
 
 You can check the list of created buckets in the Data Lake Storage service console.
 
@@ -23,7 +28,8 @@ You can check the list of created buckets in the Data Lake Storage service conso
 | Number of Objects | Number of objects stored in the bucket |
 | Size | The total size of the object stored in the bucket |
 
-### Search Bucket
+<a id="search-bucket"></a>
+### Search Bucket { #search-bucket }
 
 You can search for buckets whose names contain the string you entered, using the input field and search button at the top left of the bucket list.
 
@@ -31,7 +37,8 @@ You can search for buckets whose names contain the string you entered, using the
 | --- | --- | --- | --- |
 | Keyword | O | Bucket name to search for | English lower case letters, numbers, and some special characters ('`.`', '`-`') are allowed. |
 
-### View Bucket Details
+<a id="view-bucket-details"></a>
+### View Bucket Details { #view-bucket-details }
 
 You can view the details of a bucket by clicking anywhere in the bucket list other than the bucket name.
 
@@ -44,9 +51,11 @@ You can view the details of a bucket by clicking anywhere in the bucket list oth
 | Created on | Created time for bucket |
 | Last updated time | Last modified time of the bucket |
 
-## Manage Bucket
+<a id="manage-bucket"></a>
+## Manage Bucket { #manage-bucket }
 
-### Create Bucket
+<a id="create-bucket"></a>
+### Create Bucket { #create-bucket }
 
 You can create a bucket by clicking **Create Bucket** at the top of the bucket list. The input values required to create a bucket are as shown in the table below.
 
@@ -58,7 +67,8 @@ You can create a bucket by clicking **Create Bucket** at the top of the bucket l
 | Name | O | Bucket name | It must be between 3 and 63 characters.<br>English lower case letters, numbers, and some special characters ('`.`', '`-`') are allowed.<br>The name must begin and end with English lowercase letter or number.<br>Consecutive `.` (`..`), IPv4 pattern, some prefixes and suffixes are not allowed.<br>Unavailable prefixes: `xn--`, `sthree-`, and `amzn-s3-demo-`<br>Unavailable suffixes: `-s3alias`, `--ol-s3`, `.mrap`, `--x-s3`, and `--table-s3` |
 | Description | X | Bucket Description | Enter 100 characters or fewer. |
 
-### Delete Bucket
+<a id="delete-bucket"></a>
+### Delete Bucket { #delete-bucket }
 
 To delete a bucket, select it using the checkboxes in the bucket list, then click **Delete** at the top of the bucket list.
 
@@ -67,7 +77,8 @@ To delete a bucket, select it using the checkboxes in the bucket list, then clic
 
 Deleting a bucket cannot be undone.
 
-### Empty Bucket
+<a id="empty-bucket"></a>
+### Empty Bucket { #empty-bucket }
 
 After selecting a bucket using the checkbox in the bucket list, you can click **Empty Bucket** at the top of the bucket list to request removal of all objects in the bucket.
 
@@ -80,9 +91,11 @@ After selecting a bucket using the checkbox in the bucket list, you can click **
 
 You cannot cancel or undo the bucket emptying during the process.
 
-## Manage Credentials
+<a id="manage-credentials"></a>
+## Manage Credentials { #manage-credentials }
 
-### View Credentials
+<a id="view-credentials"></a>
+### View Credentials { #view-credentials }
 
 Clicking **S3 API Credentials** at the top of the bucket list page displays the Credentials Management pop-up. You can view the list of issued credentials in the pop-up.
 
@@ -94,7 +107,8 @@ Clicking **S3 API Credentials** at the top of the bucket list page displays the 
 | Last used date | Last used time of the credentials |
 | Management | Options to edit and delete |
 
-### Issue Credentials
+<a id="issue-credentials"></a>
+### Issue Credentials { #issue-credentials }
 
 You can issue new credentials by clicking **Register S3 API Credentials** at the top of the S3 API Credentials popup. When issuing credentials, you can add a description, such as the purpose.
 
@@ -109,7 +123,8 @@ You can issue new credentials by clicking **Register S3 API Credentials** at the
     Credentials are used for user authentication when using the API. If leaked, others may be able to access your storage features and objects. Always store them in a secure location and do not share them with others.
     The Access Key and Secret Key are displayed immediately after the credentials are issued. The Secret Key can only be viewed once, immediately after issuance.
 
-### Modify Credentials
+<a id="modify-credentials"></a>
+### Modify Credentials { #modify-credentials }
 
 You can modify the description of S3 API credentials by clicking **Modify** in the Management column of the S3 API Credentials list.
 
@@ -117,16 +132,19 @@ You can modify the description of S3 API credentials by clicking **Modify** in t
 | --- | --- | --- | --- |
 | Description | X | Description for the purpose of credentials | Up to 100 characters |
 
-### Delete Credentials
+<a id="delete-credentials"></a>
+### Delete Credentials { #delete-credentials }
 
 You can delete credentials by clicking **Delete** in the S3 API credentials management area. A confirmation popup will be displayed.
 
 !!! danger "Caution"
     API authentication cannot be done with deleted credentials. Also, deleted credentials cannot be recovered.
 
-## View Object
+<a id="view-object"></a>
+## View Object { #view-object }
 
-### List Objects
+<a id="list-objects"></a>
+### List Objects { #list-objects }
 
 You can view the list of objects in the bucket by clicking the bucket name in the bucket list.
 
@@ -136,7 +154,8 @@ You can view the list of objects in the bucket by clicking the bucket name in th
 | Size | Object size |
 | Last updated time | Upload time of the object |
 
-### View Object Details
+<a id="view-object-details"></a>
+### View Object Details { #view-object-details }
 
 You can view the details of an object by clicking the file object in the object list.
 

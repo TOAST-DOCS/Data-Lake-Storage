@@ -1,24 +1,32 @@
-## Amazon S3 호환 API 가이드
+<!-- pre-align:aligned sig=bd9519149408 -->
+
+<a id="amazon-s3-compatible-api-guide"></a>
+## Amazon S3 호환 API 가이드 { #amazon-s3-compatible-api-guide }
 
 **Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > 공통**
 
-## Data Lake Storage API 공통 정보
+<a id="common-information-for-data-lake-storage-api"></a>
+## Data Lake Storage API 공통 정보 { #common-information-for-data-lake-storage-api }
 
 !!! tip "알아두기"
     NHN Cloud Data Lake Storage 서비스는 Amazon S3 API 2006-03-01 버전과 호환되도록 설계되어 있습니다.
 
-### API 엔드포인트
+<a id="api-endpoint"></a>
+### API 엔드포인트 { #api-endpoint }
 
 | 리전 | 엔드포인트 |
 | --- | ----- |
 | KR3 | https://kr3-data-lake-storage.nhncloudservice.com |
 
-### 인증 및 권한
+<a id="authentication-and-authorization"></a>
+### 인증 및 권한 { #authentication-and-authorization }
 
 Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명이 필요합니다. [S3 API 자격 증명(S3 API Credential)](console-user-guide/#_10)을 참고하여 API 사용에 필요한 정보를 준비합니다.
 
-### 요청
+<a id="request"></a>
+### 요청 { #request }
 
+<a id="request-header"></a>
 #### 요청 헤더
 
 | 필드 | 필수 여부 | 설명 |
@@ -27,8 +35,10 @@ Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명
 | Host | Y | 리전별 엔드포인트입니다. |
 | x-amz-date | Y | ISO 8601 형식(UTC 기준) 요청 일시입니다. |
 
-### 응답
+<a id="response"></a>
+### 응답 { #response }
 
+<a id="response-failure-response-code"></a>
 #### 실패 응답 코드
 
 | HTTP 상태 코드 | 코드 | 설명 |
@@ -46,7 +56,8 @@ Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명
 | 503 | ServiceUnavailable | 서비스가 현재 요청을 처리할 수 없습니다. 잠시 후 다시 시도하세요. |
 | 503 | SlowDown | 요청 속도를 줄이세요. |
 
-## 데이터 무결성 검증
+<a id="data-integrity-verification"></a>
+## 데이터 무결성 검증 { #data-integrity-verification }
 
 Data Lake Storage는 업로드 및 다운로드 시 체크섬을 통한 데이터 무결성 검증을 지원합니다.
 업로드 시 지정한 체크섬 알고리즘으로 체크섬 값을 계산하여 전송하면, 서버에서 독립적으로 체크섬을 계산하여 일치 여부를 확인한 후 객체를 저장합니다.
@@ -54,7 +65,8 @@ Data Lake Storage는 업로드 및 다운로드 시 체크섬을 통한 데이�
 !!! tip "알아두기"
     `x-amz-checksum-*` 헤더와 `Content-MD5` 헤더가 동시에 요청에 포함된 경우, `x-amz-checksum-*` 헤더가 우선 적용됩니다.
 
-### 지원 체크섬 알고리즘
+<a id="supported-checksum-algorithms"></a>
+### 지원 체크섬 알고리즘 { #supported-checksum-algorithms }
 
 | 알고리즘 | 파라미터 값 | 단일 파트 업로드 | 멀티파트 FULL_OBJECT | 멀티파트 COMPOSITE |
 | --- | --- | --- | --- | --- |
@@ -74,7 +86,8 @@ Data Lake Storage는 업로드 및 다운로드 시 체크섬을 통한 데이�
 !!! tip "알아두기"
     XXHash64, XXHash3, XXHash128, SHA-512 알고리즘을 사용하려면 최신 버전의 AWS SDK가 필요합니다.
 
-### 체크섬 타입
+<a id="checksum-type"></a>
+### 체크섬 타입 { #checksum-type }
 
 멀티파트 업로드 시 체크섬 타입을 지정할 수 있습니다.
 
@@ -86,7 +99,8 @@ Data Lake Storage는 업로드 및 다운로드 시 체크섬을 통한 데이�
 !!! tip "알아두기"
     단일 파트 업로드(PutObject)는 체크섬 타입을 별도로 지정하지 않으며, 응답 시 `x-amz-checksum-type`은 항상 `FULL_OBJECT`로 반환됩니다.
 
-### 단일 파트 업로드 체크섬
+<a id="single-part-upload-checksum"></a>
+### 단일 파트 업로드 체크섬 { #single-part-upload-checksum }
 
 `PutObject` API 호출 시 `--checksum-algorithm` 옵션으로 체크섬 알고리즘을 지정할 수 있습니다.
 
@@ -98,14 +112,16 @@ $ aws --endpoint-url=${Endpoint} s3api put-object \
     --checksum-algorithm CRC32
 ```
 
-### 멀티파트 업로드 체크섬
+<a id="multipart-upload-checksum"></a>
+### 멀티파트 업로드 체크섬 { #multipart-upload-checksum }
 
 멀티파트 업로드 시 `CreateMultipartUpload`에서 알고리즘과 체크섬 타입을 지정하고, 이후 `UploadPart`에서 동일한 알고리즘을 사용해야 합니다.
 
 !!! danger "주의"
     `CreateMultipartUpload`에서 지정한 알고리즘과 `UploadPart`에서 지정한 알고리즘이 다를 경우 400 오류가 반환됩니다.
 
-### 페이로드 서명 방식
+<a id="payload-signing-method"></a>
+### 페이로드 서명 방식 { #payload-signing-method }
 
 `x-amz-content-sha256` 헤더로 페이로드 서명 방식을 지정할 수 있습니다.
 Data Lake Storage에서 지원하는 방식은 아래와 같습니다.
@@ -118,15 +134,18 @@ Data Lake Storage에서 지원하는 방식은 아래와 같습니다.
 !!! tip "알아두기"
     AWS CLI v2.23.0 이상 및 최신 AWS SDK를 사용하는 경우, 체크섬이 포함된 업로드 요청은 기본적으로 `STREAMING-UNSIGNED-PAYLOAD-TRAILER` 방식으로 전송됩니다.
 
-## AWS 명령줄 인터페이스(CLI)
+<a id="aws-command-line-interface-cli"></a>
+## AWS 명령줄 인터페이스(CLI) { #aws-command-line-interface-cli }
 
 S3 호환 API를 이용하여 AWS 명령줄 인터페이스로 NHN Cloud Data Lake Storage 서비스를 사용할 수 있습니다.
 
-### 설치
+<a id="installation"></a>
+### 설치 { #installation }
 
 [Installing past releases of the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html) 문서를 참고해 AWS 명령줄 인터페이스를 설치합니다.
 
-### 설정
+<a id="configuration"></a>
+### 설정 { #configuration }
 
 AWS 명령줄 인터페이스를 사용하려면 먼저 S3 API 자격 증명과 환경을 설정해야 합니다.
 
@@ -144,7 +163,8 @@ Default output format [None]:
 | Secret Key | S3 API 자격 증명 비밀 키 |
 | Region Name | KR3 - 한국(광주) 리전 |
 
-### S3 명령 사용 방법
+<a id="how-to-use-the-s3-commands"></a>
+### S3 명령 사용 방법 { #how-to-use-the-s3-commands }
 
 ```sh
 $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
@@ -160,19 +180,22 @@ $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
     AWS 명령줄 인터페이스는 AWS용으로 제공되는 도구이므로 AWS 도메인을 사용하도록 설정되어 있습니다. 따라서 NHN Cloud Data Lake Storage 서비스를 사용하려면 반드시 명령마다 엔드포인트를 지정해야 합니다.
     AWS 명령줄 인터페이스 명령은 [AWS CLI에서 상위 수준(s3) 명령 사용](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-services-s3-commands.html) 문서를 참고하세요.
 
-## AWS SDK
+<a id="aws-sdk"></a>
+## AWS SDK { #aws-sdk }
 
 AWS는 여러 가지 프로그래밍 언어를 지원하는 SDK를 제공합니다. S3 호환 API를 이용하여 AWS SDK로 NHN Cloud Data Lake Storage 서비스를 사용할 수 있습니다.
 
 !!! tip "알아두기"
     자세한 내용은 [AWS SDK](https://builder.aws.com/build/tools) 문서를 참고하세요.
 
-### Java SDK
+<a id="java-sdk"></a>
+### Java SDK { #java-sdk }
 
 !!! tip "알아두기"
     자세한 내용은 [AWS SDK for Java](https://docs.aws.amazon.com/ko_kr/sdk-for-java/) 문서를 참고하세요.
 
-### Boto3 - Python SDK
+<a id="boto3---python-sdk"></a>
+### Boto3 - Python SDK { #boto3---python-sdk }
 
 !!! tip "알아두기"
     자세한 내용은 [AWS SDK for Python(Boto3)](https://docs.aws.amazon.com/ko_kr/pythonsdk/) 문서를 참고하세요.

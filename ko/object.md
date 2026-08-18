@@ -1,21 +1,28 @@
-## Object
+<!-- pre-align:aligned sig=6cfc8590d826 -->
+
+<a id="object"></a>
+## Object { #object }
 **Data & Analytics > Data Lake Storage > Amazon S3 호환 API 가이드 > Object**
 
 
-## DeleteObject
+<a id="deleteobject"></a>
+## DeleteObject { #deleteobject }
 
 버킷에 저장된 객체를 삭제합니다.
 
-### 요청
+<a id="request"></a>
+### 요청 { #request }
 
 ```http
 DELETE /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="request-parameter"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
@@ -23,18 +30,21 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | bucket | Path | String | Y | 버킷 이름 |
 | objectKey | Path | String | Y | 객체 이름 |
 
-### 응답
+<a id="response"></a>
+### 응답 { #response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## DeleteObjects
+<a id="deleteobjects"></a>
+## DeleteObjects { #deleteobjects }
 
 하나의 요청으로 여러 객체를 삭제합니다. 한 번의 요청에 최대 1,000개의 객체 키를 지정할 수 있습니다.
 
-### 요청
+<a id="deleteobjects-request"></a>
+### 요청 { #deleteobjects-request }
 
 ```http
 POST /{bucket}?delete HTTP/1.1
@@ -52,10 +62,12 @@ POST /{bucket}?delete HTTP/1.1
 </Delete>
 ```
 
+<a id="deleteobjects-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="deleteobjects-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명 |
@@ -63,6 +75,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | bucket | Path | String | Y | 버킷 이름 |
 | Content-MD5 | Header | String | Y | 요청 본문의 MD5 해시 값(전송 중 변조 검증용) |
 
+<a id="deleteobjects-request-request-body"></a>
 #### 요청 본문
 
 | 이름 | 타입 | 필수 | 설명 |
@@ -75,7 +88,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | Delete.Object.Size | Long | N | 객체의 크기(바이트). 지정한 경우 해당 크기와 일치하는 객체만 삭제 |
 | Delete.Quiet | Boolean | N | `true`로 설정하면 Quiet 모드로 동작하며, 실패한 항목만 응답에 포함. 기본값은 Verbose 모드(전체 결과 반환) |
 
-### 응답
+<a id="deleteobjects-response"></a>
+### 응답 { #deleteobjects-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -95,6 +109,7 @@ HTTP/1.1 200 OK
 </DeleteResult>
 ```
 
+<a id="deleteobjects-response-response-body"></a>
 #### 응답 본문
 
 | 이름 | 타입 | 설명 |
@@ -108,20 +123,24 @@ HTTP/1.1 200 OK
 | DeleteResult.Error.Message | String | 오류 메시지 |
 
 
-## GetObject
+<a id="getobject"></a>
+## GetObject { #getobject }
 
 버킷에 저장된 객체를 조회합니다.
 
-### 요청
+<a id="getobject-request"></a>
+### 요청 { #getobject-request }
 
 ```http
 GET /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="getobject-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="getobject-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름                  | 구분     | 타입     | 필수 | 설명         |
@@ -131,7 +150,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | Range               | Header | String | N  | 부분 다운로드 범위 |
 | x-amz-storage-class | Header | String | N  | 스토리지 클래스   |
 
-### 응답
+<a id="getobject-response"></a>
+### 응답 { #getobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -151,6 +171,7 @@ x-amz-checksum-type: ChecksumType
 data
 ```
 
+<a id="getobject-response-response-header"></a>
 #### 응답 헤더
 
 | 필드                       | 설명                                                                          |
@@ -169,20 +190,24 @@ data
 | x-amz-checksum-type      | 멀티파트 객체의 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성한 방식. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
 
 
-## HeadObject
+<a id="headobject"></a>
+## HeadObject { #headobject }
 
 버킷에 저장된 객체의 메타데이터를 조회합니다.
 
-### 요청
+<a id="headobject-request"></a>
+### 요청 { #headobject-request }
 
 ```http
 HEAD /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="headobject-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="headobject-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름                  | 구분     | 타입     | 필수 | 설명       |
@@ -191,7 +216,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | objectKey           | Path   | String | Y  | 객체 이름    |
 | x-amz-storage-class | Header | String | N  | 스토리지 클래스 |
 
-### 응답
+<a id="headobject-response"></a>
+### 응답 { #headobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -214,6 +240,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="headobject-response-response-header"></a>
 #### 응답 헤더
 
 | 필드                       | 설명                                                                           |
@@ -235,20 +262,24 @@ x-amz-checksum-type: ChecksumType
 | x-amz-checksum-type      | 멀티파트 객체의 파트별 체크섬을 결합하여 객체 수준의 체크섬을 생성한 방식. 유효한 값: `COMPOSITE \| FULL_OBJECT` |
 
 
-## ListObjectsV2
+<a id="listobjectsv2"></a>
+## ListObjectsV2 { #listobjectsv2 }
 
 버킷에 저장된 객체 목록을 조회합니다.
 
-### 요청
+<a id="listobjectsv2-request"></a>
+### 요청 { #listobjectsv2-request }
 
 ```http
 GET /{bucket}?list-type=2&continuation-token={continuationToken}&delimiter={delimiter}&encoding-type={encodingType}&fetch-owner={fetchOwner}&max-keys={maxKeys}&prefix={prefix}&start-after={startAfter} HTTP/1.1
 ```
 
+<a id="listobjectsv2-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
 
+<a id="listobjectsv2-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름                  | 구분        | 타입      | 필수 | 설명               |
@@ -264,7 +295,8 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | prefix              | Parameter | String  | N  | 객체 이름 접두어        |
 | start-after         | Parameter | String  | N  | 조회 시작 기준         |
 
-### 응답
+<a id="listobjectsv2-response"></a>
+### 응답 { #listobjectsv2-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -300,6 +332,7 @@ HTTP/1.1 200 OK
 </ListBucketResult>
 ```
 
+<a id="listobjectsv2-response-response-body"></a>
 #### 응답 본문
 
 | 이름                                          | 타입        | 설명                               |
@@ -327,11 +360,13 @@ HTTP/1.1 200 OK
 | ListBucketResult.CommonPrefixes.Prefix      | String    | delimiter 기준으로 그룹화된 경로           |
 
 
-## PutObject
+<a id="putobject"></a>
+## PutObject { #putobject }
 
 버킷에 객체를 저장합니다.
 
-### 요청
+<a id="putobject-request"></a>
+### 요청 { #putobject-request }
 
 ```http
 PUT /{bucket}/{objectKey} HTTP/1.1
@@ -352,6 +387,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 Body
 ```
 
+<a id="putobject-request-request-header"></a>
 #### 요청 헤더
 
 Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake Storage [API 요청 헤더 가이드](api-guide-common)를 참고하세요.
@@ -372,6 +408,7 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | x-amz-checksum-xxhash128     | N     | 객체의 128비트 `XXHASH128` 체크섬 값을 Base64로 인코딩한 값                                                                                                    |
 | x-amz-sdk-checksum-algorithm | N     | SDK를 사용하여 객체의 체크섬을 생성할 때 사용한 알고리즘을 지정. 이 헤더를 전송할 경우 반드시 `x-amz-checksum-algorithm` 또는 `x-amz-trailer` 헤더를 함께 전송해야 하며, 그렇지 않을 경우 HTTP 400 오류가 반환됨 |
 
+<a id="putobject-request-request-parameter"></a>
 #### 요청 파라미터
 
 | 이름                  | 구분     | 타입     | 필수 | 설명           |
@@ -383,13 +420,15 @@ Data Lake Storage API에서 공통으로 사용하는 헤더 정보는 Data Lake
 | x-amz-storage-class | Header | String | N  | 스토리지 클래스     |
 | x-amz-meta-\*       | Header | String | N  | 사용자 정의 메타데이터 |
 
+<a id="putobject-request-request-body"></a>
 #### 요청 본문
 
 | 이름   | 타입     | 필수 | 설명     |
 |------|--------|----|--------|
 | Body | Binary | Y  | 객체 데이터 |
 
-### 응답
+<a id="putobject-response"></a>
+### 응답 { #putobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -407,6 +446,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="putobject-response-response-header"></a>
 #### 응답 헤더
 
 | 필드                       | 설명                                                                                                                                 |
