@@ -1,12 +1,17 @@
-## Bucket
+<!-- pre-align:aligned sig=b6666f81ba17 -->
+
+<a id="bucket"></a>
+## Bucket { #bucket }
 **Data & Analytics > Data Lake Storage > Amazon S3-Compatible API Guide > Bucket**
 
 
-## CreateBucket
+<a id="createbucket"></a>
+## CreateBucket { #createbucket }
 
 Creates a bucket. The bucket name in the Data Lake Storage service is unique within a region.
 
-### Request
+<a id="request"></a>
+### Request { #request }
 
 ```http
 PUT /{bucket} HTTP/1.1
@@ -17,16 +22,19 @@ PUT /{bucket} HTTP/1.1
 </CreateBucketConfiguration>
 ```
 
+<a id="request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | Bucket name |
 
+<a id="request-body"></a>
 #### Request Body
 
 | Name | Type | Required | Description |
@@ -34,7 +42,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | CreateBucketConfiguration | Object | Y | Information of the bucket to create |
 | CreateBucketConfiguration.LocationConstraint | String | Conditional | Region code; if not specified, the region information matching the endpoint is applied |
 
-### Response
+<a id="response"></a>
+### Response { #response }
 
 ```http
 HTTP/1.1 200 OK
@@ -42,81 +51,96 @@ Location: "/{bucket}"
 ```
 
 
-## DeleteBucket
+<a id="deletebucket"></a>
+## DeleteBucket { #deletebucket }
 
 Deletes bucket.
 
-### Request
+<a id="deletebucket-request"></a>
+### Request { #deletebucket-request }
 
 ```http
 DELETE /{bucket} HTTP/1.1
 ```
 
+<a id="deletebucket-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="deletebucket-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | Bucket name |
 
-### Response
+<a id="deletebucket-response"></a>
+### Response { #deletebucket-response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## DeleteBucketPolicy
+<a id="deletebucketpolicy"></a>
+## DeleteBucketPolicy { #deletebucketpolicy }
 
 Deletes the policy (bucket policy) registered for a bucket.
 
-### Request
+<a id="deletebucketpolicy-request"></a>
+### Request { #deletebucketpolicy-request }
 
 ```http
 DELETE /{bucket}?policy HTTP/1.1
 ```
 
+<a id="deletebucketpolicy-request-request-header"></a>
 #### Request Header
 
 For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="deletebucketpolicy-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | Bucket name |
 
-### Response
+<a id="deletebucketpolicy-response"></a>
+### Response { #deletebucketpolicy-response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## GetBucketAcl
+<a id="getbucketacl"></a>
+## GetBucketAcl { #getbucketacl }
 
 Retrieves the access control list (ACL) of a bucket.
 
-### Request
+<a id="getbucketacl-request"></a>
+### Request { #getbucketacl-request }
 
 ```http
 GET /{bucket}?acl HTTP/1.1
 ```
 
+<a id="getbucketacl-request-request-header"></a>
 #### Request Header
 
 For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="getbucketacl-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | Bucket name |
 
-### Response
+<a id="getbucketacl-response"></a>
+### Response { #getbucketacl-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -140,6 +164,7 @@ HTTP/1.1 200 OK
 </AccessControlPolicy>
 ```
 
+<a id="getbucketacl-response-response-body"></a>
 #### Response Body
 
 | Name | Type | Description |
@@ -157,27 +182,32 @@ HTTP/1.1 200 OK
 | AccessControlPolicy.AccessControlList.Grant.Permission | String | Permission granted. Only `FULL_CONTROL` is supported. |
 
 
-## GetBucketPolicy
+<a id="getbucketpolicy"></a>
+## GetBucketPolicy { #getbucketpolicy }
 
 Retrieves the policy (bucket policy) registered for a bucket. The policy document is returned as-is in the response body in JSON format.
 
-### Request
+<a id="getbucketpolicy-request"></a>
+### Request { #getbucketpolicy-request }
 
 ```http
 GET /{bucket}?policy HTTP/1.1
 ```
 
+<a id="getbucketpolicy-request-request-header"></a>
 #### Request Header
 
 For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="getbucketpolicy-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | Bucket name |
 
-### Response
+<a id="getbucketpolicy-response"></a>
+### Response { #getbucketpolicy-response }
 
 The registered policy document is returned as a JSON body. For descriptions of each field in the policy document, see [PutBucketPolicy](#putbucketpolicy).
 
@@ -203,20 +233,24 @@ Content-Type: application/json
     If no policy is registered for the bucket, a `404 NoSuchBucketPolicy` error is returned.
 
 
-## ListBuckets
+<a id="listbuckets"></a>
+## ListBuckets { #listbuckets }
 
 Lists buckets.
 
-### Request
+<a id="listbuckets-request"></a>
+### Request { #listbuckets-request }
 
 ```http
 GET /?max-buckets=20 HTTP/1.1
 ```
 
+<a id="listbuckets-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="listbuckets-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -225,7 +259,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | max-buckets | Parameter | Integer | N | Maximum number of buckets to return |
 | prefix | Parameter | String | N | Prefix for filtering bucket names |
 
-### Response
+<a id="listbuckets-response"></a>
+### Response { #listbuckets-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -248,6 +283,7 @@ HTTP/1.1 200 OK
 </ListAllMyBucketsResult>
 ```
 
+<a id="listbuckets-response-response-body"></a>
 #### Response Body
 
 | Name | Type | Description |
@@ -264,11 +300,13 @@ HTTP/1.1 200 OK
 | ListAllMyBucketsResult.Prefix | String | Prefix filter used in the request |
 
 
-## PutBucketPolicy
+<a id="putbucketpolicy"></a>
+## PutBucketPolicy { #putbucketpolicy }
 
 Registers or replaces a policy (bucket policy) for a bucket. A bucket policy is a policy document in JSON format that defines which principal is allowed or denied access to which actions on which resources.
 
-### Request
+<a id="putbucketpolicy-request"></a>
+### Request { #putbucketpolicy-request }
 
 ```http
 PUT /{bucket}?policy HTTP/1.1
@@ -287,16 +325,19 @@ PUT /{bucket}?policy HTTP/1.1
 }
 ```
 
+<a id="putbucketpolicy-request-request-header"></a>
 #### Request Header
 
 For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="putbucketpolicy-request-request-parameters"></a>
 #### Request Parameters
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | bucket | Path | String | Y | Bucket name |
 
+<a id="putbucketpolicy-request-request-body"></a>
 #### Request Body
 
 The request body is a JSON containing the entire policy document.
@@ -316,6 +357,7 @@ The request body is a JSON containing the entire policy document.
 | Statement.NotResource | Array | N | List of resources to exclude from application. Cannot be used together with `Resource`. |
 | Statement.Condition | Object | N | Condition under which the policy statement applies |
 
+<a id="putbucketpolicy-request-principal"></a>
 #### Principal
 
 Specifies the principal to apply permissions to.
@@ -329,6 +371,7 @@ Specifies the principal to apply permissions to.
 !!! tip "Note"
     `Principal` accepts both a single string and an array of strings.
 
+<a id="putbucketpolicy-request-action"></a>
 #### Action
 
 The following actions are available for use in policies:
@@ -349,6 +392,7 @@ The following actions are available for use in policies:
 !!! danger "Caution"
     Bucket administration actions such as creating/deleting buckets and managing bucket policies and ACLs cannot be granted through bucket policies. These permissions can only be performed by the project/bucket owner role.
 
+<a id="putbucketpolicy-request-resource"></a>
 #### Resource
 
 Resources are specified in path format within the bucket, not as ARNs.
@@ -362,6 +406,7 @@ Resources are specified in path format within the bucket, not as ARNs.
 !!! danger "Caution"
     Resources cannot start with `arn:` or `/`.
 
+<a id="putbucketpolicy-request-request-example"></a>
 #### Request Example
 
 ```json
@@ -379,7 +424,8 @@ Resources are specified in path format within the bucket, not as ARNs.
 }
 ```
 
-### Response
+<a id="putbucketpolicy-response"></a>
+### Response { #putbucketpolicy-response }
 
 ```http
 HTTP/1.1 204 No Content

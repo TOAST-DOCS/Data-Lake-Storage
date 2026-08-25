@@ -1,21 +1,28 @@
-## Object
+<!-- pre-align:aligned sig=6cfc8590d826 -->
+
+<a id="object"></a>
+## Object { #object }
 **Data & Analytics > Data Lake Storage > Amazon S3-Compatible API Guide > Object**
 
 
-## DeleteObject
+<a id="deleteobject"></a>
+## DeleteObject { #deleteobject }
 
 Deletes objects stored in the bucket.
 
-### Request
+<a id="request"></a>
+### Request { #request }
 
 ```http
 DELETE /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -23,18 +30,21 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | bucket | Path | String | Y | Bucket name |
 | objectKey | Path | String | Y | Object name |
 
-### Response
+<a id="response"></a>
+### Response { #response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## DeleteObjects
+<a id="deleteobjects"></a>
+## DeleteObjects { #deleteobjects }
 
 Deletes multiple objects in a single request. Up to 1,000 object keys can be specified per request.
 
-### Request
+<a id="deleteobjects-request"></a>
+### Request { #deleteobjects-request }
 
 ```http
 POST /{bucket}?delete HTTP/1.1
@@ -52,10 +62,12 @@ POST /{bucket}?delete HTTP/1.1
 </Delete>
 ```
 
+<a id="deleteobjects-request-request-header"></a>
 #### Request Header
 
 For header information commonly used in Data Lake Storage APIs, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="deleteobjects-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | In | Type | Required | Description |
@@ -63,6 +75,7 @@ For header information commonly used in Data Lake Storage APIs, see the Data Lak
 | bucket | Path | String | Y | Bucket name |
 | Content-MD5 | Header | String | Y | MD5 hash of the request body (used to verify integrity during transmission) |
 
+<a id="deleteobjects-request-request-body"></a>
 #### Request Body
 
 | Name | Type | Required | Description |
@@ -75,7 +88,8 @@ For header information commonly used in Data Lake Storage APIs, see the Data Lak
 | Delete.Object.Size | Long | N | Size of the object (in bytes). If specified, only objects with a matching size are deleted. |
 | Delete.Quiet | Boolean | N | When set to `true`, operates in Quiet mode, and only failed items are included in the response. The default is Verbose mode (returns all results). |
 
-### Response
+<a id="deleteobjects-response"></a>
+### Response { #deleteobjects-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -95,6 +109,7 @@ HTTP/1.1 200 OK
 </DeleteResult>
 ```
 
+<a id="deleteobjects-response-response-body"></a>
 #### Response Body
 
 | Name | Type | Description |
@@ -108,20 +123,24 @@ HTTP/1.1 200 OK
 | DeleteResult.Error.Message | String | Error message |
 
 
-## GetObject
+<a id="getobject"></a>
+## GetObject { #getobject }
 
 Retrieves an object stored in a bucket.
 
-### Request
+<a id="getobject-request"></a>
+### Request { #getobject-request }
 
 ```http
 GET /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="getobject-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="getobject-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -131,7 +150,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | Range | Header | String | N | Partial download range |
 | x-amz-storage-class | Header | String | N | Storage class |
 
-### Response
+<a id="getobject-response"></a>
+### Response { #getobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -151,6 +171,7 @@ x-amz-checksum-type: ChecksumType
 data
 ```
 
+<a id="getobject-response-response-header"></a>
 #### Response Header
 
 | Field | Description |
@@ -169,20 +190,24 @@ data
 | x-amz-checksum-type | Method used to combine part-level checksums of a multipart object to generate an object-level checksum. Valid values: `COMPOSITE \| FULL_OBJECT` |
 
 
-## HeadObject
+<a id="headobject"></a>
+## HeadObject { #headobject }
 
 Retrieves the metadata of an object stored in a bucket.
 
-### Request
+<a id="headobject-request"></a>
+### Request { #headobject-request }
 
 ```http
 HEAD /{bucket}/{objectKey} HTTP/1.1
 ```
 
+<a id="headobject-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="headobject-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -191,7 +216,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | objectKey | Path | String | Y | Object name |
 | x-amz-storage-class | Header | String | N | Storage class |
 
-### Response
+<a id="headobject-response"></a>
+### Response { #headobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -214,6 +240,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="headobject-response-response-header"></a>
 #### Response Header
 
 | Field | Description |
@@ -235,20 +262,24 @@ x-amz-checksum-type: ChecksumType
 | x-amz-checksum-type | Method used to combine part-level checksums of a multipart object to generate an object-level checksum. Valid values: `COMPOSITE \| FULL_OBJECT` |
 
 
-## ListObjectsV2
+<a id="listobjectsv2"></a>
+## ListObjectsV2 { #listobjectsv2 }
 
 Retrieves an object list stored in a bucket.
 
-### Request
+<a id="listobjectsv2-request"></a>
+### Request { #listobjectsv2-request }
 
 ```http
 GET /{bucket}?list-type=2&continuation-token={continuationToken}&delimiter={delimiter}&encoding-type={encodingType}&fetch-owner={fetchOwner}&max-keys={maxKeys}&prefix={prefix}&start-after={startAfter} HTTP/1.1
 ```
 
+<a id="listobjectsv2-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="listobjectsv2-request-request-parameter"></a>
 #### Request Parameter
 
 | Name                | Category  | Type    | Required | Description                             |
@@ -264,7 +295,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | prefix              | Parameter | String  | N        | Object name prefix                      |
 | start-after         | Parameter | String  | N        | Starting point for retrieval            |
 
-### Response
+<a id="listobjectsv2-response"></a>
+### Response { #listobjectsv2-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -300,6 +332,7 @@ HTTP/1.1 200 OK
 </ListBucketResult>
 ```
 
+<a id="listobjectsv2-response-response-body"></a>
 #### Response Body
 
 | Name                                        | Type      | Description                                                    |
@@ -327,11 +360,13 @@ HTTP/1.1 200 OK
 | ListBucketResult.CommonPrefixes.Prefix      | String    | Path grouped by delimiter                                      |
 
 
-## PutObject
+<a id="putobject"></a>
+## PutObject { #putobject }
 
 Stores an object in a bucket.
 
-### Request
+<a id="putobject-request"></a>
+### Request { #putobject-request }
 
 ```http
 PUT /{bucket}/{objectKey} HTTP/1.1
@@ -352,6 +387,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 Body
 ```
 
+<a id="putobject-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
@@ -372,6 +408,7 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-checksum-xxhash128 | N | Base64-encoded value of the object's 128-bit `XXHASH128` checksum |
 | x-amz-sdk-checksum-algorithm | N | Specifies the algorithm used to generate the object's checksum via the SDK. When this header is sent, the `x-amz-checksum-algorithm` or `x-amz-trailer` header must also be sent. Otherwise, an HTTP 400 error is returned. |
 
+<a id="putobject-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -383,13 +420,15 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header | String | N | Storage class |
 | x-amz-meta-* | Header | String | N | Custom metadata |
 
+<a id="putobject-request-request-body"></a>
 #### Request Body
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
 | Body | Binary | Y | Object data |
 
-### Response
+<a id="putobject-response"></a>
+### Response { #putobject-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -407,6 +446,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="putobject-response-response-header"></a>
 #### Response Header
 
 | Field | Description |

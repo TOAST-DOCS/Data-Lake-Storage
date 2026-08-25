@@ -1,4 +1,7 @@
-## Data Lake Storage 概要
+<!-- pre-align:aligned sig=bfea2e9c91d3 -->
+
+<a id="data-lake-storage-overview"></a>
+## Data Lake Storage 概要 { #data-lake-storage-overview }
 
 **Data & Analytics > Data Lake Storage > 概要**
 
@@ -12,7 +15,8 @@ AWS S3 APIとの高い互換性をベースに、既存の分析エコシステ�
     サービスを無効化すると、ストレージに保存されているデータは全て削除され、復元できなくなります。
 
 
-## 主な特徴
+<a id="main-features"></a>
+## 主な特徴 { #main-features }
 * 柔軟な拡張性
     * ストレージ容量を気にせずデータを保管できるよう、水平方向にスケールする構造を備えています。
 * ストレージクラス
@@ -20,10 +24,12 @@ AWS S3 APIとの高い互換性をベースに、既存の分析エコシステ�
 * AWS S3互換API
     * AWS S3 APIと高いレベルの互換性を提供しており、既存のS3 SDK、CLI、サードパーティ製ツールをそのまま活用できます。
 
-## 動作方式
-<img src="https://static.toastoven.net/prod_data_lake_storage/15_data&analytics_data-lake-storage_img_jp.png" alt="Data Lake Storageの動作方式"/>
+<a id="how-it-works"></a>
+## 動作方式 { #how-it-works }
+![Data Lake Storageの動作方式](../static/images/15_data&analytics_data-lake-storage_img_jp.png)
 
-## 用語集
+<a id="glossary"></a>
+## 用語集 { #glossary }
 | 用語 | 説明 |
 | --- | --- |
 | オブジェクト | データとメタデータで構成されるファイル単位の保存要素 |

@@ -1,21 +1,28 @@
-## Multipart
+<!-- pre-align:aligned sig=f760859bc93e -->
+
+<a id="multipart"></a>
+## Multipart { #multipart }
 **Data & Analytics > Data Lake Storage > Amazon S3-Compatible API Guide > Multipart**
 
 
-## AbortMultipartUpload
+<a id="abortmultipartupload"></a>
+## AbortMultipartUpload { #abortmultipartupload }
 
 Aborts an in-progress multipart upload.
 
-### Request
+<a id="request"></a>
+### Request { #request }
 
 ```http
 DELETE /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
+<a id="request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -25,18 +32,21 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header | String | N | Storage class |
 | uploadId | Parameter | String | Y | Multipart upload ID |
 
-### Response
+<a id="response"></a>
+### Response { #response }
 
 ```http
 HTTP/1.1 204 No Content
 ```
 
 
-## CompleteMultipartUpload
+<a id="completemultipartupload"></a>
+## CompleteMultipartUpload { #completemultipartupload }
 
 Combine the uploaded parts to save the object and complete the multipart upload.
 
-### Request
+<a id="completemultipartupload-request"></a>
+### Request { #completemultipartupload-request }
 
 ```http
 POST /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
@@ -71,6 +81,7 @@ x-amz-checksum-type: ChecksumType
 </CompleteMultipartUpload>
 ```
 
+<a id="completemultipartupload-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
@@ -89,6 +100,7 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-checksum-xxhash128 | N | Header for data integrity verification. Base64-encoded value of the object's 128-bit `XXHASH128` checksum |
 | x-amz-checksum-type | N | Method used to combine part-level checksums in a multipart upload to generate an object-level checksum. If the value does not match the checksum type specified in the `CreateMultipartUpload` request, a `BadDigest` error is returned. Valid values: `COMPOSITE \| FULL_OBJECT` |
 
+<a id="completemultipartupload-request-request-parameter"></a>
 #### Request Parameter
 
 | Name                | Category  | Type   | Required | Description         |
@@ -98,6 +110,7 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header    | String | N        | Storage class       |
 | uploadId            | Parameter | String | Y        | Multipart upload ID |
 
+<a id="completemultipartupload-request-request-body"></a>
 #### Request Body
 
 | Name | Type | Required | Description |
@@ -117,7 +130,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | CompleteMultipartUpload.Part.ChecksumXXHASH3 | String | N | Base64-encoded value of the part's 64-bit `XXHASH3` checksum |
 | CompleteMultipartUpload.Part.ChecksumXXHASH128 | String | N | Base64-encoded value of the part's 128-bit `XXHASH128` checksum |
 
-### Response
+<a id="completemultipartupload-response"></a>
+### Response { #completemultipartupload-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -142,6 +156,7 @@ HTTP/1.1 200 OK
 </CompleteMultipartUploadResult>
 ```
 
+<a id="completemultipartupload-response-response-body"></a>
 #### Response Body
 
 | Name | Type | Description |
@@ -163,11 +178,13 @@ HTTP/1.1 200 OK
 | CompleteMultipartUploadResult.ChecksumXXHASH128 | String | Base64-encoded value of the part's 128-bit `XXHASH128` checksum |
 
 
-## CreateMultipartUpload
+<a id="createmultipartupload"></a>
+## CreateMultipartUpload { #createmultipartupload }
 
 Initiates a multipart upload and generates an upload ID to upload large objects. The upload ID is valid for up to one hour.
 
-### Request
+<a id="createmultipartupload-request"></a>
+### Request { #createmultipartupload-request }
 
 ```http
 POST /{bucket}/{objectKey}?uploads HTTP/1.1
@@ -175,6 +192,7 @@ x-amz-checksum-algorithm: ChecksumAlgorithm
 x-amz-checksum-type: ChecksumType
 ```
 
+<a id="createmultipartupload-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
@@ -184,6 +202,7 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-checksum-algorithm | N     | Specifies the algorithm to use for generating the object's checksum. Valid values: `CRC32 \| CRC32C \| SHA1 \| SHA256 \| CRC64NVME \| SHA512 \| MD5 \| XXHASH64 \| XXHASH3 \| XXHASH128` |
 | x-amz-checksum-type      | N     | Specifies the method used to calculate the object's checksum value. Valid values: `COMPOSITE \| FULL_OBJECT` |
 
+<a id="createmultipartupload-request-request-parameter"></a>
 #### Request Parameter
 
 | Name                | Category | Type   | Required | Description         |
@@ -194,7 +213,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header   | String | N        | Storage class       |
 | x-amz-meta-\*       | Header   | String | N        | Custom metadata     |
 
-### Response
+<a id="createmultipartupload-response"></a>
+### Response { #createmultipartupload-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -209,6 +229,7 @@ x-amz-checksum-type: ChecksumType
 </InitiateMultipartUploadResult>
 ```
 
+<a id="createmultipartupload-response-response-header"></a>
 #### Response Header
 
 | Field | Description |
@@ -216,6 +237,7 @@ x-amz-checksum-type: ChecksumType
 | x-amz-checksum-algorithm | Algorithm used to generate the object's checksum |
 | x-amz-checksum-type | Method used to calculate the object's checksum value |
 
+<a id="createmultipartupload-response-response-body"></a>
 #### Response Body
 
 | Name                                   | Type   | Description                     |
@@ -226,20 +248,24 @@ x-amz-checksum-type: ChecksumType
 | InitiateMultipartUploadResult.UploadId | String | Multipart upload ID             |
 
 
-## ListParts
+<a id="listparts"></a>
+## ListParts { #listparts }
 
 Retrieves a list of parts in a multipart upload.
 
-### Request
+<a id="listparts-request"></a>
+### Request { #listparts-request }
 
 ```http
 GET /{bucket}/{objectKey}?uploadId={uploadId} HTTP/1.1
 ```
 
+<a id="listparts-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
 
+<a id="listparts-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -249,7 +275,8 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-storage-class | Header | String | N | Storage class |
 | uploadId | Parameter | String | Y | Multipart upload ID |
 
-### Response
+<a id="listparts-response"></a>
+### Response { #listparts-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -273,6 +300,7 @@ HTTP/1.1 200 OK
 </ListPartsResult>
 ```
 
+<a id="listparts-response-response-body"></a>
 #### Response Body
 
 | Name | Type | Description |
@@ -293,11 +321,13 @@ HTTP/1.1 200 OK
 | ListPartsResult.Part.Size | Long | Part size (bytes) |
 
 
-## UploadPart
+<a id="uploadpart"></a>
+## UploadPart { #uploadpart }
 
 Uploads the parts of the multipart upload. Before uploading, you must call the CreateMultipartUpload API to generate a multipart upload ID.
 
-### Request
+<a id="uploadpart-request"></a>
+### Request { #uploadpart-request }
 
 ```http
 PUT /{bucket}/{objectKey}?partNumber={partNumber}&uploadId={uploadId} HTTP/1.1
@@ -318,6 +348,7 @@ x-amz-checksum-xxhash128: ChecksumXXHASH128
 body
 ```
 
+<a id="uploadpart-request-request-header"></a>
 #### Request Header
 
 For the common header information for Data Lake Storage API, see the Data Lake Storage [API Request Header Guide](api-guide-common).
@@ -337,6 +368,7 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | x-amz-checksum-xxhash3 | N | Base64-encoded value of the part's 64-bit `XXHASH3` checksum |
 | x-amz-checksum-xxhash128 | N | Base64-encoded value of the part's 128-bit `XXHASH128` checksum |
 
+<a id="uploadpart-request-request-parameter"></a>
 #### Request Parameter
 
 | Name | Category | Type | Required | Description |
@@ -347,13 +379,15 @@ For the common header information for Data Lake Storage API, see the Data Lake S
 | partNumber | Parameter | Integer | Y | Part number (1 to 10,000) |
 | uploadId | Parameter | String | Y | Multipart upload ID |
 
+<a id="uploadpart-request-request-body"></a>
 #### Request Body
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
 | Body | Binary | Y | Part binary data, up to 5 GiB can be uploaded |
 
-### Response
+<a id="uploadpart-response"></a>
+### Response { #uploadpart-response }
 
 ```http
 HTTP/1.1 200 OK
@@ -370,6 +404,7 @@ x-amz-checksum-xxhash3: ChecksumXXHASH3
 x-amz-checksum-xxhash128: ChecksumXXHASH128
 ```
 
+<a id="uploadpart-response-response-header"></a>
 #### Response Header
 
 | Field | Description |
