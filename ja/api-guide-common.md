@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=bd9519149408 -->
 
 <a id="amazon-s3-compatible-api-guide"></a>
@@ -21,8 +23,8 @@
 <a id="authentication-and-authorization"></a>
 ### 認証及び権限 { #authentication-and-authorization }
 
-Data Lake Storageは、Amazon S3互換APIを呼び出す際の認証/認可にS3 API認証情報を使用します。S3 API認証情報は、NHN CloudでAmazon S3互換APIに対応したサービスAPIを使用するためのAWS EC2形式の認証キーです。
-S3 API認証情報の詳細は、[S3 API認証情報](/nhncloud/ja/public-api/s3-api-credential/)を参照してください。コンソール経由の認証情報の照会、発行、修正、削除に関する詳細は、[認証情報の管理](console-user-guide/#manage-credentials)を参照してください。
+Data Lake Storage は、Amazon S3 互換 API 呼び出し時の認証/認可に S3 API 認証情報を使用します。S3 API 認証情報は、NHN Cloud で Amazon S3 互換 API をサポートするサービス API を使用するための AWS EC2 形式の認証キーです。
+S3 API 認証情報の詳細については、[S3 API 認証情報](/nhncloud/ja/public-api/s3-api-credential/)を参照してください。コンソールを使用した認証情報の照会、発行、変更、削除の詳細については、[認証情報管理](console-user-guide/#manage-credentials)を参照してください。
 
 <a id="request"></a>
 ### リクエスト { #request }
