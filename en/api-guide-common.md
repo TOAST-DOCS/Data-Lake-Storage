@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=bd9519149408 -->
 
 <a id="amazon-s3-compatible-api-guide"></a>
@@ -21,7 +23,8 @@
 <a id="authentication-and-authorization"></a>
 ### Authentication and Authorization { #authentication-and-authorization }
 
-Data Lake Storage requires S3 API credentials for authentication/authorization when making API calls. Refer to [S3 API Credential](console-user-guide/#manage-credentials) to prepare the information required to use the API.
+Data Lake Storage uses S3 API credentials for authentication/authorization when making Amazon S3-compatible API calls. S3 API credentials are authentication keys in the AWS EC2 format used to call service APIs that support Amazon S3-compatible APIs in NHN Cloud.
+For more information about S3 API credentials, see [S3 API Credentials](/nhncloud/en/public-api/s3-api-credential/). For more information about viewing, issuing, modifying, and deleting credentials through the console, see [Manage Credentials](console-user-guide/#manage-credentials).
 
 <a id="request"></a>
 ### Request { #request }

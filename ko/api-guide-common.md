@@ -21,7 +21,8 @@
 <a id="authentication-and-authorization"></a>
 ### 인증 및 권한 { #authentication-and-authorization }
 
-Data Lake Storage는 API 호출 시 인증/인가를 위해 S3 API 자격 증명이 필요합니다. [S3 API 자격 증명(S3 API Credential)](console-user-guide/#_10)을 참고하여 API 사용에 필요한 정보를 준비합니다.
+Data Lake Storage는 Amazon S3 호환 API 호출 시 인증/인가를 위해 S3 API 자격 증명을 사용합니다. S3 API 자격 증명은 NHN Cloud에서 Amazon S3 호환 API를 지원하는 서비스 API를 사용하기 위한 AWS EC2 형식의 인증 키입니다.
+S3 API 자격 증명에 대한 자세한 내용은 [S3 API 자격 증명](/nhncloud/ko/public-api/s3-api-credential/)을 참고하세요. 콘솔을 통한 자격 증명 조회, 발급, 수정, 삭제에 대한 자세한 내용은 [자격 증명 관리하기](console-user-guide/#manage-credentials)를 참고하세요.
 
 <a id="request"></a>
 ### 요청 { #request }
