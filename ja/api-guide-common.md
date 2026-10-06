@@ -10,7 +10,7 @@
 <a id="common-information-for-data-lake-storage-api"></a>
 ## Data Lake Storage API 共通情報 { #common-information-for-data-lake-storage-api }
 
-!!! tip 「ポイント」
+!!! tip "ポイント"
     NHN Cloud Data Lake Storageサービスは、Amazon S3 API 2006-03-01バージョンと互換性を持つように設計されています。
 
 <a id="api-endpoint"></a>
@@ -179,7 +179,7 @@ $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
 | Command | AWSコマンドラインインターフェースのコマンド |
 | Bucket | バケット名 |
 
-!!! tip 「ポイント」
+!!! tip "ポイント"
     AWSコマンドラインインターフェースはAWSを使用するために提供されるツールであるため、AWSのドメインを使用するように設定されています。したがって、NHN Cloud Data Lake Storageサービスを使用するには、必ずコマンドごとにエンドポイントを指定する必要があります。
     AWSコマンドラインインターフェースのコマンドは、[AWS CLI での高レベル (s3) コマンドの使用](https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-services-s3-commands.html)のドキュメントをご参照ください。
 
@@ -188,17 +188,17 @@ $ aws --endpoint-url=${Endpoint} s3 ${Command} s3://${Bucket}
 
 AWSは様々なプログラミング言語向けのSDKを提供しています。S3互換APIを利用して、AWS SDKでNHN Cloud Data Lake Storageサービスを使用できます。
 
-!!! tip 「ポイント」
+!!! tip "ポイント"
     詳細は[AWS SDK](https://builder.aws.com/build/tools)のドキュメントをご参照ください。
 
 <a id="java-sdk"></a>
 ### Java SDK { #java-sdk }
 
-!!! tip 「ポイント」
+!!! tip "ポイント"
     詳細は[AWS SDK for Java](https://docs.aws.amazon.com/ja_jp/sdk-for-java/)のドキュメントをご参照ください。
 
 <a id="boto3---python-sdk"></a>
 ### Boto3 - Python SDK { #boto3---python-sdk }
 
-!!! tip 「ポイント」
+!!! tip "ポイント"
     詳細は[AWS SDK for Python(Boto3)](https://docs.aws.amazon.com/ja_jp/pythonsdk/)のドキュメントをご参照ください。
