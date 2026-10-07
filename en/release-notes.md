@@ -7,9 +7,9 @@
 ## July 28, 2026 { #july-28-2026 }
 
 <a id="july-28-2026-1"></a>
-### 신규 기능 추가 { #july-28-2026-1 }
+### Added Features { #july-28-2026-1 }
 
-* [API] 무결성 검증 기능이 추가됩니다.
+* [API] Added integrity verification feature.
 
 <a id="june-23-2026"></a>
 ## June 23, 2026 { #june-23-2026 }
